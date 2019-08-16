@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://opg.me/ns#">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="title" property="og:title" content="Crato" />
+    <meta
+      name="description"
+      property="og:description"
+      content="Crato is an open source framework for small web applications to easily deploy a centralized logging solution that maintains ownership of data"
+    />
+    <meta name="type" property="og:type" content="website" />
+    <meta
+      name="url"
+      property="og:url"
+      content="https://crato-logging.github.io/"
+    />
+    <meta
+      name="image"
+      property="og:image"
+      content="images/logos/crato-logo.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="author"
+      content="Faazil Shaikh, Kurth O'Connor, Alex Soloviev"
+    />
+
+    <title>CRATO</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/icons/favicon_package_v0.16/favicon-16x16.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind|Hind:700|Open+Sans:700|Teko:700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <style>reset</style> -->
+    <link rel="stylesheet" href="stylesheets/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/gruvbox-dark.min.css"
+      charset="utf-8"
+    />
+
+    <!-- <style></style> -->
+    <link rel="stylesheet" href="stylesheets/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- <script></script> -->
+    <script src="javascripts/application.js"></script>
+  </head>
+  <body>
+    <div class="logo-links">
+      <p id="crato-logo">CRATO</p>
+      <a href="https://github.com/crato-logging/crato" target="_blank">
+        <img
+          src="images/logos/github_black.png"
+          alt="github logo"
+          id="github-logo"
+        />
+      </a>
+    </div>
+    <nav id="site-navigation">
+      <ul>
+        <li>
+          <a href="#home" id="home-link">HOME</a>
+        </li>
+        <li>
+          <a href="#case-study" id="case-study-link">CASE STUDY</a>
+          <nav id="case-study-mobile">
+            <ul></ul>
+          </nav>
+        </li>
+        <li>
+          <a href="#our-team" id="our-team-link">OUR TEAM</a>
+        </li>
+      </ul>
+    </nav>
+    <header id="home">
+      <h1>
+        <img src="images/logos/crato-logo.png" alt="Crato logo" />
+        <p>easy log management for small applications</p>
+      </h1>
+    </header>
+    <section class="integration">
+      <div class="box">
+        <img src="images/crato_horizontal.png" alt="best practices" />
+      </div>
+      <article class="box">
+        <div class="text-box">
+          <h1>Centralize your logs</h1>
+          <p>
+            Crato is an open-source framework for small applications to easily
+            deploy a centralized logging solution that maintains ownership of
+            data.
+          </p>
+          <!-- <a class="button" href="#case-study">Learn More</a> -->
+        </div>
+      </article>
+    </section>
+
+    <main>
+      <section id="case-study">
+        <h1>Case Study</h1>
+
+        <div id="side-nav">
+          <img src="images/logos/crato-logo.png" alt="Crato logo" />
+        </div>
+        <nav>
+          <ul></ul>
+        </nav>
+
+        <h2 id="introduction">1 Introduction</h2>
+
+        <h3>1.1 What is Crato?</h3>
+
+        <p>
+          Crato is an open source framework for small applications to easily
+          deploy centralized logging.
+        </p>
+
+        <p>
+          Applications and system services use messages to record their events,
+          but by default these log messages remain on local systems and are
+          deleted. Without intervening then, developers and administrators lose
+          valuable insight into the history, performance and security of their
+          systems.
+        </p>
+
+        <p>
+          Crato employs centralized logging to address this problem. With Crato,
+          each machine sends its logs to an offsite collection server, where
+          users can gain insight into the entire system by accessing the
+          consolidated logs. Log messages are then streamed into Kafka, consumed
+          by Crato, and sent as compressed files to Amazon S3 for archiving and
+          into InfluxDB for metrics-based querying.
+        </p>
+
+        <h2 id="logging">2 Logging</h2>
+
+        <h3>2.1 What is a Log?</h3>
+
+        <h3>2.2 Logs as Append-Only Data Structures</h3>
+
+        <h3>2.3 Logs as Files</h3>
+
+        <h3>2.4 Logs as Streams</h3>
+
+        <h3>2.5 Logs Capture Change</h3>
+
+        <h3>2.6 Stream - Table Duality</h3>
+
+        <h3>
+          3 Why Does Logging Matter for Small Applications?
+        </h3>
+
+        <p>
+          Sometimes, you don't just want to know what changed; you want to know
+          why or how it changed.
+        </p>
+
+        <h3>Benefits Overview</h3>
+
+        <h3>Syslog</h3>
+
+        <h2 id="current-solutions">4 Current Solutions</h2>
+
+        <p>
+          For a small and growing application that wants to manage their own
+          logs what solutions exist?
+        </p>
+
+        <h3>The Three Options Overview</h3>
+
+        <h3>
+          LaaS: Full Service Log Management
+        </h3>
+
+        <p>LaaS Overview</p>
+
+        <h4>
+          LaaS: Log Management Components Provided
+        </h4>
+
+        <h4>LaaS Tradeoffs</h4>
+
+        <h3 id="diy">DIY</h3>
+
+        <p>DIY Overview</p>
+
+        <h4>
+          Log Management Components Overview
+        </h4>
+
+        <h4>Collection &amp; Aggregation</h4>
+
+        <h5>
+          Syslog Protocol &amp; its Implementations
+        </h5>
+
+        <h5>
+          Collection &amp; Aggregation Options Summary
+        </h5>
+
+        <h4>Ingestion &amp; Storage</h4>
+
+        <h4>Monitoring &amp; Visualization</h4>
+
+        <h4>
+          Log Management Components Recap
+        </h4>
+
+        <h4>DIY Tradeoffs</h4>
+
+        <h3>OSS</h3>
+
+        <p>OSS Overview</p>
+
+        <h4>ElasticStack</h4>
+
+        <h4>Graylog</h4>
+
+        <h4>OSS Tradeoffs</h4>
+
+        <h3>
+          Summary: Current Log Management Options
+        </h3>
+
+        <h2 id="crato-design">5 Crato Design</h2>
+
+        <p>
+          Small app, choose to focus on core services, and log ownership is
+          important Use case and current options show a need; Design goals
+          formed to meet the use case / need; Crato built with goals as
+          constraints to satisfy use case. Easy - skills and techniques for
+          configuration, deployment and daily use are all already found in the
+          development team. Query current (‘live’) logs at point of collection
+          using familiar tools: <code>grep</code>, <code>tail</code>,
+          <code>sort</code>, <code>awk</code>. Query database using SQL.
+          Lightweight - modify as little as possible on the log generating
+          machines. using native tools that are default (syslog) Non-invasive
+          logging: accepts, transports and stores logs with their original
+          unmutated structure, makes available for query; without imposing on
+          the developers’ app itself. Increased Developer Control: data
+          ownership, control over storage length, no 3rd party logging lock-in
+          Small application running on a Unix/Linux server or VPS, with root
+          access.
+        </p>
+
+        <p>{chart placing Crato with OSS solutions and between DIY and LaaS}</p>
+
+        <h3 id="51cratoarchitectureoverview">
+          5.1 Crato Architecture Overview
+        </h3>
+
+        <p>
+          Crato consists of two main components: the client and the central
+          server. The client is installed and run on each machine from which
+          logs are to be collected. The central server is deployed via Docker
+          onto a separate server or VPS.
+        </p>
+
+        <p>{crato architecture diagram}</p>
+
+        <h3 id="52commands">5.2 Commands</h3>
+
+        <p>
+          Crato client is designed to have a light footprint on each client
+          system. Downloading the client adds only two files to each system: the
+          <code>crato</code> bash script and <code>crato-config</code>, a text
+          file to record user preferences. Running Crato client interferes with
+          the native logging of the system as little as possible. Crato adds
+          only a single configuration file that supplements, not overrides,
+          default settings
+        </p>
+
+        <p>
+          To download Crato client, <code>curl</code> or <code>wget</code> the
+          script.
+        </p>
+
+        <h4 id="cratoconfig"><code>crato-config</code></h4>
+
+        <p>
+          To simplify deployment and reduce complexity, the Crato client cli
+          exposes only a handful of configuration options. Crato client
+          configuration options are set in the <code>crato-config</code> text
+          file. Using key-value pairs, enter any number of logs for Crato to
+          track, along with their tags and severity levels. Then enter the ip
+          address of the central server.
+        </p>
+
+        <p>
+          For users needing more granular control over settings, the full range
+          of configuraton options are available by directly editing the default
+          <code>*.conf</code> files. Additionally, because Crato does not
+          override applications' logging processes, these can be configured as
+          before.
+        </p>
+
+        <p>{Crato Client config file shot}</p>
+
+        <h4 id="cratoc"><code>crato -c</code></h4>
+
+        <p>
+          Apply the current configuration and start Crato client with
+          <code>crato -c</code> or <code>crato --configure</code>. Running this
+          command checks that permissions, <code>rsyslog</code> version and base
+          configuration is appropriate for Crato client. It then dynamically
+          generates a <code>/etc/rsyslog.d/49-crato.conf</code> file to hold
+          Crato configuration, and checks the validity of the resulting
+          <code>rsyslog</code> configuration. It then either throws an error
+          with instructions for debugging or (re)starts logging with the new
+          settings.
+        </p>
+
+        <h4 id="cratosandcrator">
+          <code>crato -s</code> and <code>crato -r</code>
+        </h4>
+
+        <p>
+          <code>crato -s</code> or <code>crato --suspend</code> suspends Crato's
+          logging on the client and returns the machine to default logging.
+          <code>crato -r</code> or <code>crato --resume</code> restarts Crato
+          logging on the client with the suspended settings resumed. If Crato
+          client was not suspended at the time of execution, then the command
+          makes no changes.
+        </p>
+
+        <h4 id="cratod"><code>crato -d</code></h4>
+
+        <p>
+          <code>crato -d</code> or <code>crato --delete</code> removes current
+          or suspended Crato client configurations, confirms that resulting
+          default configuration is valid and restarts logging with default
+          settings or throws an error with instructions for debugging.
+        </p>
+
+        <p>{Crato Client CLI use gif}</p>
+
+        <h4 id="522dockerdeployment">5.2.2 Docker Deployment</h4>
+
+        <p>{Crato Docker Deployment gif}</p>
+
+        <h2 id="crato-implementation">6 Crato Implementation</h2>
+
+        <h3 id="collectionaggregation-1">Collection &amp; Aggregation</h3>
+
+        <p>{Architecture with C&amp;A boxed}</p>
+
+        <h3 id="61caimplementation">6.1 C &amp; A Implementation</h3>
+
+        <p>
+          Following its design mandate of being a lightweight, easy-to-use
+          system, Crato collects logs using <code>rsyslog</code>, a standard
+          tool available on most <code>*nix</code> systems. At the user’s
+          discretion, Crato can collect any text-based log messages your
+          servers, applications, databases, etc generate. Captured log messages
+          are consolidated into a single stream along with system logs.
+          Together, these messages are persisted to disk in the
+          <code>syslog</code> file on each client machine and also routed for
+          processing and forwarding.
+        </p>
+
+        <p>{inner client diagram}</p>
+
+        <h3 id="62shippingingestion">6.2 Shipping &amp; Ingestion</h3>
+
+        <p>{Architecture with S&amp;I boxed}</p>
+
+        <p>
+          {caption: Crato clients monitor logs and forward the log messages as
+          they arrive to the core Crato infrastructure. }
+        </p>
+
+        <h4 id="621shipping">6.2.1 Shipping</h4>
+
+        <p>
+          So far, the logs are grouped into a single stream, which is being
+          written to a single file. This occurs on each client (physical machine
+          or virtual server). But the primary goal of centralized log management
+          is to collect logs from many different sources into a single, central
+          (offsite) location. To accomplish that goal, we need to ship the logs
+        </p>
+
+        <p>
+          Each system running a Crato client forwards the stream of captured log
+          messges via <code>tcp</code> to the offsite core of Crato's
+          infrastructure. To mitigate message loss resulting from a network
+          partition or problems with the central server, each Crato client
+          implements a disk-assisted memory queue in front of the forwarding
+          action.
+        </p>
+
+        <p>
+          WHY DEFAULT TO TCP?: at our expected volumes, the disk-assisted memory
+          queue (a linked list capable of holding 10000 individual log messages,
+          with 1Gb disk space available if needed) should mitigate the need to
+          fire and forget to keep up with traffic. Thus, Crato opts for TCP and
+          its guarantees of delivery and packet order over UDP's potential speed
+          gains and absence of guarantees.
+        </p>
+
+        <h4 id="622ingestion">6.2.2 Ingestion</h4>
+
+        <p>
+          As it receives new log events from the dispersed clients, the central
+          log server appends each message to its own log file. At this point,
+          the central collection server's <code>syslog</code> file contains all
+          captured messages from the clients along with those from the
+          collection server itself. The full text is available for CLI query
+          using familiar text processing tools like <code>grep</code>,
+          <code>tail</code>, <code>sort</code>, and <code>awk</code>.
+        </p>
+
+        <p>
+          {Diagram of reading logs from across the system in a single place}
+        </p>
+
+        <p>
+          {Caption: Central point for insight into entire system: all messages
+          available to familiar unix tools}
+        </p>
+
+        <p>
+          Central log servers also forward logs into Crato’s pub-sub system,
+          where they are made available to both the archiving server and to the
+          database.
+        </p>
+
+        <h3 id="63messagestreaming">6.3 Message Streaming</h3>
+
+        <h4 id="weneedtostorelogsbuthow">We Need to Store Logs...but How?</h4>
+
+        <p>
+          It is common practice for log management systems to persist log data
+          not only to save it from automatic log rotation jobs, but also to
+          facilitate metrics and other system analysis. Crato follows this
+          practice, with Amazon S3 Glacier used for long-term storage and
+          InfluxDB used for metrics and eventual visualization.
+        </p>
+
+        <p>
+          Couldn't Crato simply send logs directly to the persistence layer?
+          Yes, in fact it's earliest iterations did exactly that, but this
+          approach is sub-optimal for a number of related reasons.
+        </p>
+
+        <p>
+          Logs are produced at different rates than they are consumed.
+          Furthermore, the same log data will be used by multiple processes.
+          Each use can be expected to have different needs, to operate at a
+          different rate, and to have potentially different bottlenecks or
+          failure rates. As a result, sending a copy of each log message to each
+          consumer as they come in is likely to lead to dropped messages with no
+          good way of recovery. Crato needed a buffering system to capture logs
+          and allow each consumer to draw data at its own rate.
+        </p>
+
+        <p>
+          One way to address this problem would be to use a queue. Log messages
+          are sent into a queue, and a consumer shifts the next message off as
+          needed. This may would work well for an individual consumer, but Crato
+          needs to handle multiple consumers, and as each consumer grabs the
+          next available message from the queue, all the others miss out. The
+          message is no longer available. What Crato would need would be a queue
+          in front of each potential consumer. To implement that, the central
+          server would need to send a copy of each log message to n queues in
+          front of n consumers.
+        </p>
+
+        <p>
+          Another potential solution would be to use a publish-subscribe
+          messaging system. The central server would publish each new log
+          message to the platform, and all subscribers would receive the log as
+          it is available. While this model allows the central server to forward
+          its stream to a single destination, it does not account for the
+          different rates of consumption.
+        </p>
+
+        <h4 id="631decouplingloggenerationusewithkafka">
+          6.3.1 Decoupling Log Generation &amp; Use with Kafka
+        </h4>
+
+        <p>{Architecture with Streaming / Kafka boxed }</p>
+
+        <p>
+          What Crato needs is a way to provide the same stream of log messages
+          to multiple consumers, to allow producers and consumers to work at
+          their own paces, and for each to always be able to resume its work at
+          the exact point it left off. It needs the advantages of a queue and a
+          pub-sub system folded into a single platform. Apache Kafka provides
+          exactly that.
+        </p>
+
+        <blockquote>
+          <p>
+            The consumer group concept in Kafka generalizes these two concepts.
+            As with a queue the consumer group allows you to divide up
+            processing over a collection of processes (the members of the
+            consumer group). As with publish-subscribe, Kafka allows you to
+            broadcast messages to multiple consumer groups.
+            <a href="https://kafka.apache.org/documentation.html#kafka_mq"
+              >Kafka as a Messaging System</a
+            >
+          </p>
+        </blockquote>
+
+        <p>
+          By decoupling log creation or ingestion from log use, Kafka solves the
+          problem noted above, namely Crato's need for exactly once delivery of
+          log messages to multiple users operating at different paces. At the
+          same time, it also allows Crato to be more extensible in the future.
+          Any additional uses for the same data can be added as consumers.
+        </p>
+
+        <p>
+          But if Kafka is so effective at managing this decoupling, wouldn't
+          Crato benefit from skipping the central server model and simply have
+          each client produce directly to remote Kafka brokers instead? There
+          are advantages to this approach. It would reduce complexity in Crato's
+          core infrastructure, and there is no doubt that Kafka could handle the
+          load from multiple distributed clients as well as it does from a
+          single central log server.
+        </p>
+
+        <p>
+          That said, this design would increase the complexity on the client
+          side by introducing additional configuration requirements and
+          dependencies. If we want to use the <code>syslog</code> protocol on
+          each client (see the justification above), then an
+          <code>rsyslog</code> central server poses fewer problems for client’s
+          installation. Also, removing the central server would eliminate one of
+          Crato's UI advantages, because without a central collection point it
+          would lose the ability to provide system-wide observability using the
+          familiar *nix text processing tools. One of the design goals is 'easy
+          to use'. Asking users to query Kafka for observability pushes hard
+          against that goal.
+        </p>
+
+        <h4 id="producingtokafka">Producing to Kafka</h4>
+
+        <p>
+          "Crato's central collection server sends logs to Kafka via rsyslog's
+          Omkafka module."
+        </p>
+
+        <p>DA memory queue to mitigate server / broker partition</p>
+
+        <h4 id="consumingfromkafka">Consuming from Kafka</h4>
+
+        <p>Kafka provides exactly once delivery for multiple consumers</p>
+
+        <p>Consumers must still manages flow to suit endpoint needs</p>
+
+        <h4 id="consumingfromkafkaimplementation">
+          Consuming from Kafka: Implementation
+        </h4>
+
+        <p>
+          Batching: archiving consumer saves log to a json files &amp; sends to
+          S3
+        </p>
+
+        <p>
+          Streaming: the influxDB consumer filteres and sends incoming messages
+          to their appropriate measurements
+        </p>
+
+        <h3 id="storage">Storage</h3>
+
+        <h4 id="dualstorageneeds">Dual Storage Needs</h4>
+
+        <p>
+          Archives: raw log files saved for as long as needed delayed access is
+          acceptable
+        </p>
+
+        <p>
+          Metrics-based Query: immediate access to recent log messages track
+          entities over time
+        </p>
+
+        <h4 id="archivesamazons3glacier">Archives: Amazon S3 Glacier</h4>
+
+        <p>
+          Offsite storage 99.99...%. Durability Automatic lifecycle management
+          Queryable from AWS console Inexpensive (from $0.004 / GB)
+        </p>
+
+        <p>
+          Durability: expected survival percentage of an object in S3 over a
+          year
+        </p>
+
+        <p>
+          Another PRO of using S3: we can use another AWS service Athena to
+          query our data using SQL language
+        </p>
+
+        <p>
+          “Amazon Athena is an interactive query service that makes it easy to
+          analyze data in Amazon S3 using standard SQL. Athena is serverless, so
+          there is no infrastructure to manage, and you pay only for the queries
+          that you run.”
+        </p>
+
+        <p>
+          This gives us search and analytics capabilities over our data directly
+          in the AWS console.
+        </p>
+
+        <p>
+          TRANSITION: To understand our choice for immediate access db, we need
+          to look first at the precise needs addressed by this component
+        </p>
+
+        <h4 id="queryablestorageneeds">Queryable Storage Needs</h4>
+
+        <p>
+          Track applications &amp; services as they change across time Full text
+          search of log messages is not necessary Examples Patterns in server
+          responses Follow count of logs with ‘err’ severity level by unit of
+          time
+        </p>
+
+        <p>
+          No need for full text search means tools like ElasticSearch are not
+          ideal (thus that a default and often difficult to manage component of
+          Graylog can be avoided) E.g. patterns in server responses: server 1
+          has handled 2000 requests on average each hour; last hour it responded
+          to 0 TRANSITION: these needs reveal that here, Crato is working with
+          logs as time series data
+        </p>
+
+        <h4 id="timeseriesdatabases">Time-Series Databases</h4>
+
+        <p>
+          Time Series Data: sequences of data points from individual sources
+          over time
+        </p>
+
+        <ul>
+          <li>Time is one axis when TS data is plotted on a graph</li>
+
+          <li>Relationships between entities (tables) not important</li>
+        </ul>
+
+        <p>
+          Time Series Databases: databases built for collecting, storing,
+          retrieving &amp; processing TS data
+        </p>
+
+        <ul>
+          <li>
+            Retention policy / aggregation of fine-grained data as it ages
+          </li>
+
+          <li>Query &amp; summarization tools</li>
+
+          <li>Integration with metrics visualization tools</li>
+        </ul>
+
+        <p>
+          Crato’s needs for queryable storage show that it deals with TS data;
+          although other forms of DB can be used TS data, they lack the tooling
+          to make working with TS data easy --other DB types require more coding
+          overhead-- Continuous query over a short retention period measurement
+          allows, for example, live monitoring of a server response rate TSDB
+          tend to be optimized for fast indexing by time; While trad db slow
+          down due to indexing time as the data set grows, TSDB tend to keep a
+          consistently high ingestion rate TRANSITION: once we narrow it down to
+          a time series database, we went with influx ...
+        </p>
+
+        <h4 id="queryablestorageinfluxdb">Queryable Storage: InfluxDB</h4>
+
+        <p>
+          Schema-free: measurements created automatically for each log source
+          InfluxQL is like SQL
+        </p>
+
+        <p>
+          Since most TSDB have similar optimizations for TSD, and they tend to
+          be immersed in an ecosystem that allows easy integration with
+          visualization tools, our decision came down to the schema-free design
+          of influx. Although Timescale appears to ingest more quickly at high
+          volumes, Crato’s consumer has Kafka in front of it, so ingestion speed
+          can be managed, &amp; Crato’s volume is not designed for those rates
+          anyway (? 10K+ ? per second)
+        </p>
+
+        <h2 id="challenges">7 Challenges</h2>
+
+        <h3 id="71collectlogs">7.1 Collect Logs</h3>
+
+        <p>Common collection options not chosen by Crito:</p>
+
+        <p>
+          SCALING CRATO: Crato scales horizontally with the growth of the
+          application; simply configure each new server for Crato collection.
+        </p>
+
+        <h3 id="72producingtokafka">7.2 Producing to Kafka</h3>
+
+        <h3 id="73docker">7.3 Docker</h3>
+
+        <p>
+          crashed broker causes problems through out pipeline. Must identfy and
+          orchestrate restart sequence.
+        </p>
+
+        <h2 id="future-plans">8 Future Plans</h2>
+
+        <p>Additional visualization integration</p>
+
+        <p>Security</p>
+
+        <ul>
+          <li>option for LAN -client-server communication with TLS</li>
+        </ul>
+
+        <p>Compression option for large messages</p>
+        <section id="footnotes">
+          <h2 id="references">8 References</h2>
+
+          <h5>7.1 Footnotes</h5>
+          <ol>
+            <li id="footnote-1">
+              <a
+                href="https://en.wikipedia.org/wiki/Extract,_transform,_load"
+                target="_blank"
+                >https://en.wikipedia.org/wiki/Extract,_transform,_load</a
+              >
+            </li>
+            <li id="footnote-2">
+              <a
+                href="https://www.sdxcentral.com/articles/news/aws-remains-dominant-player-in-growing-cloud-market-srg-reports/2019/02/"
+                target="_blank"
+                >https://www.sdxcentral.com/articles/news/aws-remains-dominant-player-in-growing-cloud-market-srg-reports/2019/02/</a
+              >
+            </li>
+            <li id="footnote-3">
+              <a
+                href="https://www.edureka.co/blog/google-cloud-vs-aws/#BDAC"
+                target="_blank"
+                >https://www.edureka.co/blog/google-cloud-vs-aws/#BDAC</a
+              >
+            </li>
+            <li id="footnote-4">
+              <a
+                href="https://blog.panoply.io/a-full-comparison-of-redshift-and-bigquery"
+                target="_blank"
+                >https://blog.panoply.io/a-full-comparison-of-redshift-and-bigquery</a
+              >
+            </li>
+            <li id="footnote-5">
+              <a href="https://www.singer.io/" target="_blank"
+                >https://www.singer.io/</a
+              >
+            </li>
+            <li id="footnote-6">
+              <a
+                href="https://www.youtube.com/watch?v=wiwabNQzRJc"
+                target="_blank"
+                >https://www.youtube.com/watch?v=wiwabNQzRJc</a
+              >
+            </li>
+            <li id="footnote-7">
+              <a href="https://airflow.apache.org/" target="_blank"
+                >https://airflow.apache.org/</a
+              >
+            </li>
+            <li id="footnote-8">
+              <a href="https://www.stitchdata.com/" target="_blank"
+                >https://www.stitchdata.com/</a
+              >
+            </li>
+            <li id="footnote-9">
+              <a
+                href="https://cloud.google.com/storage/docs/storage-classes"
+                target="_blank"
+                >https://cloud.google.com/storage/docs/storage-classes</a
+              >
+            </li>
+            <li id="footnote-10">
+              <a
+                href="https://cloud.google.com/compute/docs/machine-types"
+                target="_blank"
+                >https://cloud.google.com/compute/docs/machine-types</a
+              >
+            </li>
+            <li id="footnote-11">
+              <a href="https://cloud.google.com/nodejs/docs/" target="_blank"
+                >https://cloud.google.com/nodejs/docs/</a
+              >
+            </li>
+            <li id="footnote-12">
+              <a
+                href="https://help.pentaho.com/Documentation/7.1/0D0/Pentaho_Data_Integration"
+                target="_blank"
+                >https://help.pentaho.com/Documentation/7.1/0D0/Pentaho_Data_Integration</a
+              >
+            </li>
+            <li id="footnote-13">
+              <a href="https://www.embulk.org/" target="_blank"
+                >https://www.embulk.org/</a
+              >
+            </li>
+          </ol>
+          <!--
+          <h5>7.2 Resources</h5>
+          <ol>
+            <li><a
+                href="https://www.manning.com/books/serverless-architectures-on-aws"
+                target="_blank">Serverless Architecture on AWS</a></li>
+            <li><a href="https://www.manning.com/books/aws-lambda-in-action" target="_blank">Lambda in Action</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLEx5khR4g7PJNproQQ4SZ96Qeu-kr-Xbn" target="_blank">GOTO Conferences 2018</a></li>
+          </ol>
+
+          <h5>7.3 AWS Documentation</h5>
+          <ul>
+            <li><a
+                href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+                target="_blank">What is AWS Lambda?</a></li>
+            <li><a
+                href="https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html"
+                target="_blank">What is Amazon API Gateway?</a></li>
+            <li><a
+                href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+                target="_blank">What is Amazon DynamoDB?</a></li>
+            <li><a
+                href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Lambda.html"
+                target="_blank">AWS Lambda SDK</a></li>
+            <li><a
+                href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/APIGateway.html"
+                target="_blank">AWS API Gateway SDK</a></li>
+            <li><a
+                href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html"
+                target="_blank">AWS DynamoDB Document Client SDK</a></li>
+          </ul>
+-->
+        </section>
+      </section>
+    </main>
+    <section id="our-team">
+      <h1>Our Team</h1>
+      <p>
+        We are looking for opportunities. If you liked what you saw and want to
+        talk more, please reach out!
+      </p>
+      <ul>
+        <li class="individual">
+          <img src="https://github.com/4g3m.png?" alt="Faazil Shaikh" />
+          <h3>Faazil Shaikh</h3>
+          <p>San Francisco, CA</p>
+          <ul class="social-icons">
+            <li>
+              <a href="mailto:phanlinus@gmail.com" target="_blank">
+                <img src="images/icons/email_icon.png" alt="email" />
+              </a>
+            </li>
+            <li>
+              <a href="https://linusphan.github.io/" target="_blank">
+                <img src="images/icons/website_icon.png" alt="website" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/linus-phan/" target="_blank">
+                <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="individual">
+          <img
+            src="https://github.com/jkurthoconnor.png"
+            alt="Kurth O'Connor"
+          />
+          <h3>Kurth O'Connor</h3>
+          <p>New York, NY</p>
+          <ul class="social-icons">
+            <li>
+              <a href="mailto:phanlinus@gmail.com" target="_blank">
+                <img src="images/icons/email_icon.png" alt="email" />
+              </a>
+            </li>
+            <li>
+              <a href="https://linusphan.github.io/" target="_blank">
+                <img src="images/icons/website_icon.png" alt="website" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/linus-phan/" target="_blank">
+                <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="individual">
+          <img src="https://github.com/alex-solo.png" alt="Alex Soloviev" />
+          <h3>Alex Soloviev</h3>
+
+          <p>Toronto, Canada</p>
+          <ul class="social-icons">
+            <li>
+              <a href="mailto:phanlinus@gmail.com" target="_blank">
+                <img src="images/icons/email_icon.png" alt="email" />
+              </a>
+            </li>
+            <li>
+              <a href="https://linusphan.github.io/" target="_blank">
+                <img src="images/icons/website_icon.png" alt="website" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/linus-phan/" target="_blank">
+                <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>
