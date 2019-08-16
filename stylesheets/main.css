@@ -44,7 +44,7 @@ h4 {
 }
 
 .integration:first-of-type {
-  background: #ecf0e7;
+  background: #8ee4af;
   border-bottom: 2px solid #dfe0e2;
 }
 
@@ -284,7 +284,7 @@ nav#site-navigation a {
 
 header {
   height: 100vh;
-  background: #d4dcc8;
+  background: #edf5e1;
 }
 
 header h1 {
@@ -498,7 +498,7 @@ h2#references {
 ------------------------------------ */
 
 #our-team {
-  background-color: #d4dcc8;
+  background-color: #edf5e1;
   color: #1e4470;
   margin-top: 100px;
   padding-bottom: 25px;
