@@ -144,6 +144,39 @@
 
         <h3>2.1 What is a Log?</h3>
 
+        <p>
+          Logs are an essential tool that developers use on a daily basis and in
+          the simplest case, we can think of logs as distinct events that get
+          written to files. This log data is one of the key elements in
+          determining application health, as well as in analysis and debugging,
+          and for deriving useful metrics. But most often, especially on a
+          single node system, when there is an issue, developers can reach for
+          the appropriate log file and look for errors or warnings to understand
+          what went wrong. In addition to the error logs that help developers
+          investigate issues, event logs across your application's services can
+          also give insights on how the application is being used and are
+          essential for performing historical analysis to find trends, patterns
+          and user behaviours.
+        </p>
+
+        <p>
+          It is natural to think of logs as files since normally, the
+          environment in which our applications run include a logging system
+          that separates the concern of log message processing from the
+          components that generate them - one such logging system is syslog; the
+          most widely distributed logging protocol that is supported by a wide
+          range of devices and processes. Syslog defines a message format as
+          well as allows for stanardization of how logs are generated and
+          processed.
+        </p>
+
+        <p>
+          In order to better understand the structure of application logs and
+          before exploring how log messages are generated and processed with
+          syslog let's consider another description of what a log is. We know
+          that a log is a file but it's not the full story.
+        </p>
+
         <h3>2.2 Logs as Append-Only Data Structures</h3>
 
         <h3>2.3 Logs as Files</h3>
@@ -731,10 +764,7 @@
           <h5>9.1 Footnotes</h5>
           <ol>
             <li id="footnote-1">
-              <a
-                href=""
-                target="_blank"
-                ></a>
+              <a href="" target="_blank"></a>
             </li>
           </ol>
           <!--
@@ -797,7 +827,10 @@
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/kurth-o-connor-01986a169" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/kurth-o-connor-01986a169"
+                target="_blank"
+              >
                 <img src="images/icons/linked_in_icon.png" alt="linkedin" />
               </a>
             </li>
