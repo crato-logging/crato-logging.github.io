@@ -230,141 +230,81 @@
           Summary: Current Log Management Options
         </h3>
 
-        <h2 id="crato-design">5 Crato Design</h2>
+        <h2 id="5cratodesign">5 Crato Design</h2>
 
-        <p>
-          Small app, choose to focus on core services, and log ownership is
-          important Use case and current options show a need; Design goals
-          formed to meet the use case / need; Crato built with goals as
-          constraints to satisfy use case. Easy - skills and techniques for
-          configuration, deployment and daily use are all already found in the
-          development team. Query current (‘live’) logs at point of collection
-          using familiar tools: <code>grep</code>, <code>tail</code>,
-          <code>sort</code>, <code>awk</code>. Query database using SQL.
-          Lightweight - modify as little as possible on the log generating
-          machines. using native tools that are default (syslog) Non-invasive
-          logging: accepts, transports and stores logs with their original
-          unmutated structure, makes available for query; without imposing on
-          the developers’ app itself. Increased Developer Control: data
-          ownership, control over storage length, no 3rd party logging lock-in
-          Small application running on a Unix/Linux server or VPS, with root
-          access.
-        </p>
+        <p>The above discussion of current log management options reveals the niche that Crato addresses. While LaaS options provide the quickest and most simple path, their advantages come with costs. Not only must users pay for LaaS services, but their applications' data is yielded to a third party. DIY options grant users the most control, and can be designed and built to include precisely the features wanted. But there are tradeoffs here as well. The high level of control and customizability comes with increased complexity and additional design and maintenance committments. Finally, the pre-designed OSS options aim to split the difference between LaaS and DIY. OSS options return data control to the users (typically lacking in LaaS) while reducing complexity and design and maintenance commitments (both of which tend to be high in DIY projects). </p>
 
-        <p>{chart placing Crato with OSS solutions and between DIY and LaaS}</p>
+        <p>{2 axis comparison chart}</p>
 
-        <h3 id="51cratoarchitectureoverview">
-          5.1 Crato Architecture Overview
-        </h3>
+        <p>But even here in the OSS options, there is a range of complexity, which is largely attributable to the database and full-text search choices of the OSS stacks.</p>
 
-        <p>
-          Crato consists of two main components: the client and the central
-          server. The client is installed and run on each machine from which
-          logs are to be collected. The central server is deployed via Docker
-          onto a separate server or VPS.
-        </p>
+        <p>Crato sits among the OSS logging solutions, but it reduces complexity even more by eliminating the need to set up and maintain a full-text search engine. Thus, Crato is designed to provide the core features of centralized logging while reducing complexity and time commitments.</p>
+
+        <h4 id="designgoals">Design Goals:</h4>
+
+        <ul>
+          <li><strong>Open Source</strong></li>
+
+          <li><strong>Provide Core Centralized Logging Functions</strong></li>
+
+          <li><strong>Easy to use:</strong>  the skills and techniques for configuration, deployment and daily use should already be found in the development team. </li>
+
+          <li><strong>Lightweight:</strong> Crato should modify as little as possible on the client machines. Require no changes to the developers' application code. </li>
+
+          <li><strong>Increase Developer Control:</strong> allow data ownership and control over storage length</li>
+        </ul>
+
+        <h3 id="51cratoarchitectureoverview">5.1 Crato Architecture Overview</h3>
+
+        <p>Crato consists of two main components: the client and the central server. The client is installed and run on each machine from which logs are to be collected. The central server is deployed via Docker onto a separate server or VPS.</p>
 
         <p>{crato architecture diagram}</p>
 
         <h3 id="52commands">5.2 Commands</h3>
 
-        <p>
-          Crato client is designed to have a light footprint on each client
-          system. Downloading the client adds only two files to each system: the
-          <code>crato</code> bash script and <code>crato-config</code>, a text
-          file to record user preferences. Running Crato client interferes with
-          the native logging of the system as little as possible. Crato adds
-          only a single configuration file that supplements, not overrides,
-          default settings
-        </p>
+        <p>Crato client is designed to have a light footprint on each client system. Downloading the client adds only two files to each system: the <code>crato</code> bash script and <code>crato-config</code>, a text file to record user preferences. Running Crato client interferes with the native logging of the system as little as possible. Crato adds only a single configuration file that supplements, not overrides, default settings</p>
 
-        <p>
-          To download Crato client, <code>curl</code> or <code>wget</code> the
-          script.
-        </p>
+        <p>To download Crato client, <code>curl</code> or <code>wget</code> the script. {add command with path}</p>
 
         <h4 id="cratoconfig"><code>crato-config</code></h4>
 
-        <p>
-          To simplify deployment and reduce complexity, the Crato client cli
-          exposes only a handful of configuration options. Crato client
-          configuration options are set in the <code>crato-config</code> text
-          file. Using key-value pairs, enter any number of logs for Crato to
-          track, along with their tags and severity levels. Then enter the ip
-          address of the central server.
-        </p>
+        <p>{Crato Client config fide shot}</p>
 
-        <p>
-          For users needing more granular control over settings, the full range
-          of configuraton options are available by directly editing the default
-          <code>*.conf</code> files. Additionally, because Crato does not
-          override applications' logging processes, these can be configured as
-          before.
-        </p>
+        <p>To simplify deployment and reduce complexity, the Crato client cli exposes only a handful of configuration options. Crato client configuration options are set in the <code>crato-config</code>  text file. Using key-value pairs, enter any number of logs for Crato to track, along with their tags and severity levels. Then enter the ip address of the central server.</p>
 
-        <p>{Crato Client config file shot}</p>
+        <p>For users needing more granular control over settings, the full range of configuraton options are available by directly editing the default <code>*.conf</code> files. Additionally, because Crato does not override applications' logging processes, these can be configured as before.</p>
+
+        <p>{Crato Client CLI use gif}</p>
 
         <h4 id="cratoc"><code>crato -c</code></h4>
 
-        <p>
-          Apply the current configuration and start Crato client with
-          <code>crato -c</code> or <code>crato --configure</code>. Running this
-          command checks that permissions, <code>rsyslog</code> version and base
-          configuration is appropriate for Crato client. It then dynamically
-          generates a <code>/etc/rsyslog.d/49-crato.conf</code> file to hold
-          Crato configuration, and checks the validity of the resulting
-          <code>rsyslog</code> configuration. It then either throws an error
-          with instructions for debugging or (re)starts logging with the new
-          settings.
-        </p>
+        <p>Apply the current configuration and start Crato client with <code>crato -c</code> or <code>crato --configure</code>.  Running this command checks that permissions, <code>rsyslog</code> version and base configuration is appropriate for Crato client. It then dynamically generates a <code>/etc/rsyslog.d/49-crato.conf</code> file to hold Crato configuration, and checks the validity of the resulting <code>rsyslog</code> configuration. It then either throws an error with instructions for debugging or (re)starts logging with the new settings.</p>
 
-        <h4 id="cratosandcrator">
-          <code>crato -s</code> and <code>crato -r</code>
-        </h4>
+        <h4 id="cratosandcrator"><code>crato -s</code> and <code>crato -r</code></h4>
 
-        <p>
-          <code>crato -s</code> or <code>crato --suspend</code> suspends Crato's
-          logging on the client and returns the machine to default logging.
-          <code>crato -r</code> or <code>crato --resume</code> restarts Crato
-          logging on the client with the suspended settings resumed. If Crato
-          client was not suspended at the time of execution, then the command
-          makes no changes.
-        </p>
+        <p><code>crato -s</code> or <code>crato --suspend</code> suspends Crato's logging on the client and returns the machine to default logging. <code>crato -r</code> or <code>crato --resume</code> restarts Crato logging on the client with the suspended settings resumed. If Crato client was not suspended at the time of execution, then the command makes no changes.</p>
 
         <h4 id="cratod"><code>crato -d</code></h4>
 
-        <p>
-          <code>crato -d</code> or <code>crato --delete</code> removes current
-          or suspended Crato client configurations, confirms that resulting
-          default configuration is valid and restarts logging with default
-          settings or throws an error with instructions for debugging.
-        </p>
+        <p><code>crato -d</code> or <code>crato --delete</code> removes current or suspended Crato client configurations, confirms that resulting default configuration is valid and restarts logging with default settings or throws an error with instructions for debugging.</p>
 
-        <p>{Crato Client CLI use gif}</p>
+        <h4 id="cratoh"><code>crato -h</code></h4>
+
+        <p><code>crato</code>, <code>crato -h</code> or <code>crato --help</code> outputs a help screen with command usage reminders.</p>
 
         <h4 id="522dockerdeployment">5.2.2 Docker Deployment</h4>
 
         <p>{Crato Docker Deployment gif}</p>
 
-        <h2 id="crato-implementation">6 Crato Implementation</h2>
+        <h2 id="6cratoimplementation">6 Crato Implementation</h2>
 
-        <h3 id="collectionaggregation-1">Collection &amp; Aggregation</h3>
+        <h3 id="collectionaggregation">Collection &amp; Aggregation</h3>
 
         <p>{Architecture with C&amp;A boxed}</p>
 
         <h3 id="61caimplementation">6.1 C &amp; A Implementation</h3>
 
-        <p>
-          Following its design mandate of being a lightweight, easy-to-use
-          system, Crato collects logs using <code>rsyslog</code>, a standard
-          tool available on most <code>*nix</code> systems. At the user’s
-          discretion, Crato can collect any text-based log messages your
-          servers, applications, databases, etc generate. Captured log messages
-          are consolidated into a single stream along with system logs.
-          Together, these messages are persisted to disk in the
-          <code>syslog</code> file on each client machine and also routed for
-          processing and forwarding.
-        </p>
+        <p>Following its design mandate of being a lightweight, easy-to-use system, Crato collects logs using <code>rsyslog</code>, a standard tool available on most <code>*nix</code> systems. At the user’s discretion, Crato can collect any text-based log messages your servers, applications, databases, etc generate. Captured log messages are consolidated into a single stream along with system logs. Together, these messages are persisted to disk in the <code>syslog</code> file on each client machine and also routed for processing and forwarding.</p>
 
         <p>{inner client diagram}</p>
 
@@ -372,204 +312,72 @@
 
         <p>{Architecture with S&amp;I boxed}</p>
 
-        <p>
-          {caption: Crato clients monitor logs and forward the log messages as
-          they arrive to the core Crato infrastructure. }
-        </p>
+        <p>{caption: 
+        Crato clients monitor logs and forward the log messages as they arrive to the core Crato infrastructure. }</p>
 
         <h4 id="621shipping">6.2.1 Shipping</h4>
 
-        <p>
-          So far, the logs are grouped into a single stream, which is being
-          written to a single file. This occurs on each client (physical machine
-          or virtual server). But the primary goal of centralized log management
-          is to collect logs from many different sources into a single, central
-          (offsite) location. To accomplish that goal, we need to ship the logs
-        </p>
+        <p>So far, the logs are grouped into a single stream, which is being written to a single file. This occurs on each client (physical machine or virtual server). But the primary goal of centralized log management is to collect logs from many different sources into a single, central (offsite) location. To accomplish that goal, we need to ship the logs</p>
 
-        <p>
-          Each system running a Crato client forwards the stream of captured log
-          messges via <code>tcp</code> to the offsite core of Crato's
-          infrastructure. To mitigate message loss resulting from a network
-          partition or problems with the central server, each Crato client
-          implements a disk-assisted memory queue in front of the forwarding
-          action.
-        </p>
+        <p>Each system running a Crato client forwards the stream of captured log messages via <code>tcp</code> to the offsite core of Crato's infrastructure. To mitigate message loss resulting from a network partition or problems with the central server, each Crato client implements a disk-assisted memory queue in front of the forwarding action.</p>
 
-        <p>
-          WHY DEFAULT TO TCP?: at our expected volumes, the disk-assisted memory
-          queue (a linked list capable of holding 10000 individual log messages,
-          with 1Gb disk space available if needed) should mitigate the need to
-          fire and forget to keep up with traffic. Thus, Crato opts for TCP and
-          its guarantees of delivery and packet order over UDP's potential speed
-          gains and absence of guarantees.
-        </p>
+        <p>WHY DEFAULT TO TCP?: at our expected volumes, the disk-assisted memory queue (a linked list capable of holding 10000 individual log messages, with 1Gb disk space available if needed) should mitigate the need to fire and forget to keep up with traffic. Thus, Crato opts for TCP and its guarantees of delivery and packet order over UDP's potential speed gains and absence of guarantees.</p>
 
         <h4 id="622ingestion">6.2.2 Ingestion</h4>
 
-        <p>
-          As it receives new log events from the dispersed clients, the central
-          log server appends each message to its own log file. At this point,
-          the central collection server's <code>syslog</code> file contains all
-          captured messages from the clients along with those from the
-          collection server itself. The full text is available for CLI query
-          using familiar text processing tools like <code>grep</code>,
-          <code>tail</code>, <code>sort</code>, and <code>awk</code>.
-        </p>
+        <p>As it receives new log events from the dispersed clients, the central log server appends each message to its own log file. At this point, the central collection server's <code>syslog</code> file contains all captured messages from the clients along with those from the collection server itself.  The full text is available for CLI query using familiar text processing tools like <code>grep</code>, <code>tail</code>, <code>sort</code>, and <code>awk</code>.</p>
 
-        <p>
-          {Diagram of reading logs from across the system in a single place}
-        </p>
+        <p>{Diagram of reading logs from across the system in a single place}</p>
 
-        <p>
-          {Caption: Central point for insight into entire system: all messages
-          available to familiar unix tools}
-        </p>
+        <p>{Caption:   Central point for insight into entire system: all messages available to familiar unix tools}</p>
 
-        <p>
-          Central log servers also forward logs into Crato’s pub-sub system,
-          where they are made available to both the archiving server and to the
-          database.
-        </p>
+        <p>Central log servers also forward logs into Crato’s pub-sub system, where they are made available to both the archiving server and to the database.</p>
 
         <h3 id="63messagestreaming">6.3 Message Streaming</h3>
 
-        <h4 id="weneedtostorelogsbuthow">We Need to Store Logs...but How?</h4>
+        <h4 id="631weneedtostorelogsbuthow">6.3.1 We Need to Store Logs...but How?</h4>
 
-        <p>
-          It is common practice for log management systems to persist log data
-          not only to save it from automatic log rotation jobs, but also to
-          facilitate metrics and other system analysis. Crato follows this
-          practice, with Amazon S3 Glacier used for long-term storage and
-          InfluxDB used for metrics and eventual visualization.
-        </p>
+        <p>It is common practice for log management systems to persist log data not only to save it from automatic log rotation jobs, but also to facilitate metrics and other system analysis. Crato follows this practice, with Amazon S3 Glacier used for long-term storage and InfluxDB used for metrics and eventual visualization.</p>
 
-        <p>
-          Couldn't Crato simply send logs directly to the persistence layer?
-          Yes, in fact it's earliest iterations did exactly that, but this
-          approach is sub-optimal for a number of related reasons.
-        </p>
+        <p>Couldn't Crato simply send logs directly to the persistence layer? Yes, in fact it's earliest iterations did exactly that, but this approach is sub-optimal for a number of related reasons.</p>
 
-        <p>
-          Logs are produced at different rates than they are consumed.
-          Furthermore, the same log data will be used by multiple processes.
-          Each use can be expected to have different needs, to operate at a
-          different rate, and to have potentially different bottlenecks or
-          failure rates. As a result, sending a copy of each log message to each
-          consumer as they come in is likely to lead to dropped messages with no
-          good way of recovery. Crato needed a buffering system to capture logs
-          and allow each consumer to draw data at its own rate.
-        </p>
+        <p>Logs are produced at different rates than they are consumed. Furthermore, the same log data will be used by multiple processes. Each use can be expected to have different needs, to operate at a different rate, and to have potentially different bottlenecks or failure rates. As a result, sending a copy of each log message to each consumer as they come in is likely to lead to dropped messages with no good way of recovery. Crato needed a buffering system to capture logs and allow each consumer to draw data at its own rate.</p>
 
-        <p>
-          One way to address this problem would be to use a queue. Log messages
-          are sent into a queue, and a consumer shifts the next message off as
-          needed. This may would work well for an individual consumer, but Crato
-          needs to handle multiple consumers, and as each consumer grabs the
-          next available message from the queue, all the others miss out. The
-          message is no longer available. What Crato would need would be a queue
-          in front of each potential consumer. To implement that, the central
-          server would need to send a copy of each log message to n queues in
-          front of n consumers.
-        </p>
+        <p>One way to address this problem would be to use a queue. Log messages are sent into a queue, and a consumer shifts the next message off as needed. This may would work well for an individual consumer, but Crato needs to handle multiple consumers, and as each consumer grabs the next available message from the queue, all the others miss out. The message is no longer available. What Crato would need would be a queue in front of each potential consumer. To implement that, the central server would need to send a copy of each log message to n queues in front of n consumers.</p>
 
-        <p>
-          Another potential solution would be to use a publish-subscribe
-          messaging system. The central server would publish each new log
-          message to the platform, and all subscribers would receive the log as
-          it is available. While this model allows the central server to forward
-          its stream to a single destination, it does not account for the
-          different rates of consumption.
-        </p>
+        <p>Another potential solution would be to use a publish-subscribe messaging system. The central server would publish each new log message to the platform, and all subscribers would receive the log as it is available. While this model allows the central server to forward its stream to a single destination, it does not account for the different rates of consumption.</p>
 
-        <h4 id="631decouplingloggenerationusewithkafka">
-          6.3.1 Decoupling Log Generation &amp; Use with Kafka
-        </h4>
+        <h4 id="632decouplingloggenerationusewithkafka">6.3.2 Decoupling Log Generation &amp; Use with Kafka</h4>
 
         <p>{Architecture with Streaming / Kafka boxed }</p>
 
-        <p>
-          What Crato needs is a way to provide the same stream of log messages
-          to multiple consumers, to allow producers and consumers to work at
-          their own paces, and for each to always be able to resume its work at
-          the exact point it left off. It needs the advantages of a queue and a
-          pub-sub system folded into a single platform. Apache Kafka provides
-          exactly that.
-        </p>
+        <p>What Crato needs is a way to provide the same stream of log messages to multiple consumers, to allow producers and consumers to work at their own paces, and for each to always be able to resume its work at the exact point it left off. It needs the advantages of a queue and a pub-sub system folded into a single platform. Apache Kafka provides exactly that.</p>
 
         <blockquote>
-          <p>
-            The consumer group concept in Kafka generalizes these two concepts.
-            As with a queue the consumer group allows you to divide up
-            processing over a collection of processes (the members of the
-            consumer group). As with publish-subscribe, Kafka allows you to
-            broadcast messages to multiple consumer groups.
-            <a href="https://kafka.apache.org/documentation.html#kafka_mq"
-              >Kafka as a Messaging System</a
-            >
-          </p>
+          <p>The consumer group concept in Kafka generalizes these two concepts. As with a queue the consumer group allows you to divide up processing over a collection of processes (the members of the consumer group). As with publish-subscribe, Kafka allows you to broadcast messages to multiple consumer groups. <a href="https://kafka.apache.org/documentation.html#kafka_mq">Kafka as a Messaging System</a></p>
         </blockquote>
 
-        <p>
-          By decoupling log creation or ingestion from log use, Kafka solves the
-          problem noted above, namely Crato's need for exactly once delivery of
-          log messages to multiple users operating at different paces. At the
-          same time, it also allows Crato to be more extensible in the future.
-          Any additional uses for the same data can be added as consumers.
-        </p>
+        <p>By decoupling log creation or ingestion from log use, Kafka solves the problem noted above, namely Crato's need for exactly once delivery of log messages to multiple users operating at different paces. At the same time, it also allows Crato to be more extensible in the future. Any additional uses for the same data can be added as consumers.</p>
 
-        <p>
-          But if Kafka is so effective at managing this decoupling, wouldn't
-          Crato benefit from skipping the central server model and simply have
-          each client produce directly to remote Kafka brokers instead? There
-          are advantages to this approach. It would reduce complexity in Crato's
-          core infrastructure, and there is no doubt that Kafka could handle the
-          load from multiple distributed clients as well as it does from a
-          single central log server.
-        </p>
+        <p>But if Kafka is so effective at managing this decoupling, wouldn't Crato benefit from skipping the central server model and simply have each client produce directly to remote Kafka brokers instead? There are advantages to this approach. It would reduce complexity in Crato's core infrastructure, and there is no doubt that Kafka could handle the load from multiple distributed clients as well as it does from a single central log server. </p>
 
-        <p>
-          That said, this design would increase the complexity on the client
-          side by introducing additional configuration requirements and
-          dependencies. If we want to use the <code>syslog</code> protocol on
-          each client (see the justification above), then an
-          <code>rsyslog</code> central server poses fewer problems for client’s
-          installation. Also, removing the central server would eliminate one of
-          Crato's UI advantages, because without a central collection point it
-          would lose the ability to provide system-wide observability using the
-          familiar *nix text processing tools. One of the design goals is 'easy
-          to use'. Asking users to query Kafka for observability pushes hard
-          against that goal.
-        </p>
+        <p>That said, this design would increase the complexity on the client side by introducing additional configuration requirements and dependencies. If we want to use the <code>syslog</code> protocol on each client (see the justification above), then an <code>rsyslog</code> central server poses fewer problems for client’s installation. Also, removing the central server would eliminate one of Crato's UI advantages, because without a central collection point it would lose the ability to provide system-wide observability using the familiar *nix text processing tools. One of the design goals is 'easy to use'. Asking users to query Kafka for observability pushes  hard against that goal. </p>
 
-        <h4 id="producingtokafka">Producing to Kafka</h4>
+        <h4 id="633producingtokafka">6.3.3 Producing to Kafka</h4>
 
-        <p>
-          "Crato's central collection server sends logs to Kafka via rsyslog's
-          Omkafka module."
-        </p>
+        <p>"Crato's central collection server sends logs to Kafka via rsyslog's Omkafka module."</p>
 
         <p>DA memory queue to mitigate server / broker partition</p>
 
-        <h4 id="consumingfromkafka">Consuming from Kafka</h4>
+        <h4 id="634consumingfromkafka">6.3.4 Consuming from Kafka</h4>
 
         <p>Kafka provides exactly once delivery for multiple consumers</p>
 
         <p>Consumers must still manages flow to suit endpoint needs</p>
 
-        <h4 id="consumingfromkafkaimplementation">
-          Consuming from Kafka: Implementation
-        </h4>
+        <p>Batching: archiving consumer saves log to a json files &amp; sends to S3</p>
 
-        <p>
-          Batching: archiving consumer saves log to a json files &amp; sends to
-          S3
-        </p>
-
-        <p>
-          Streaming: the influxDB consumer filteres and sends incoming messages
-          to their appropriate measurements
-        </p>
+        <p>Streaming: the influxDB consumer filteres and sends incoming messages to their appropriate measurements</p>
 
         <h3 id="storage">Storage</h3>
 
