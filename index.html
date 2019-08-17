@@ -274,25 +274,14 @@
         <h2 id="crato-design">5 Crato Design</h2>
 
         <p>
-          Small app, choose to focus on core services, and log ownership is
-          important Use case and current options show a need; Design goals
-          formed to meet the use case / need; Crato built with goals as
-          constraints to satisfy use case. Easy - skills and techniques for
-          configuration, deployment and daily use are all already found in the
-          development team. Query current (‘live’) logs at point of collection
-          using familiar tools: <code>grep</code>, <code>tail</code>,
-          <code>sort</code>, <code>awk</code>. Query database using SQL.
-          Lightweight - modify as little as possible on the log generating
-          machines. using native tools that are default (syslog) Non-invasive
-          logging: accepts, transports and stores logs with their original
-          unmutated structure, makes available for query; without imposing on
-          the developers’ app itself. Increased Developer Control: data
-          ownership, control over storage length, no 3rd party logging lock-in
-          Small application running on a Unix/Linux server or VPS, with root
-          access.
+          The above discussion of current log management options reveals the niche that Crato addresses. While LaaS options provide the quickest and most simple path, their advantages come with costs. Not only must users pay for LaaS services, but their applications' data is yielded to a third party. DIY options grant users the most control, and can be designed and built to include precisely the features wanted. But there are tradeoffs here as well. The high level of control and customizability comes with increased complexity and additional design and maintenance committments. Finally, the pre-designed OSS options aim to split the difference between LaaS and DIY. OSS options return data control to the users (typically lacking in LaaS) while reducing complexity and design and maintenance commitments (both of which tend to be high in DIY projects). 
         </p>
 
         <p>{chart placing Crato with OSS solutions and between DIY and LaaS}</p>
+
+        <p>
+          But even here in the OSS options, there is a range of complexity, which is largely attributable to the database and full-text search choices of the OSS stacks.  Crato sits among the OSS logging solutions, but it reduces complexity even more by eliminating the need to set up and maintain a full-text search engine. Thus, Crato is designed to provide the core features of centralized logging while reducing complexity and time commitments.
+        </p>
 
         <h3 id="51cratoarchitectureoverview">
           5.1 Crato Architecture Overview
