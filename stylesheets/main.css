@@ -433,6 +433,32 @@ h3 {
   list-style: decimal;
 }
 
+#slideshow img {
+  display: none;
+}
+
+#slidehow img.active {
+  display: block;
+}
+
+.buttons {
+  width: auto;
+  margin: 0 auto;
+}
+
+.cratoButton {
+  background: #3498db;
+  width: 180px;
+  padding: 4px 0;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  padding: 7px;
+  position: relative;
+  border-radius: 8%;
+}
+
 /* ---------------------------------
 
               commands

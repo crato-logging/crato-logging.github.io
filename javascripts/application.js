@@ -1,5 +1,29 @@
 /* global document, window, hljs, $ */
 
+$(function() {
+  const $nextButton = $("#nextButton");
+  const $resetButton = $("#resetButton");
+  const image = document.getElementById("table_state");
+
+  $nextButton.on("click", function(e) {
+    e.preventDefault();
+
+    if (image.src.match("state1")) {
+      image.src = "images/diagrams/table_states/state2.png";
+    } else if (image.src.match("state2")) {
+      image.src = "images/diagrams/table_states/state3.png";
+    } else if (image.src.match("state3")) {
+      image.src = "images/diagrams/table_states/state4.png";
+    }
+  });
+
+  $resetButton.on("click", function(e) {
+    e.preventDefault();
+
+    image.src = "images/diagrams/table_states/state1.png";
+  });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const cratoLogo = document.querySelector("#crato-logo");
   const nav = document.querySelector("nav");
