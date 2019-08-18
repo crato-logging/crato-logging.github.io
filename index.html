@@ -419,8 +419,9 @@
         </p>
 
         <div class="img-wrapper">
-          <img src="images/diagrams/complexity_ownership_diagram.png" 
-               alt="2-axis-comparison"
+          <img 
+             src="images/diagrams/complexity_ownership_diagram.png" 
+             alt="2-axis-comparison"
            />
         </div>
 
@@ -446,8 +447,9 @@
         </p>
 
         <div class="img-wrapper">
-          <img src="images/diagrams/crato/crato_architecture.png" 
-               alt="crato architecture"
+          <img 
+             src="images/diagrams/crato/crato_architecture.png" 
+             alt="crato architecture"
           />
         </div>
 
@@ -542,8 +544,9 @@
         <h3 id="collectionaggregation-1">Collection &amp; Aggregation</h3>
 
         <div class="img-wrapper">
-          <img src="images/diagrams/crato/crato_collection_aggregation.png" 
-               alt="collection and aggregation"
+          <img 
+             src="images/diagrams/crato/crato_collection_aggregation.png" 
+             alt="collection and aggregation"
            />
         </div>
 
@@ -562,16 +565,29 @@
           processing and forwarding.
         </p>
 
-        <p>{inner client diagram}</p>
+        <div class="img-wrapper">
+          <img 
+            src="" 
+            alt="inner client diagram"
+          />
+          <p>
+            System logs and designated application logs collected into single 
+            stream.
+          </p>
+        </div>
 
         <h3 id="62shippingingestion">6.2 Shipping &amp; Ingestion</h3>
 
-        <p>{Architecture with S&amp;I boxed}</p>
-
-        <p>
-          {caption: Crato clients monitor logs and forward the log messages as
-          they arrive to the core Crato infrastructure. }
-        </p>
+        <div class="img-wrapper">
+          <img 
+            src="images/diagrams/crato/crato_central_server.png" 
+            alt="shipping and ingestion"
+          />
+          <p>
+            Crato clients monitor logs and forward the log messages as
+            they arrive to the core Crato infrastructure.
+          </p>
+        </div>
 
         <h4 id="621shipping">6.2.1 Shipping</h4>
 
@@ -613,14 +629,16 @@
           <code>tail</code>, <code>sort</code>, and <code>awk</code>.
         </p>
 
-        <p>
-          {Diagram of reading logs from across the system in a single place}
-        </p>
-
-        <p>
-          {Caption: Central point for insight into entire system: all messages
-          available to familiar unix tools}
-        </p>
+        <div class="img-wrapper">
+          <img 
+            src="" 
+            alt="Logs from across system read from single place."
+          />
+          <p>
+            Central point for insight into entire system: all messages
+            available to familiar unix tools.
+          </p>
+        </div>
 
         <p>
           Central log servers also forward logs into Crato’s pub-sub system,
@@ -682,7 +700,14 @@
           6.3.1 Decoupling Log Generation &amp; Use with Kafka
         </h4>
 
-        <p>{Architecture with Streaming / Kafka boxed }</p>
+        <div class="img-wrapper">
+          <img 
+            src="images/diagrams/crato/crato_kafka.png" 
+            alt="Architecture with Kafka highlighted"
+          />
+          <p>
+          </p>
+        </div>
 
         <p>
           What Crato needs is a way to provide the same stream of log messages
