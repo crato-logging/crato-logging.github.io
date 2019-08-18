@@ -332,6 +332,7 @@ header h1 img {
 
 #side-nav img {
   width: 100%;
+  max-width: 250px;
   height: auto;
 }
 

@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
   const ourTeam = document.querySelector("#our-team");
   const homeLink = document.querySelector("#home-link");
-  const caseStudyNav = document.querySelector("#case-study nav");
-  const sideNavLogo = document.querySelector("#side-nav");
+  const $caseStudyNav = $("#case-study nav");
+  const $sideNavLogo = $("#side-nav");
   const caseStudyLink = document.querySelector("#case-study-link");
   const ourTeamLink = document.querySelector("#our-team-link");
   const caseStudyNavUl = document.querySelector("#case-study nav ul");
@@ -177,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (windowPositionIsAtLi && !mobileCaseStudyNav.contains(li)) {
         highlightSection(li, a);
-        console.log("HELLO");
       } else {
         if (li.getAttribute("style")) li.removeAttribute("style");
         if (a.getAttribute("style")) a.removeAttribute("style");
@@ -194,15 +193,16 @@ document.addEventListener("DOMContentLoaded", () => {
       position < ourTeamPosition - getWindowHeight();
 
     if (getWindowHeight() < 500 || getWindowWidth() < 1100) {
-      caseStudyNav.style.display = "none";
-      sideNavLogo.style.display = "none";
+      $sideNavLogo.stop(true, true).css("display", "none");
+      $caseStudyNav.stop(true, true).css("display", "none");
     } else if (withinCaseStudy) {
-      caseStudyNav.style.display = "block";
-      sideNavLogo.style.display = "block";
+      $sideNavLogo.fadeIn(800);
+      $caseStudyNav.fadeIn(800);
+
       handleCaseStudyNavStyles();
     } else {
-      caseStudyNav.style.display = "none";
-      sideNavLogo.style.display = "none";
+      $sideNavLogo.stop(true, true).css("display", "none");
+      $caseStudyNav.stop(true, true).css("display", "none");
     }
   };
 
