@@ -442,21 +442,24 @@ h3 {
 }
 
 .buttons {
-  width: auto;
+  width: 250px;
   margin: 0 auto;
 }
 
 .cratoButton {
-  background: #3498db;
-  width: 180px;
+  background: #3a7dca;
+  width: 25%;
+  cursor: pointer;
   padding: 4px 0;
   text-align: center;
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;
   padding: 7px;
-  position: relative;
+  margin-right: 2%;
+
   border-radius: 8%;
+  border: none;
 }
 
 /* ---------------------------------

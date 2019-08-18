@@ -14,12 +14,13 @@ $(function() {
       image.src = "images/diagrams/table_states/state3.png";
     } else if (image.src.match("state3")) {
       image.src = "images/diagrams/table_states/state4.png";
+      $nextButton.prop("disabled", true);
     }
   });
 
   $resetButton.on("click", function(e) {
     e.preventDefault();
-
+    $nextButton.prop("disabled", false);
     image.src = "images/diagrams/table_states/state1.png";
   });
 });
