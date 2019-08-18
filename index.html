@@ -1,961 +1,1807 @@
 <!DOCTYPE html>
+
 <html lang="en-US" prefix="og: http://opg.me/ns#">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="title" property="og:title" content="Crato" />
-    <meta
-      name="description"
-      property="og:description"
-      content="Crato is an open source framework for small web applications to easily deploy a centralized logging solution that maintains ownership of data"
-    />
-    <meta name="type" property="og:type" content="website" />
-    <meta
-      name="url"
-      property="og:url"
-      content="https://crato-logging.github.io/"
-    />
-    <meta
-      name="image"
-      property="og:image"
-      content="images/logos/crato-logo.png"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="author"
-      content="Faazil Shaikh, Kurth O'Connor, Alex Soloviev"
-    />
 
-    <title>CRATO</title>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="images/icons/favicon_package_v0.16/favicon-16x16.png"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Hind|Hind:700|Open+Sans:700|Teko:700&display=swap"
-      rel="stylesheet"
-    />
+<head>
 
-    <!-- <style>reset</style> -->
-    <link rel="stylesheet" href="stylesheets/reset.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/gruvbox-dark.min.css"
-      charset="utf-8"
-    />
+  <meta charset="UTF-8" />
 
-    <!-- <style></style> -->
-    <link rel="stylesheet" href="stylesheets/main.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <meta name="title" property="og:title" content="Crato" />
 
-    <!-- <script></script> -->
-    <script src="javascripts/application.js"></script>
-  </head>
-  <body>
-    <div class="logo-links">
-      <p id="crato-logo">CRATO</p>
+  <meta name="description" property="og:description" content="Crato is an open source framework for small web applications to easily deploy a centralized logging solution that maintains ownership of data"
+  />
 
-      <a href="https://github.com/crato-logging/crato" target="_blank">
-        <img
+  <meta name="type" property="og:type" content="website" />
+
+  <meta name="url" property="og:url" content="https://crato-logging.github.io/" />
+
+  <meta name="image" property="og:image" content="images/logos/crato-logo.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="author" content="Faazil Shaikh, Kurth O'Connor, Alex Soloviev" />
+
+
+
+  <title>CRATO</title>
+
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon_package_v0.16/favicon-16x16.png" />
+
+  <link href="https://fonts.googleapis.com/css?family=Hind|Hind:700|Open+Sans:700|Teko:700&display=swap" rel="stylesheet" />
+
+
+
+  <!-- <style>reset</style> -->
+
+  <link rel="stylesheet" href="stylesheets/reset.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/gruvbox-dark.min.css" charset="utf-8"
+  />
+
+
+
+  <!-- <style></style> -->
+
+  <link rel="stylesheet" href="stylesheets/main.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js">
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+
+
+
+  <!-- <script></script> -->
+
+  <script src="javascripts/application.js">
+  </script>
+
+</head>
+
+<body>
+
+  <div class="logo-links">
+
+    <p id="crato-logo">CRATO</p>
+
+
+
+    <a href="https://github.com/crato-logging/crato" target="_blank">
+
+      <img
+
           src="images/logos/github_black.png"
+
           alt="github logo"
+
           id="github-logo"
+
         />
+
       </a>
+
     </div>
+
     <nav id="site-navigation">
+
       <ul>
+
         <li>
+
           <a href="#home" id="home-link">HOME</a>
+
         </li>
+
         <li>
+
           <a href="#case-study" id="case-study-link">CASE STUDY</a>
+
           <nav id="case-study-mobile">
+
             <ul></ul>
+
           </nav>
+
         </li>
+
         <li>
+
           <a href="#our-team" id="our-team-link">OUR TEAM</a>
+
         </li>
+
       </ul>
+
     </nav>
+
     <header id="home">
+
       <h1>
+
         <img src="images/logos/crato-logo.png" alt="Crato logo" />
+
         <p>easy log management for small applications</p>
+
       </h1>
+
     </header>
+
     <section class="integration">
+
       <div class="box">
+
         <img src="images/crato_horizontal.png" alt="best practices" />
+
       </div>
+
       <article class="box">
+
         <div class="text-box">
+
           <h1>Centralize your logs</h1>
+
           <p>
+
             Crato is an open-source framework for small applications to easily
+
             deploy a centralized logging solution that maintains ownership of
+
             data.
+
           </p>
+
           <!-- <a class="button" href="#case-study">Learn More</a> -->
+
         </div>
+
       </article>
+
     </section>
 
+
+
     <main>
+
       <section id="case-study">
+
         <h1>Case Study</h1>
 
+
+
         <div id="side-nav">
+
           <img src="images/logos/crato-logo.png" alt="Crato logo" />
+
         </div>
+
         <nav>
+
           <ul></ul>
+
         </nav>
+
+
 
         <h2 id="introduction">1 Introduction</h2>
 
+
+
         <h3>1.1 What is Crato?</h3>
 
+
+
         <p>
+
           Crato is an open source framework for small applications to easily
+
           deploy centralized logging.
+
         </p>
 
+
+
         <p>
+
           Applications and system services use messages to record their events,
+
           but by default these log messages remain on local systems and are
+
           deleted. Without intervening then, developers and administrators lose
+
           valuable insight into the history, performance and security of their
+
           systems.
+
         </p>
 
+
+
         <p>
+
           Crato employs centralized logging to address this problem. With Crato,
+
           each machine sends its logs to an offsite collection server, where
+
           users can gain insight into the entire system by accessing the
+
           consolidated logs. Log messages are then streamed into Kafka, consumed
+
           by Crato, and sent as compressed files to Amazon S3 for archiving and
+
           into InfluxDB for metrics-based querying.
+
         </p>
+
+
 
         <h2 id="logging">2 Logging</h2>
 
+
+
         <h3>2.1 What is a Log?</h3>
 
-        <p>
-          Logs are an essential tool that developers use on a daily basis and in
-          the simplest case, we can think of logs as distinct events that get
-          written to files. This log data is one of the key elements in
-          determining application health, as well as in analysis and debugging,
-          and for deriving useful metrics. But most often, especially on a
-          single node system, when there is an issue, developers can reach for
-          the appropriate log file and look for errors or warnings to understand
-          what went wrong. In addition to the error logs that help developers
-          investigate issues, event logs across your application's services can
-          also give insights on how the application is being used and are
-          essential for performing historical analysis to find trends, patterns
-          and user behaviours.
-        </p>
+
 
         <p>
-          It is natural to think of logs as files since normally, the
-          environment in which our applications run include a logging system
-          that separates the concern of log message processing from the
-          components that generate them - one such logging system is syslog; the
-          most widely distributed logging protocol that is supported by a wide
-          range of devices and processes. Syslog defines a message format as
-          well as allows for stanardization of how logs are generated and
-          processed.
+
+          Logs are an essential tool that developers use on a daily basis and in
+
+          the simplest case, we can think of logs as distinct events that get
+
+          written to files. This log data is one of the key elements in
+
+          determining application health, as well as in analysis and debugging,
+
+          and for deriving useful metrics. But most often, especially on a
+
+          single node system, when there is an issue, developers can reach for
+
+          the appropriate log file and look for errors or warnings to understand
+
+          what went wrong. In addition to the error logs that help developers
+
+          investigate issues, event logs across your application's services can
+
+          also give insights on how the application is being used and are
+
+          essential for performing historical analysis to find trends, patterns
+
+          and user behaviours.
+
         </p>
+
+
+
+        <p>
+
+          It is natural to think of logs as files since normally, the
+
+          environment in which our applications run include a logging system
+
+          that separates the concern of log message processing from the
+
+          components that generate them - one such logging system is syslog; the
+
+          most widely distributed logging protocol that is supported by a wide
+
+          range of devices and processes. Syslog defines a message format as
+
+          well as allows for stanardization of how logs are generated and
+
+          processed.
+
+        </p>
+
+
 
         <h3>2.2 Logs as Files</h3>
 
+
+
         <p>
+
           Most often, especially on a UNIX machine, log files can be found in
+
           the <code>var/log</code> directory and apart from log files that are
+
           found there, this directory can contain other sub directories
+
           depending on applications that are running on your system. For
+
           example, MySQL generates its own log file and the
+
           <code>httpd</code> sub directory contains the apache web server
+
           access<em>log and error</em>log. There are also system processes that
+
           can be found in files like <code>kern.log</code> or
+
           <code>auth.log</code> that contain information logged by the kernel
+
           and system authorization information respectively.
+
         </p>
+
         <div class="img-wrapper">
+
           <img src="images/diagrams/logs_as_files.png" alt="Logs as files" />
+
         </div>
+
         <p>
+
           Because log messages are generated by some process and get written to
+
           files on our local file system, it's natural to think of logs simply
+
           as files. There are command line utilities that help developers
+
           interact with log files and we can use commands like
+
           <code>grep</code> to match against some string or regular expression
+
           to find what we're looking for. There is a static file, we can sift
+
           through it and get a result.
+
         </p>
+
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/gifs/grep.gif"
+
             id="grep"
+
             alt="Logs as files"
+
           />
+
           <p>
+
             We can search through a file to look for logs generated in the last
+
             10 minutes.
+
           </p>
+
         </div>
+
         <p>
+
           But in order to better understand the structure of application logs
+
           and before exploring how log messages are generated and processed with
+
           syslog let's consider another description of what a log is. We know
+
           that a log is a file but it's not the full story.
+
         </p>
+
         <h3>2.3 Logs as Append-Only Data Structures</h3>
 
+
+
         <blockquote>
+
           <p>
+
             "A log is perhaps the simplest possible storage abstraction. It is
+
             an append-only, totally-ordered sequence of records ordered by time"
+
           </p>
+
           <p>- Jay Kreps</p>
+
         </blockquote>
 
-        <p>
-          In a simple case, if we have an application that runs on a single
-          node, the life of the developeer is relatively easy. When the
-          application is contained, so is its log data - when something goes
-          wrong we know where to look and reading an error message that is
-          produced can be easily parsed by a human to find out what the issue
-          is. However, as applications continue to grow in complexity so does
-          the volume of their log data - the many components, devices and
-          microservices that produce log data are often distributed on multiple
-          servers and even with a relatively small number of users, this can
-          quickly become a bid data problem. For this reason there has been a
-          greater need to unify log data, both by location as well as format.
-          This shift means that while developers still need to access and read
-          logs, this strategy becomes quickly unmanageable and so the need for
-          machines to read log data instead of humans has risen drastically.
-          However, in order for a machine to parse and aggregate log data to
-          then be consumed by humans, a text file many not be the best format.
-          So if log files are useful for humans to read, what does a log that is
-          easier for machines to read look like? How do we store log data, if
-          not in a file?
-        </p>
+
 
         <p>
-          If we take a step back and look at a log, not as a file but a data
-          structure as described by Jay Kreps in the quote above, we can see
-          that logs as files are just a different form of this log concept. The
-          log looks like this and has some basic properties:
+
+          In a simple case, if we have an application that runs on a single
+
+          node, the life of the developeer is relatively easy. When the
+
+          application is contained, so is its log data - when something goes
+
+          wrong we know where to look and reading an error message that is
+
+          produced can be easily parsed by a human to find out what the issue
+
+          is. However, as applications continue to grow in complexity so does
+
+          the volume of their log data - the many components, devices and
+
+          microservices that produce log data are often distributed on multiple
+
+          servers and even with a relatively small number of users, this can
+
+          quickly become a bid data problem. For this reason there has been a
+
+          greater need to unify log data, both by location as well as format.
+
+          This shift means that while developers still need to access and read
+
+          logs, this strategy becomes quickly unmanageable and so the need for
+
+          machines to read log data instead of humans has risen drastically.
+
+          However, in order for a machine to parse and aggregate log data to
+
+          then be consumed by humans, a text file many not be the best format.
+
+          So if log files are useful for humans to read, what does a log that is
+
+          easier for machines to read look like? How do we store log data, if
+
+          not in a file?
+
         </p>
-        <div class="img-wrapper">
-          <img src="images/diagrams/log_data_structure.png" alt="Log" />
-        </div>
+
+
+
         <p>
-          Each entry in a log is added sequentially making this an append only
-          data structure. We start on the left and each subsequent entry is then
-          added to the right. The entries on the left are then by definition
-          older than entries on the right giving this data structure a natural
-          notion of time, even without an explicit timestamp. Since reads also
-          proceed from left to write, in the context of building an application,
-          if each entry in a log represents some event, we can know the order in
-          which the events occurred, thus building up a sort of historical
-          context for our applications.
+
+          If we take a step back and look at a log, not as a file but a data
+
+          structure as described by Jay Kreps in the quote above, we can see
+
+          that logs as files are just a different form of this log concept. The
+
+          log looks like this and has some basic properties:
+
         </p>
+
+        <div class="img-wrapper">
+
+          <img src="images/diagrams/log_data_structure.png" alt="Log" />
+
+        </div>
+
+        <p>
+
+          Each entry in a log is added sequentially making this an append only
+
+          data structure. We start on the left and each subsequent entry is then
+
+          added to the right. The entries on the left are then by definition
+
+          older than entries on the right giving this data structure a natural
+
+          notion of time, even without an explicit timestamp. Since reads also
+
+          proceed from left to write, in the context of building an application,
+
+          if each entry in a log represents some event, we can know the order in
+
+          which the events occurred, thus building up a sort of historical
+
+          context for our applications.
+
+        </p>
+
+
 
         <h3>2.4 Logs as Streams</h3>
+
         <p>
+
           The "Twelve-factor App" is a methodology for building
+
           software-as-a-service and is a set of guidelines published by Adam
+
           Wiggins, one of Heroku's co-founders, that addresses the issue of
+
           logging directly. It says that we should treat logs not as files but
+
           as event streams and that your application shouldn’t concern itself
+
           with the storage of this information. Instead, these logs should be
+
           treated as a continuous stream that is captured and stored by a
+
           separate service.(footnote)
+
         </p>
 
+
+
         <p>
+
           Of course it's natural to think of logs as files in your file
+
           directory since it's a common way to interact with logs and because
+
           log file generation is typically an automatic process that happens
+
           behind the scenes. But log messages simply get written to files since
+
           it's a convenient method of storing data; individual log messages can
+
           be viewed as time ordered streams of events that
+
           <strong>can</strong> be written to files but that can also be
+
           processed in other ways. To borrow another quote from Jay Kreps, "Log
+
           is another word for stream and logs are at the heart of stream
+
           processing". Streams of data can be directed or split into multiple
+
           streams and sent to different locations for further processing for
+
           example.
+
         </p>
 
+
+
         <p>
+
           If we use a command line utility like <code>tail</code> it's possible
+
           to see a live stream of logs that are coming from an application or
+
           any other process we'd like to monitor. So while messages are being
+
           written to files, from this view it's easier to think of logs as a
+
           collection of events that we can view in real time as they these
+
           events occur - something that's ongoing, with no beginning or an end.
+
         </p>
+
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/gifs/tail.gif"
+
             id="tail"
+
             alt="Logs as streams"
+
           />
+
           <p>
+
             Ongoing, collated collection of events which we can view in real
+
             time as they happen.
+
           </p>
+
         </div>
+
+
 
         <h3>2.5 Logs Capture Change</h3>
-        <p>
-          Knowing a little bit about application logs and the structure of a
-          log, let's see why these properties are important and how they can
-          help in the context of building an application or running a small
-          application in production. To review, a log at its core is an append
-          only sequence of records that has a natural notion of "time" because
-          newer records are appended to the end of the log. These properties
-          that define a log, when taken together can serve a purpose of
-          recording what happened and when and because they record a history,
-          they capture change of your application over time.
-        </p>
 
         <p>
-          We most often think of our application's database, where we keep the
-          busines logic of our application to be the source of truth, but
-          knowing how we got to a particular state can be even more important.
-          This point is well described by the "Stream-Table Duality" concept. It
-          is often talked about by figures like Martin Kleppman, Jay Kreps and
-          Tyler Akidau and it shows that there exists a close relationship
-          between streams and tables.
+
+          Knowing a little bit about application logs and the structure of a
+
+          log, let's see why these properties are important and how they can
+
+          help in the context of building an application or running a small
+
+          application in production. To review, a log at its core is an append
+
+          only sequence of records that has a natural notion of "time" because
+
+          newer records are appended to the end of the log. These properties
+
+          that define a log, when taken together can serve a purpose of
+
+          recording what happened and when and because they record a history,
+
+          they capture change of your application over time.
+
         </p>
+
+
+
+        <p>
+
+          We most often think of our application's database, where we keep the
+
+          busines logic of our application to be the source of truth, but
+
+          knowing how we got to a particular state can be even more important.
+
+          This point is well described by the "Stream-Table Duality" concept. It
+
+          is often talked about by figures like Martin Kleppman, Jay Kreps and
+
+          Tyler Akidau and it shows that there exists a close relationship
+
+          between streams and tables.
+
+        </p>
+
         <h3>2.6 Stream - Table Duality</h3>
 
+
+
         <p>
+
           Stream-table duality is another way of saying that there are distinct
+
           but related ways to represent data. The familiar way is of course with
+
           a table which represents a snapshot of current state. Developers work
+
           with relational databases on a daily basis and it's the tables that
+
           represent the business logic of the application that we are talking
+
           about here. Let's consider a simple example below. There are two users
+
           and they are transferring funds between one another. As changes occur
+
           over time, the data in a table is updated to reflect a new current
+
           state.
+
         </p>
+
+
 
         <div class="buttons">
+
           <button id="resetButton" class="cratoButton">Reset</button>
+
           <button id="nextButton" class="cratoButton">&rarr;</button>
+
         </div>
+
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/table_states/state1.png"
+
             id="table-state"
+
             data-id="1"
+
             alt="Table State1"
+
           />
+
           <p>
+
             As changes occur over time, the data in a table is updated to
+
             reflect a new current state. But how did we get there?
+
           </p>
+
         </div>
 
+
+
         <p>
+
           In this example, we can see that data in tables is mutable since the
+
           new values in the table come in the form of updates of old ones. When
+
           we isolate a table and look at it at any point in time, it's possible
+
           to answer questions about the current state - for example, what
+
           <strong>is</strong> the current balance of a customer with username
+
           <em>big_ed</em>. However, looking only at a database record at one
+
           point in time and then another is not going to paint a full picture -
+
           there are many ways you could have gotten from one state to another
+
           and it is the log that can describe that journey. We have to look at
+
           the database's change log which is what captures those changes.
+
         </p>
 
+
+
         <p>
+
           Representing the same history that we saw above but this time as a
+
           stream of changes would look like this:
+
         </p>
 
+
+
         <div class="img-wrapper">
+
           <img src="images/diagrams/gifs/stream.gif" alt="Stream" />
+
           <p>
+
             A stream captures distinct events; the changes between the table's
+
             states
+
           </p>
+
         </div>
 
+
+
         <p>
+
           This time, the data is immutable since the values are not updated; we
+
           have distinct events and they're appended to the end of the log. What
+
           is captured in the blue boxes are the changes between the table's
+
           states. This stream of changes can supplement the core business logic
+
           that lives in tables and helps answer not only what changed or in this
+
           example, what is the current balance of one of our users but also
+
           <strong>why</strong> and <strong>how</strong> something changed.
+
         </p>
 
+
+
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/stream_table_duality.png"
+
             alt="Stream-table duality"
+
           />
+
           <p>
+
             Tables show us current state and streams capture how we got there.
+
           </p>
+
         </div>
 
+
+
         <p>
+
           And a log is useful in another way. It doesn't only supplement static
+
           data that lives in tables but because it captures all the changes that
+
           a table underwent, it is possible to aggregate over the stream of
+
           changes and actually end up with a table again.
+
         </p>
+
+
 
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/stream_to_table.png"
+
             alt="Stream to a table"
+
           />
+
           <p></p>
+
         </div>
 
+
+
         <p>
+
           In the context of building an application, looking at relevant log
+
           data from your application can not only give information about what
+
           changed, but how and why something changed while aggregating over log
+
           data, it is possible to arrive at a snapshot of your application's
+
           state at any point in time. In this way, it's possible to think of a
+
           log as the real source of truth since a log contains the building
+
           blocks to recreate a table; we can aggregate streams to arrive at
+
           tables, but looking only at a table we do not know how someone may
+
           have interacted with our application to end up at that state.
+
         </p>
+
+
 
         <h3>2.7 Why Does Logging Matter for Small Applications?</h3>
-        <p>
-          There are obvious benefits to logging that are important in day to day
-          development. Developers use logs every day for analysis and debugging,
-          infrastructure monitoring and for deriving useful metrics. Some types
-          of applications are also required to keep logs long term for audit
-          purposes. However, besides these uses, careully curated logs related
-          to your application can provide valuable historical context that
-          unlocks other benefits: - We can see precisely see how our
-          applications are being used - Data can be used to find trends,
-          patterns and behaviours - With historical event data we can rebuild
-          tables
-        </p>
 
         <p>
-          For a small but growing application, there are many options to get
-          started with logging. Today, given so many options in terms of cloud
-          computing and storage it should be relatively easy for a small but
-          growing company to get started, however for many companies this is not
-          a primary concern as they try to focus on the development of their
-          application. If some time down the road they want to perform a
-          historical analysis to gain a competitive edge, it is too late. As
-          we'll see in the next section, by default, log data is deleted off
-          local machines and even if it wasn't, the log data from each component
-          in your system is dispersed and not usable for any meaningful
-          analysis. In the next section, we will discuss the various options
-          that a small but growing application has and how they can centralize
-          and store their log data and for that we'll need to exlore how logs
-          are generated and processed in the first place.
+
+          There are obvious benefits to logging that are important in day to day
+
+          development. Developers use logs every day for analysis and debugging,
+
+          infrastructure monitoring and for deriving useful metrics. Some types
+
+          of applications are also required to keep logs long term for audit
+
+          purposes. However, besides these uses, careully curated logs related
+
+          to your application can provide valuable historical context that
+
+          unlocks other benefits: - We can see precisely see how our
+
+          applications are being used - Data can be used to find trends,
+
+          patterns and behaviours - With historical event data we can rebuild
+
+          tables
+
         </p>
+
+
+
+        <p>
+
+          For a small but growing application, there are many options to get
+
+          started with logging. Today, given so many options in terms of cloud
+
+          computing and storage it should be relatively easy for a small but
+
+          growing company to get started, however for many companies this is not
+
+          a primary concern as they try to focus on the development of their
+
+          application. If some time down the road they want to perform a
+
+          historical analysis to gain a competitive edge, it is too late. As
+
+          we'll see in the next section, by default, log data is deleted off
+
+          local machines and even if it wasn't, the log data from each component
+
+          in your system is dispersed and not usable for any meaningful
+
+          analysis. In the next section, we will discuss the various options
+
+          that a small but growing application has and how they can centralize
+
+          and store their log data and for that we'll need to exlore how logs
+
+          are generated and processed in the first place.
+
+        </p>
+
+
 
         <h2 id="syslog">3 Syslog</h2>
 
+
+
         <img src="images/diagrams/syslog_local.png" alt="Syslog local" />
 
+
+
         <img
+
           src="images/diagrams/syslog_local2.png"
+
           alt="Syslog local on client"
+
         />
 
+
+
         <img
+
           src="images/diagrams/gifs/local_logging.gif"
+
           alt="Localized logging"
+
         />
 
+
+
         <img
+
           src="images/diagrams/syslog_centralized.png"
+
           alt="Centralized syslog"
+
         />
 
+
+
         <img
+
           src="images/diagrams/centralized_logging.png"
+
           alt="Centralized logging"
+
         />
+
+
 
         <h2 id="current-solutions">4 Current Solutions</h2>
 
+
+
         <p>
+
           For a small and growing application that wants to manage their own
+
           logs what solutions exist?
+
         </p>
 
-        <h3>The Three Options Overview</h3>
+
+
+        <h3>4.1 The Three Options Overview</h3>
+
+          <p>Log management solutions come in three category.
+
+          Logging as a Service (LaaS) are paid, propietary solutions generally on the cloud.
+
+          Doing it Yourself (DIY) means building a custom, self-hosted solutions built out of a mix of tools.
+
+          Open-source software (OSS) solutions are a category covering open-source tools and inhabited by the two main open-source log management optins in the Elastic Stack and Graylog.</p>
 
         <h3>
-          LaaS: Full Service Log Management
+
+          4.2 LaaS: Full Service Log Management
+
         </h3>
 
-        <p>LaaS Overview</p>
+        <p>There are many paid Logging as a Service (LaaS) products that cover the full stack of management. These products comprise of 5 key functions:
+        </p>
+        <ol>
+        <li>Log Collection</li>
+        <li>Ingestion &amp; Storage</li>
+        <li>Search &amp; Analysis</li>
+        <li>Monitoring &amp; Alerts</li>
+        <li>Visualization &amp; Report</li>
+        </ol>
 
-        <h4>
-          LaaS: Log Management Components Provided
-        </h4>
 
-        <h4>LaaS Tradeoffs</h4>
+        <p>LaaS solutions are generally cloud-based. They&#39;re easy-to-use, provide technical support, and a rich feature set. The most involved part is configuring your machine(s) to forward your logs and they handle the rest.</p>
+        <p>The drawbacks however are fairly apparent. Cost can rise quickly and depend on many factors. These factors commonly including the volume of data being ingested, the number of users, and a monthly service fee(s). As a LaaS, a primary goal is to avoid churn and maintain revenue by creating dependency and vendor lock-in. Whether cloud-based or on-premise, propietary solutions are marked by a lack of data ownership in security, relatively small data retention length measured in weeks or months and/or running propietary code that can&#39;t be inspected by a customer.</p>
+        <p>These drawbacks lead developers to consider whether building their own might be better over the long run.</p>
 
-        <h3 id="diy">DIY</h3>
 
-        <p>DIY Overview</p>
 
-        <h4>
-          Log Management Components Overview
-        </h4>
+        <h3 id="diy">4.3 DIY</h3>
 
-        <h4>Collection &amp; Aggregation</h4>
+        <p>If you decide to Do It Yourself (DIY), there are many products that cover and overlap one or some of the 5 key components of a LaaS. These 5 components can be simplified into 4 phases of log management:</p>
+        <ol>
+        <li>Log Collection</li>
+        <li>Processing &amp; Aggregration</li>
+        <li>Ingestion &amp; Storage</li>
+        <li>Monitoring &amp; Visualization</li>
+        </ol>
 
-        <h5>
-          Syslog Protocol &amp; its Implementations
-        </h5>
+        <p>{Insert Diagram}</p>
 
-        <h5>
-          Collection &amp; Aggregation Options Summary
-        </h5>
 
-        <h4>Ingestion &amp; Storage</h4>
+        <h4 id="collection">4.3.1 Collection</h4>
+        <p>Log collection starts on each machine with a logging system such as Syslog listening for messages generated by its applications.</p>
 
-        <h4>Monitoring &amp; Visualization</h4>
+        <h5 id="syslog-protocol-its-implementations">4.3.1.1 Syslog Protocol &amp; its Implementations</h5>
+        <p>On an individual machine, the Syslog daemon (Syslogd) is running and listening to messages generated by applications. Syslogd can collect, process, and transport log messages. These message conform to a format provided by Syslog and are a mix of structured &amp; unstructured data.</p>
+        <p>As aforementioned, Syslogd can be replaced  by third-party tools, called log collector agents, such as rsyslog and syslog-ng. The syslog system is standard on Unix-based systems and installable on Windows via 3rd party libraries.</p>
 
-        <h4>
-          Log Management Components Recap
-        </h4>
+        <h4 id="processing-aggregration">4.3.2 Processing &amp; Aggregation</h4>
+        <p>Logs collected on individual machine are often forwarded to a centralized server that is able to parse data into formats like JSON, enrich it and store it. Of course, aggregation in a central location allows for easier tailing and analysis compared to individual machines.</p>
+        <p>There are a healthy amount of open source options within this space. If processing and aggregation are needed, some of these tools provide a DSL for customer parsing into different formats and log enrichment.</p>
 
-        <h4>DIY Tradeoffs</h4>
+        <h4 id="ingestion-storage">4.3.3 Ingestion &amp; Storage</h4>
+        <p>After logs are collected, the goal is to transport them to a storage service, often a database, from which they can be searched &amp; analyzed. If the data write request volume is small enough, they can be directly sent to storage. However, this isn&#39;t scalable. It is often more prudent to decouple the ingestion process and a messaging system. A messaging system provides more robust reliability, much higher data throughput and greater fault-tolerance. These messaging systems are designed for multiple publishers to stream data into the system and multiple consumers to then pick up and use the data. With higher data write frequencies, messaging systems provide the ability to batch data and buffer it before being written to a storage system.</p>
+        <p>There are many options within this space for ingestion and storage services. Some considerations that need to be made:</p>
+        <ul>
+        <li>How much data is being ingested?</li>
+        <li>Who is going to be using the data?</li>
+        <li>What is the structure of the log?</li>
+        <li>What search, analysis and indexing capabilities are needed?</li>
+        </ul>
 
-        <h3>OSS</h3>
+        <h4 id="monitoring-visualization">4.3.4 Monitoring &amp; Visualization</h4>
+        <p>Finally, once data is in a database, we can connect it to a visualization tool for more user friendly analysis and reporting. Some of these tools also provide alerting and system configuration capabilities. The visual representation of data allows users to transform and aggregrate in more effective ways. There are many open source options at this space as well with Kibana and Grafana as the leaders.</p>
 
-        <p>OSS Overview</p>
+        <p>If you decide to DIY, at each phase of a central log management solution there are several options available, but also many considerations to be made. Researching and orchestrating them to work and scale is also a challenge.</p>
 
-        <h4>ElasticStack</h4>
+        <p>Overall, doing it yourself (DIY) and building a custom system allows for greater control and flexibility at the cost of complexity. Custom systems address exact needs allowing for high control of storage and security. </p>
 
-        <h4>Graylog</h4>
+        <h3 id="oss">4.4 OSS</h3>
+        <p>Open source log management tools are available that allow a developer to maintain high data control, ease-of-use closer to LaaS tools, but require self-management and hosting. The two main solutions here are the Elastic stack and Graylog.</p>
 
-        <h4>OSS Tradeoffs</h4>
+        <h4 id="elastic-stack">4.4.1 Elastic Stack</h4>
+        <p>Elastic is a company that develops a collection of open-source log management products designed to work well together. Altogether, they have products that cover each of the 4 key phases of centralized log management. A very common combination of their tools: The text-search storage system Elasticsearch, log collection and storage service Logstash and visualization/monitoring tool Kibana is known as the ELK stack.</p>
+        <h4 id="graylog">4.4.2 Graylog</h4>
+        <p>Graylog is a company and open-source centralized log management server. It is built on top of Elasticsearch and MongoDB and offers a web interface connected to the server.</p>
 
-        <h3>
-          Summary: Current Log Management Options
-        </h3>
+        <p>The Elastic Stack and Graylog are very popular open-souce self-hosted solutions and offer expected usability, high data ownership and security. A rich ecosystem of plugins exists for each tool offering extended flexibility. However, complexity from these systems comes from configuration, deploying scaling up and orchestration related to these challenges.</p>
+
+        <h3 id="summary-current-log-management-options">4.5 Summary: Log Management Options</h3>
+        <p>LaaS tools are easy to use, but offer low data ownership and potentially high monetary costs.</p>
+        <p>DIY offers high data ownership, but some costs in developer time and higher complexity in building a custom system.</p>
+        <p>OSS tools are free and offer high data ownership, but scaling and maintenance are still somewhat complex. </p>
 
         <h2 id="crato-design">5 Crato Design</h2>
 
         <p>
+
           The above discussion of current log management options reveals the
+
           niche that Crato addresses. While LaaS options provide the quickest
+
           and most simple path, their advantages come with costs. Not only must
+
           users pay for LaaS services, but their applications' data is yielded
+
           to a third party. DIY options grant users the most control, and can be
+
           designed and built to include precisely the features wanted. But there
+
           are tradeoffs here as well. The high level of control and
+
           customizability comes with increased complexity and additional design
+
           and maintenance committments. Finally, the pre-designed OSS options
+
           aim to split the difference between LaaS and DIY. OSS options return
+
           data control to the users (typically lacking in LaaS) while reducing
+
           complexity and design and maintenance commitments (both of which tend
+
           to be high in DIY projects).
+
         </p>
+
+
 
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/complexity_ownership_diagram.png"
+
             alt="2-axis-comparison"
+
           />
+
         </div>
 
+
+
         <p>
+
           But even here in the OSS options, there is a range of complexity,
+
           which is largely attributable to the database and full-text search
+
           choices of the OSS stacks. Crato sits among the OSS logging solutions,
+
           but it reduces complexity even more by eliminating the need to set up
+
           and maintain a full-text search engine. Thus, Crato is designed to
+
           provide the core features of centralized logging while reducing
+
           complexity and time commitments.
+
         </p>
+
+
 
         <h3 id="51cratoarchitectureoverview">
+
           5.1 Crato Architecture Overview
+
         </h3>
 
+
+
         <p>
+
           Crato consists of two main components: the client and the central
+
           server. The client is installed and run on each machine from which
+
           logs are to be collected. The central server is deployed via Docker
+
           onto a separate server or VPS.
+
         </p>
 
+
+
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/crato/crato_architecture.png"
+
             alt="crato architecture"
+
           />
+
         </div>
+
+
 
         <h3 id="52commands">5.2 Commands</h3>
 
-        <p>
-          Crato client is designed to have a light footprint on each client
-          system. Downloading the client adds only two files to each system: the
-          <code>crato</code> bash script and <code>crato-config</code>, a text
-          file to record user preferences. Running Crato client interferes with
-          the native logging of the system as little as possible. Crato adds
-          only a single configuration file that supplements, not overrides,
-          default settings
-        </p>
+
 
         <p>
-          To download Crato client, <code>curl</code> or <code>wget</code> the
-          script.
+
+          Crato client is designed to have a light footprint on each client
+
+          system. Downloading the client adds only two files to each system: the
+
+          <code>crato</code> bash script and <code>crato-config</code>, a text
+
+          file to record user preferences. Running Crato client interferes with
+
+          the native logging of the system as little as possible. Crato adds
+
+          only a single configuration file that supplements, not overrides,
+
+          default settings
+
         </p>
+
+
+
+        <p>
+
+          To download Crato client, <code>curl</code> or <code>wget</code> the
+
+          script.
+
+        </p>
+
+
 
         <h4 id="cratoconfig"><code>crato-config</code></h4>
 
+
+
         <div class="img-wrapper">
+
           <img
+
             src="images/crato_config_file.png"
+
             alt="crato client config file"
+
           />
+
         </div>
 
-        <p>
-          To simplify deployment and reduce complexity, the Crato client cli
-          exposes only a handful of configuration options. Crato client
-          configuration options are set in the <code>crato-config</code> text
-          file. Using key-value pairs, enter any number of logs for Crato to
-          track, along with their tags and severity levels. Then enter the ip
-          address of the central server.
-        </p>
+
 
         <p>
-          For users needing more granular control over settings, the full range
-          of configuraton options are available by directly editing the default
-          <code>*.conf</code> files. Additionally, because Crato does not
-          override applications' logging processes, these can be configured as
-          before.
+
+          To simplify deployment and reduce complexity, the Crato client cli
+
+          exposes only a handful of configuration options. Crato client
+
+          configuration options are set in the <code>crato-config</code> text
+
+          file. Using key-value pairs, enter any number of logs for Crato to
+
+          track, along with their tags and severity levels. Then enter the ip
+
+          address of the central server.
+
         </p>
+
+
+
+        <p>
+
+          For users needing more granular control over settings, the full range
+
+          of configuraton options are available by directly editing the default
+
+          <code>*.conf</code> files. Additionally, because Crato does not
+
+          override applications' logging processes, these can be configured as
+
+          before.
+
+        </p>
+
+
 
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/gifs/crato_usage.gif"
+
             alt="client cli usage"
+
           />
+
         </div>
+
+
 
         <h4 id="cratoc"><code>crato -c</code></h4>
 
+
+
         <p>
+
           Apply the current configuration and start Crato client with
+
           <code>crato -c</code> or <code>crato --configure</code>. Running this
+
           command checks that permissions, <code>rsyslog</code> version and base
+
           configuration is appropriate for Crato client. It then dynamically
+
           generates a <code>/etc/rsyslog.d/49-crato.conf</code> file to hold
+
           Crato configuration, and checks the validity of the resulting
+
           <code>rsyslog</code> configuration. It then either throws an error
+
           with instructions for debugging or (re)starts logging with the new
+
           settings.
+
         </p>
+
+
 
         <h4 id="cratosandcrator">
+
           <code>crato -s</code> and <code>crato -r</code>
+
         </h4>
 
+
+
         <p>
+
           <code>crato -s</code> or <code>crato --suspend</code> suspends Crato's
+
           logging on the client and returns the machine to default logging.
+
           <code>crato -r</code> or <code>crato --resume</code> restarts Crato
+
           logging on the client with the suspended settings resumed. If Crato
+
           client was not suspended at the time of execution, then the command
+
           makes no changes.
+
         </p>
+
+
 
         <h4 id="cratod"><code>crato -d</code></h4>
 
+
+
         <p>
+
           <code>crato -d</code> or <code>crato --delete</code> removes current
+
           or suspended Crato client configurations, confirms that resulting
+
           default configuration is valid and restarts logging with default
+
           settings or throws an error with instructions for debugging.
+
         </p>
+
+
 
         <h4 id="522dockerdeployment">5.2.2 Docker Deployment</h4>
 
+
+
         <img src="" alt="deployment via Docker" />
+
+
 
         <h2 id="crato-implementation">6 Crato Implementation</h2>
 
+
+
         <h3 id="61collectionaggregation-1">6.1 Collection &amp; Aggregation</h3>
 
+
+
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/crato/crato_collection_aggregation.png"
+
             alt="collection and aggregation"
+
           />
+
         </div>
 
+
+
         <p>
+
           Following its design mandate of being a lightweight, easy-to-use
+
           system, Crato collects logs using <code>rsyslog</code>, a standard
+
           tool available on most <code>*nix</code> systems.
+
         </p>
+
+
 
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/client_system.png"
+
             alt="inner client diagram"
+
           />
+
           <p>
+
             System logs and designated application logs collected into single
+
             stream.
+
           </p>
+
         </div>
 
+
+
         <p>
+
           At the user’s discretion, Crato can collect any text-based log
+
           messages your servers, applications, databases, etc generate. Captured
+
           log messages are consolidated into a single stream along with system
+
           logs. Together, these messages are persisted to disk in the
+
           <code>syslog</code> file on each client machine and also routed for
+
           processing and forwarding.
+
         </p>
+
+
 
         <h3 id="62shippingingestion">6.2 Shipping &amp; Ingestion</h3>
 
+
+
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/crato/crato_shipping_ingestion.png"
+
             alt="shipping and ingestion"
+
           />
+
           <p>
-            Crato clients monitor logs and forward the log messages as they
-            arrive to the core Crato infrastructure.
+            Crato clients monitor logs, forwarding messages as they
+            arrive for ingestion into the core Crato infrastructure.
           </p>
+
         </div>
+
+
 
         <h4 id="621shipping">6.2.1 Shipping</h4>
 
+
+
         <p>
+
           So far, the logs are grouped into a single stream, which is being
+
           written to a single file. This occurs on each client (physical machine
+
           or virtual server). But the primary goal of centralized log management
+
           is to collect logs from many different sources into a single, central
+
           (offsite) location. To accomplish that goal, we need to ship the logs
+
         </p>
 
+
+
         <p>
+
           Each system running a Crato client forwards the stream of captured log
+
           messges via <code>tcp</code> to the offsite core of Crato's
+
           infrastructure. To mitigate message loss resulting from a network
+
           partition or problems with the central server, each Crato client
+
           implements a disk-assisted memory queue in front of the forwarding
+
           action.
+
         </p>
 
+
+
         <p>
+
           WHY DEFAULT TO TCP?: at our expected volumes, the disk-assisted memory
+
           queue (a linked list capable of holding 10000 individual log messages,
+
           with 1Gb disk space available if needed) should mitigate the need to
+
           fire and forget to keep up with traffic. Thus, Crato opts for TCP and
+
           its guarantees of delivery and packet order over UDP's potential speed
+
           gains and absence of guarantees.
+
         </p>
+
+
 
         <h4 id="622ingestion">6.2.2 Ingestion</h4>
 
+
+
         <p>
+
           As it receives new log events from the dispersed clients, the central
+
           log server appends each message to its own log file. At this point,
+
           the central collection server's <code>syslog</code> file contains all
+
           captured messages from the clients along with those from the
+
           collection server itself. The full text is available for CLI query
+
           using familiar text processing tools like <code>grep</code>,
+
           <code>tail</code>, <code>sort</code>, and <code>awk</code>.
+
         </p>
+
+
 
         <div class="img-wrapper">
+
           <img
+
             src="images/diagrams/crato/crato_central_server.png"
+
             alt="Logs from across system read from single place."
+
           />
+
           <p>
+
             Central point for insight into entire system: all messages available
+
             to familiar unix tools.
+
           </p>
+
         </div>
 
+
+
         <p>
+
           Central log servers also forward logs into Crato’s pub-sub system,
+
           where they are made available to both the archiving server and to the
+
           database.
+
         </p>
+
+
 
         <h3 id="63messagestreaming">6.3 Message Streaming</h3>
 
-        <h4 id="weneedtostorelogsbuthow">We Need to Store Logs...but How?</h4>
+        <h4 id="631weneedtostorelogsbuthow">6.3.1 We Need to Store Logs...but How?</h4>
 
         <p>
-          It is common practice for log management systems to persist log data
-          not only to save it from automatic log rotation jobs, but also to
-          facilitate metrics and other system analysis. Crato follows this
-          practice, with Amazon S3 Glacier used for long-term storage and
-          InfluxDB used for metrics and eventual visualization.
+          It is common practice for log management systems to persist log data 
+          not only to save it from automatic log rotation jobs, but also to 
+          facilitate metrics and other system analysis. Crato follows this 
+          practice as well, with logs being saved for archiving and also made 
+          available for querying.
         </p>
-
-        <p>
-          Couldn't Crato simply send logs directly to the persistence layer?
-          Yes, in fact it's earliest iterations did exactly that, but this
-          approach is sub-optimal for a number of related reasons.
-        </p>
-
-        <p>
-          Logs are produced at different rates than they are consumed.
-          Furthermore, the same log data will be used by multiple processes.
-          Each use can be expected to have different needs, to operate at a
-          different rate, and to have potentially different bottlenecks or
-          failure rates. As a result, sending a copy of each log message to each
-          consumer as they come in is likely to lead to dropped messages with no
-          good way of recovery. Crato needed a buffering system to capture logs
-          and allow each consumer to draw data at its own rate.
-        </p>
-
-        <p>
-          One way to address this problem would be to use a queue. Log messages
-          are sent into a queue, and a consumer shifts the next message off as
-          needed. This may would work well for an individual consumer, but Crato
-          needs to handle multiple consumers, and as each consumer grabs the
-          next available message from the queue, all the others miss out. The
-          message is no longer available. What Crato would need would be a queue
-          in front of each potential consumer. To implement that, the central
-          server would need to send a copy of each log message to n queues in
-          front of n consumers.
-        </p>
-
-        <p>
-          Another potential solution would be to use a publish-subscribe
-          messaging system. The central server would publish each new log
-          message to the platform, and all subscribers would receive the log as
-          it is available. While this model allows the central server to forward
-          its stream to a single destination, it does not account for the
-          different rates of consumption.
-        </p>
-
-        <h4 id="631decouplingloggenerationusewithkafka">
-          6.3.1 Decoupling Log Generation &amp; Use with Kafka
-        </h4>
 
         <div class="img-wrapper">
-          <img
-            src="images/diagrams/crato/crato_kafka.png"
-            alt="Architecture with Kafka highlighted"
+          <img 
+            src="images/diagrams/crato/generic_dbs.png" 
+            alt="Central server sending logs to two datastores"
           />
-          <p></p>
         </div>
 
         <p>
-          What Crato needs is a way to provide the same stream of log messages
-          to multiple consumers, to allow producers and consumers to work at
-          their own paces, and for each to always be able to resume its work at
-          the exact point it left off. It needs the advantages of a queue and a
-          pub-sub system folded into a single platform. Apache Kafka provides
-          exactly that.
+          But then couldn't Crato's central server send logs directly to the 
+          persistence layer? Yes, in fact it's earliest iterations did exactly 
+          that, but this approach is sub-optimal for a number of related reasons.
         </p>
 
+
+
+        <p>
+
+          Logs are produced at different rates than they are consumed.
+
+          Furthermore, the same log data will be used by multiple processes.
+
+          Each use can be expected to have different needs, to operate at a
+
+          different rate, and to have potentially different bottlenecks or
+
+          failure rates. As a result, sending a copy of each log message to each
+
+          consumer as they come in is likely to lead to dropped messages with no
+
+          good way of recovery. Crato needed a buffering system to capture logs
+
+          and allow each consumer to draw data at its own rate.
+
+        </p>
+
+
+
+        <p>
+
+          One way to address this problem would be to use a queue. Log messages
+
+          are sent into a queue, and a consumer shifts the next message off as
+
+          needed. This may would work well for an individual consumer, but Crato
+
+          needs to handle multiple consumers, and as each consumer grabs the
+
+          next available message from the queue, all the others miss out. The
+
+          message is no longer available. What Crato would need would be a queue
+
+          in front of each potential consumer. To implement that, the central
+
+          server would need to send a copy of each log message to n queues in
+
+          front of n consumers.
+
+        </p>
+
+
+
+        <p>
+
+          Another potential solution would be to use a publish-subscribe
+
+          messaging system. The central server would publish each new log
+
+          message to the platform, and all subscribers would receive the log as
+
+          it is available. While this model allows the central server to forward
+
+          its stream to a single destination, it does not account for the
+
+          different rates of consumption.
+
+        </p>
+
+        <h4 id="632decouplingloggenerationusewithkafka">
+          6.3.2 Decoupling Log Generation &amp; Use with Kafka
+        </h4>
+
+
+
+        <div class="img-wrapper">
+
+          <img
+
+            src="images/diagrams/crato/crato_kafka.png"
+
+            alt="Architecture with Kafka highlighted"
+
+          />
+
+          <p></p>
+
+        </div>
+
+
+
+        <p>
+
+          What Crato needs is a way to provide the same stream of log messages
+
+          to multiple consumers, to allow producers and consumers to work at
+
+          their own paces, and for each to always be able to resume its work at
+
+          the exact point it left off. It needs the advantages of a queue and a
+
+          pub-sub system folded into a single platform. Apache Kafka provides
+
+          exactly that.
+
+        </p>
+
+
+
         <blockquote>
+
           <p>
+
             The consumer group concept in Kafka generalizes these two concepts.
+
             As with a queue the consumer group allows you to divide up
+
             processing over a collection of processes (the members of the
+
             consumer group). As with publish-subscribe, Kafka allows you to
+
             broadcast messages to multiple consumer groups.
-            <a href="https://kafka.apache.org/documentation.html#kafka_mq"
-              >Kafka as a Messaging System</a
-            >
+
+            <a href="https://kafka.apache.org/documentation.html#kafka_mq">
+              Kafka as a Messaging System
+            </a>
           </p>
         </blockquote>
 
         <p>
           By decoupling log creation or ingestion from log use, Kafka solves the
+
           problem noted above, namely Crato's need for exactly once delivery of
+
           log messages to multiple users operating at different paces. At the
+
           same time, it also allows Crato to be more extensible in the future.
+
           Any additional uses for the same data can be added as consumers.
+
         </p>
 
+
+
         <p>
+
           But if Kafka is so effective at managing this decoupling, wouldn't
+
           Crato benefit from skipping the central server model and simply have
+
           each client produce directly to remote Kafka brokers instead? There
+
           are advantages to this approach. It would reduce complexity in Crato's
+
           core infrastructure, and there is no doubt that Kafka could handle the
+
           load from multiple distributed clients as well as it does from a
+
           single central log server.
+
         </p>
 
+
+
         <p>
+
           That said, this design would increase the complexity on the client
+
           side by introducing additional configuration requirements and
+
           dependencies. If we want to use the <code>syslog</code> protocol on
+
           each client (see the justification above), then an
+
           <code>rsyslog</code> central server poses fewer problems for client’s
+
           installation. Also, removing the central server would eliminate one of
+
           Crato's UI advantages, because without a central collection point it
+
           would lose the ability to provide system-wide observability using the
+
           familiar *nix text processing tools. One of the design goals is 'easy
+
           to use'. Asking users to query Kafka for observability pushes hard
+
           against that goal.
+
         </p>
 
-        <h4 id="producingtokafka">Producing to Kafka</h4>
+        <h4 id="633producingtokafka">6.3.3 Producing to Kafka</h4>
+
+        <div class="img-wrapper">
+          <img 
+            src="images/diagrams/crato/omkafka.png" 
+            alt="omkafka producing to Kafka brokers"
+          />
+        </div>
 
         <p>
-          "Crato's central collection server sends logs to Kafka via rsyslog's
-          Omkafka module."
+          Crato's central collection server sends logs to Kafka via rsyslog's
+           Omkafka module.
         </p>
 
         <p>DA memory queue to mitigate server / broker partition</p>
 
-        <h4 id="consumingfromkafka">Consuming from Kafka</h4>
+        <h4 id="634consumingfromkafka">6.3.4 Consuming from Kafka</h4>
+
+        <div class="img-wrapper">
+          <img 
+            src="images/diagrams/crato/crato_consumers2.png" 
+            alt="consuming from Kafka brokers"
+          />
+        </div>
 
         <p>Kafka provides exactly once delivery for multiple consumers</p>
 
         <p>Consumers must still manages flow to suit endpoint needs</p>
-
-        <h4 id="consumingfromkafkaimplementation">
-          Consuming from Kafka: Implementation
-        </h4>
-
         <p>
+
           Batching: archiving consumer saves log to a json files &amp; sends to
           S3
         </p>
 
         <p>
-          Streaming: the influxDB consumer filteres and sends incoming messages
+          Streaming: the influxDB consumer filters and sends incoming messages
           to their appropriate measurements
         </p>
 
         <h3 id="storage">Storage</h3>
 
+        <div class="img-wrapper">
+          <img 
+            src="images/diagrams/crato/crato_consumers2.png" 
+            alt="two kinds of storage needs"
+          />
+        </div>
+
         <h4 id="dualstorageneeds">Dual Storage Needs</h4>
+
+
 
         <p>
           Archives: raw log files saved for as long as needed delayed access is
@@ -970,245 +1816,487 @@
         <h4 id="archivesamazons3glacier">Archives: Amazon S3 Glacier</h4>
 
         <p>
+
           Offsite storage 99.99...%. Durability Automatic lifecycle management
+
           Queryable from AWS console Inexpensive (from $0.004 / GB)
+
         </p>
 
+
+
         <p>
+
           Durability: expected survival percentage of an object in S3 over a
+
           year
+
         </p>
 
+
+
         <p>
+
           Another PRO of using S3: we can use another AWS service Athena to
+
           query our data using SQL language
+
         </p>
 
+
+
         <p>
+
           “Amazon Athena is an interactive query service that makes it easy to
+
           analyze data in Amazon S3 using standard SQL. Athena is serverless, so
+
           there is no infrastructure to manage, and you pay only for the queries
+
           that you run.”
+
         </p>
 
+
+
         <p>
+
           This gives us search and analytics capabilities over our data directly
+
           in the AWS console.
+
         </p>
 
+
+
         <p>
+
           TRANSITION: To understand our choice for immediate access db, we need
+
           to look first at the precise needs addressed by this component
+
         </p>
+
+
 
         <h4 id="queryablestorageneeds">Queryable Storage Needs</h4>
 
-        <p>
-          Track applications &amp; services as they change across time Full text
-          search of log messages is not necessary Examples Patterns in server
-          responses Follow count of logs with ‘err’ severity level by unit of
-          time
-        </p>
+
 
         <p>
-          No need for full text search means tools like ElasticSearch are not
-          ideal (thus that a default and often difficult to manage component of
-          Graylog can be avoided) E.g. patterns in server responses: server 1
-          has handled 2000 requests on average each hour; last hour it responded
-          to 0 TRANSITION: these needs reveal that here, Crato is working with
-          logs as time series data
+
+          Track applications &amp; services as they change across time Full text
+
+          search of log messages is not necessary Examples Patterns in server
+
+          responses Follow count of logs with ‘err’ severity level by unit of
+
+          time
+
         </p>
+
+
+
+        <p>
+
+          No need for full text search means tools like ElasticSearch are not
+
+          ideal (thus that a default and often difficult to manage component of
+
+          Graylog can be avoided) E.g. patterns in server responses: server 1
+
+          has handled 2000 requests on average each hour; last hour it responded
+
+          to 0 TRANSITION: these needs reveal that here, Crato is working with
+
+          logs as time series data
+
+        </p>
+
+
 
         <h4 id="timeseriesdatabases">Time-Series Databases</h4>
 
+
+
         <p>
+
           Time Series Data: sequences of data points from individual sources
+
           over time
+
         </p>
 
+
+
         <ul>
+
           <li>Time is one axis when TS data is plotted on a graph</li>
 
+
+
           <li>Relationships between entities (tables) not important</li>
+
         </ul>
 
+
+
         <p>
+
           Time Series Databases: databases built for collecting, storing,
+
           retrieving &amp; processing TS data
+
         </p>
 
+
+
         <ul>
+
           <li>
+
             Retention policy / aggregation of fine-grained data as it ages
+
           </li>
+
+
 
           <li>Query &amp; summarization tools</li>
 
+
+
           <li>Integration with metrics visualization tools</li>
+
         </ul>
 
+
+
         <p>
+
           Crato’s needs for queryable storage show that it deals with TS data;
+
           although other forms of DB can be used TS data, they lack the tooling
+
           to make working with TS data easy --other DB types require more coding
+
           overhead-- Continuous query over a short retention period measurement
+
           allows, for example, live monitoring of a server response rate TSDB
+
           tend to be optimized for fast indexing by time; While trad db slow
+
           down due to indexing time as the data set grows, TSDB tend to keep a
+
           consistently high ingestion rate TRANSITION: once we narrow it down to
+
           a time series database, we went with influx ...
+
         </p>
+
+
 
         <h4 id="queryablestorageinfluxdb">Queryable Storage: InfluxDB</h4>
 
-        <p>
-          Schema-free: measurements created automatically for each log source
-          InfluxQL is like SQL
-        </p>
+
 
         <p>
-          Since most TSDB have similar optimizations for TSD, and they tend to
-          be immersed in an ecosystem that allows easy integration with
-          visualization tools, our decision came down to the schema-free design
-          of influx. Although Timescale appears to ingest more quickly at high
-          volumes, Crato’s consumer has Kafka in front of it, so ingestion speed
-          can be managed, &amp; Crato’s volume is not designed for those rates
-          anyway (? 10K+ ? per second)
+
+          Schema-free: measurements created automatically for each log source
+
+          InfluxQL is like SQL
+
         </p>
+
+
+
+        <p>
+
+          Since most TSDB have similar optimizations for TSD, and they tend to
+
+          be immersed in an ecosystem that allows easy integration with
+
+          visualization tools, our decision came down to the schema-free design
+
+          of influx. Although Timescale appears to ingest more quickly at high
+
+          volumes, Crato’s consumer has Kafka in front of it, so ingestion speed
+
+          can be managed, &amp; Crato’s volume is not designed for those rates
+
+          anyway (? 10K+ ? per second)
+
+        </p>
+
+
 
         <h2 id="challenges">7 Challenges</h2>
 
+
+
         <h3 id="71collectlogs">7.1 Collect Logs</h3>
+
+
 
         <p>Common collection options not chosen by Crito:</p>
 
+
+
         <p>
+
           SCALING CRATO: Crato scales horizontally with the growth of the
+
           application; simply configure each new server for Crato collection.
+
         </p>
+
+
 
         <h3 id="72producingtokafka">7.2 Producing to Kafka</h3>
 
+
+
         <h3 id="73docker">7.3 Docker</h3>
 
+
+
         <p>
+
           crashed broker causes problems through out pipeline. Must identfy and
+
           orchestrate restart sequence.
+
         </p>
+
+
 
         <h2 id="future-plans">8 Future Plans</h2>
 
+
+
         <p>Additional visualization integration</p>
+
+
 
         <p>Security</p>
 
+
+
         <ul>
+
           <li>option for LAN -client-server communication with TLS</li>
+
         </ul>
 
+
+
         <p>Compression option for large messages</p>
+
         <section id="footnotes">
+
           <h2 id="references">9 References</h2>
 
+
+
           <h5>9.1 Footnotes</h5>
+
           <ol>
+
             <li id="footnote-1">
+
               <a href="" target="_blank"></a>
+
             </li>
+
           </ol>
+
           <!--
+
           <h5>9.2 Resources</h5>
+
           <ol>
+
             <li><a
+
                 href="https://www.manning.com/books/serverless-architectures-on-aws"
+
                 target="_blank">Serverless Architecture on AWS</a>
+
             </li>
+
           </ul>
+
 -->
+
         </section>
+
       </section>
+
     </main>
+
     <section id="our-team">
+
       <h1>Our Team</h1>
+
       <p>
+
         We are looking for opportunities. If you liked what you saw and want to
+
         talk more, please reach out!
+
       </p>
+
       <ul>
+
         <li class="individual">
+
           <img src="https://github.com/4g3m.png?" alt="Faazil Shaikh" />
+
           <h3>Faazil Shaikh</h3>
+
           <p>San Francisco, CA</p>
+
           <ul class="social-icons">
+
             <li>
+
               <a href="mailto:faazil.shaikh@gmail.com" target="_blank">
+
                 <img src="images/icons/email_icon.png" alt="email" />
+
               </a>
+
             </li>
+
             <li>
+
               <a href="https://" target="_blank">
+
                 <img src="images/icons/website_icon.png" alt="website" />
+
               </a>
+
             </li>
+
             <li>
+
               <a href="https://" target="_blank">
+
                 <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+
               </a>
+
             </li>
+
           </ul>
+
         </li>
+
         <li class="individual">
+
           <img
+
             src="https://github.com/jkurthoconnor.png"
+
             alt="Kurth O'Connor"
+
           />
+
           <h3>Kurth O'Connor</h3>
+
           <p>New York, NY</p>
+
           <ul class="social-icons">
+
             <li>
+
               <a href="mailto:jkurthoconnor@gmail.com" target="_blank">
+
                 <img src="images/icons/email_icon.png" alt="email" />
+
               </a>
+
             </li>
+
             <li>
+
               <a href="http://kurthoconnor.com" target="_blank">
+
                 <img src="images/icons/website_icon.png" alt="website" />
+
               </a>
+
             </li>
+
             <li>
+
               <a
+
                 href="https://www.linkedin.com/in/kurth-o-connor-01986a169"
+
                 target="_blank"
+
               >
+
                 <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+
               </a>
+
             </li>
+
           </ul>
+
         </li>
+
         <li class="individual">
+
           <img src="https://github.com/alex-solo.png" alt="Alex Soloviev" />
+
           <h3>Alex Soloviev</h3>
 
+
+
           <p>Toronto, Canada</p>
+
           <ul class="social-icons">
+
             <li>
+
               <a href="mailto:alex.soloviev@gmail.com" target="_blank">
+
                 <img src="images/icons/email_icon.png" alt="email" />
+
               </a>
+
             </li>
+
             <li>
+
               <a href="https://" target="_blank">
+
                 <img src="images/icons/website_icon.png" alt="website" />
+
               </a>
+
             </li>
+
             <li>
+
               <a href="https://www.linkedin.com/" target="_blank">
+
                 <img src="images/icons/linked_in_icon.png" alt="linkedin" />
+
               </a>
+
             </li>
+
           </ul>
+
         </li>
+
       </ul>
+
     </section>
+
   </body>
+
 </html>
