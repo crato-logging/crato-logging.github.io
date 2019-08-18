@@ -3,7 +3,7 @@
 $(function() {
   const $nextButton = $("#nextButton");
   const $resetButton = $("#resetButton");
-  const image = document.getElementById("table_state");
+  const image = document.getElementById("table-state");
 
   $nextButton.on("click", function(e) {
     e.preventDefault();

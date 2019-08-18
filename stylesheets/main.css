@@ -202,6 +202,12 @@ img {
   width: 600px;
 }
 
+#table-state {
+  height: 282px;
+  max-height: 282px;
+  width: auto;
+}
+
 /* ---------------------------------
 
                code

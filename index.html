@@ -188,6 +188,30 @@
           <p>- Jay Kreps</p>
         </blockquote>
 
+        <p>
+          In a simple case, if we have an application that runs on a single
+          node, the life of the developeer is relatively easy. When the
+          application is contained, so is its log data - when something goes
+          wrong we know where to look and reading an error message that is
+          produced can be easily parsed by a human to find out what the issue
+          is. However, as applications continue to grow in complexity so does
+          the volume of their log data - the many components, devices and
+          microservices that produce log data are often distributed on multiple
+          servers and even with a relatively small number of users, this can
+          quickly become a bid data problem. For this reason there has been a
+          greater need to unify log data, both by location as well as format.
+          This shift means that while developers still need to access and read
+          logs, the need for machines to read log data instead of humans has
+          risen drastically. So if log files are useful for humans to read, what
+          does a log that is easier for machines to read look like?
+        </p>
+
+        <p>
+          If we take a step back and look at a log, not as a file but a data
+          structure as described by Jay Kreps in the quote above, we can see
+          that logs as files are just a different form of this log concept.
+        </p>
+
         <img src="images/diagrams/log_data_structure.png" alt="Log" />
 
         <h3>2.3 Logs as Files</h3>
@@ -217,7 +241,7 @@
         </div>
         <img
           src="images/diagrams/table_states/state1.png"
-          id="table_state"
+          id="table-state"
           data-id="1"
           alt="Table State1"
         />
