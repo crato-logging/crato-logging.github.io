@@ -630,6 +630,13 @@
 
         <h4 id="cratoconfig"><code>crato-config</code></h4>
 
+        <div class="img-wrapper">
+          <img 
+            src="images/crato_config_file.png" 
+            alt="crato client config file"
+          />
+        </div>
+
         <p>
           To simplify deployment and reduce complexity, the Crato client cli
           exposes only a handful of configuration options. Crato client
@@ -647,7 +654,13 @@
           before.
         </p>
 
-        <img src="" alt="crato client config file" />
+
+        <div class="img-wrapper">
+          <img 
+            src="images/diagrams/gifs/crato_usage.gif" 
+            alt="client cli usage"
+          />
+        </div>
 
         <h4 id="cratoc"><code>crato -c</code></h4>
 
@@ -685,7 +698,6 @@
           settings or throws an error with instructions for debugging.
         </p>
 
-        <img src="" alt="client cli usage" />
 
         <h4 id="522dockerdeployment">5.2.2 Docker Deployment</h4>
 
@@ -693,7 +705,7 @@
 
         <h2 id="crato-implementation">6 Crato Implementation</h2>
 
-        <h3 id="collectionaggregation-1">Collection &amp; Aggregation</h3>
+        <h3 id="61collectionaggregation-1">6.1 Collection &amp; Aggregation</h3>
 
         <div class="img-wrapper">
           <img
@@ -702,33 +714,37 @@
           />
         </div>
 
-        <h3 id="61caimplementation">6.1 C &amp; A Implementation</h3>
-
         <p>
           Following its design mandate of being a lightweight, easy-to-use
           system, Crato collects logs using <code>rsyslog</code>, a standard
-          tool available on most <code>*nix</code> systems. At the user’s
-          discretion, Crato can collect any text-based log messages your
-          servers, applications, databases, etc generate. Captured log messages
-          are consolidated into a single stream along with system logs.
-          Together, these messages are persisted to disk in the
-          <code>syslog</code> file on each client machine and also routed for
-          processing and forwarding.
+          tool available on most <code>*nix</code> systems.
         </p>
 
         <div class="img-wrapper">
-          <img src="" alt="inner client diagram" />
+          <img 
+            src="images/diagrams/client_system.png"
+            alt="inner client diagram"
+          />
           <p>
             System logs and designated application logs collected into single
             stream.
           </p>
         </div>
 
+        <p>
+          At the user’s discretion, Crato can collect any text-based log 
+          messages your servers, applications, databases, etc generate. 
+          Captured log messages are consolidated into a single stream along 
+          with system logs. Together, these messages are persisted to disk in the
+          <code>syslog</code> file on each client machine and also routed for
+          processing and forwarding.
+        </p>
+
         <h3 id="62shippingingestion">6.2 Shipping &amp; Ingestion</h3>
 
         <div class="img-wrapper">
           <img
-            src="images/diagrams/crato/crato_central_server.png"
+            src="images/diagrams/crato/crato_shipping_ingestion.png"
             alt="shipping and ingestion"
           />
           <p>
@@ -778,7 +794,9 @@
         </p>
 
         <div class="img-wrapper">
-          <img src="" alt="Logs from across system read from single place." />
+          <img 
+            src="images/diagrams/crato/crato_central_server.png"
+            alt="Logs from across system read from single place." />
           <p>
             Central point for insight into entire system: all messages available
             to familiar unix tools.
