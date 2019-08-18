@@ -440,18 +440,38 @@
           have interacted with our application to end up at that state.
         </p>
 
-        <h2 id="logging-for-small-apps">3 Logging for Small Apps</h2>
-
-        <h3>Why Does Logging Matter for Small Applications?</h3>
-
+        <h3>2.7 Why Does Logging Matter for Small Applications?</h3>
         <p>
-          Sometimes, you don't just want to know what changed; you want to know
-          why or how it changed.
+          There are obvious benefits to logging that are important in day to day
+          development. Developers use logs every day for analysis and debugging,
+          infrastructure monitoring and for deriving useful metrics. Some types
+          of applications are also required to keep logs long term for audit
+          purposes. However, besides these uses, careully curated logs related
+          to your application can provide valuable historical context that
+          unlocks other benefits: - We can see precisely see how our
+          applications are being used - Data can be used to find trends,
+          patterns and behaviours - With historical event data we can rebuild
+          tables
         </p>
 
-        <h3>Benefits Overview</h3>
+        <p>
+          For a small but growing application, there are many options to get
+          started with logging. Today, given so many options in terms of cloud
+          computing and storage it should be relatively easy for a small but
+          growing company to get started, however for many companies this is not
+          a primary concern as they try to focus on the development of their
+          application. If some time down the road they want to perform a
+          historical analysis to gain a competitive edge, it is too late. As
+          we'll see in the next section, by default, log data is deleted off
+          local machines and even if it wasn't, the log data from each component
+          in your system is dispersed and not usable for any meaningful
+          analysis. In the next section, we will discuss the various options
+          that a small but growing application has and how they can centralize
+          and store their log data and for that we'll need to exlore how logs
+          are generated and processed in the first place.
+        </p>
 
-        <h3>Syslog</h3>
+        <h2>3 Syslog</h2>
 
         <img src="images/diagrams/syslog_local.png" alt="Syslog local" />
 
