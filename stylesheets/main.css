@@ -190,6 +190,8 @@ img {
 
 #case-study img {
   margin: 50px auto;
+
+  margin-bottom: 10px;
   max-width: 50vw;
   height: auto;
 }
@@ -236,7 +238,7 @@ pre code {
 }
 
 code {
-  color: #ef431b;
+  color: #ed6a40;
   font-family: "Fira Code", monospace;
   font-size: 1rem;
 }
@@ -407,6 +409,21 @@ h3 {
 #case-study p {
   font-size: 1.2rem;
   line-height: 1.8rem;
+}
+
+.img-wrapper {
+  position: relative;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+#case-study .img-wrapper p {
+  font-size: 80%;
+  text-align: center;
+  width: 50%;
+  line-height: 1rem;
+  margin: 0 auto;
+  margin-bottom: 0;
 }
 
 #case-study blockquote p {
