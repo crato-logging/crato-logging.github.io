@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ourTeam = document.querySelector("#our-team");
   const homeLink = document.querySelector("#home-link");
   const $caseStudyNav = $("#case-study nav");
+  const caseStudyNav = document.querySelector("#case-study nav");
   const $sideNavLogo = $("#side-nav");
   const caseStudyLink = document.querySelector("#case-study-link");
   const ourTeamLink = document.querySelector("#our-team-link");
