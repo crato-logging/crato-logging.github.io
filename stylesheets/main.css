@@ -463,11 +463,6 @@ h3 {
   border: none;
 }
 
-#tail,
-#grep {
-  width: 60%;
-}
-
 /* ---------------------------------
 
               commands
@@ -796,7 +791,7 @@ small {
   #crato-logo {
     width: 40px;
     top: 18px;
-    right: 21px;
+    right: 40px;
   }
 
   #github-logo {
@@ -1002,7 +997,7 @@ small {
 @media (max-width: 400px) {
   #crato-logo {
     width: 33px;
-    right: 15px;
+    right: 40px;
   }
 
   #github-logo {
