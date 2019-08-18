@@ -403,6 +403,16 @@
           <strong>why</strong> and <strong>how</strong> something changed.
         </p>
 
+        <div class="img-wrapper">
+          <img
+            src="images/diagrams/stream_table_duality.png"
+            alt="Stream-table duality"
+          />
+          <p>
+            Tables show us current state and streams capture how we got there.
+          </p>
+        </div>
+
         <p>
           And a log is useful in another way. It doesn't only supplement static
           data that lives in tables but because it captures all the changes that
@@ -412,12 +422,10 @@
 
         <div class="img-wrapper">
           <img
-            src="images/diagrams/stream_table_duality.png"
-            alt="Stream-table duality"
+            src="images/diagrams/stream_to_table.png"
+            alt="Stream to a table"
           />
-          <p>
-            Tables show us current state and streams capture how we got there.
-          </p>
+          <p></p>
         </div>
 
         <p>
@@ -549,10 +557,10 @@
         </p>
 
         <div class="img-wrapper">
-          <img 
-             src="images/diagrams/complexity_ownership_diagram.png" 
-             alt="2-axis-comparison"
-           />
+          <img
+            src="images/diagrams/complexity_ownership_diagram.png"
+            alt="2-axis-comparison"
+          />
         </div>
 
         <p>
@@ -577,9 +585,9 @@
         </p>
 
         <div class="img-wrapper">
-          <img 
-             src="images/diagrams/crato/crato_architecture.png" 
-             alt="crato architecture"
+          <img
+            src="images/diagrams/crato/crato_architecture.png"
+            alt="crato architecture"
           />
         </div>
 
@@ -619,9 +627,7 @@
           before.
         </p>
 
-        <img src="" 
-             alt="crato client config file"
-         />
+        <img src="" alt="crato client config file" />
 
         <h4 id="cratoc"><code>crato -c</code></h4>
 
@@ -659,27 +665,22 @@
           settings or throws an error with instructions for debugging.
         </p>
 
-        <img src="" 
-             alt="client cli usage"
-         />
+        <img src="" alt="client cli usage" />
 
         <h4 id="522dockerdeployment">5.2.2 Docker Deployment</h4>
 
-        <img src="" 
-             alt="deployment via Docker"
-         />
+        <img src="" alt="deployment via Docker" />
 
         <h2 id="crato-implementation">6 Crato Implementation</h2>
 
         <h3 id="collectionaggregation-1">Collection &amp; Aggregation</h3>
 
         <div class="img-wrapper">
-          <img 
-             src="images/diagrams/crato/crato_collection_aggregation.png" 
-             alt="collection and aggregation"
-           />
+          <img
+            src="images/diagrams/crato/crato_collection_aggregation.png"
+            alt="collection and aggregation"
+          />
         </div>
-
 
         <h3 id="61caimplementation">6.1 C &amp; A Implementation</h3>
 
@@ -696,12 +697,9 @@
         </p>
 
         <div class="img-wrapper">
-          <img 
-            src="" 
-            alt="inner client diagram"
-          />
+          <img src="" alt="inner client diagram" />
           <p>
-            System logs and designated application logs collected into single 
+            System logs and designated application logs collected into single
             stream.
           </p>
         </div>
@@ -709,13 +707,13 @@
         <h3 id="62shippingingestion">6.2 Shipping &amp; Ingestion</h3>
 
         <div class="img-wrapper">
-          <img 
-            src="images/diagrams/crato/crato_central_server.png" 
+          <img
+            src="images/diagrams/crato/crato_central_server.png"
             alt="shipping and ingestion"
           />
           <p>
-            Crato clients monitor logs and forward the log messages as
-            they arrive to the core Crato infrastructure.
+            Crato clients monitor logs and forward the log messages as they
+            arrive to the core Crato infrastructure.
           </p>
         </div>
 
@@ -760,13 +758,10 @@
         </p>
 
         <div class="img-wrapper">
-          <img 
-            src="" 
-            alt="Logs from across system read from single place."
-          />
+          <img src="" alt="Logs from across system read from single place." />
           <p>
-            Central point for insight into entire system: all messages
-            available to familiar unix tools.
+            Central point for insight into entire system: all messages available
+            to familiar unix tools.
           </p>
         </div>
 
@@ -831,12 +826,11 @@
         </h4>
 
         <div class="img-wrapper">
-          <img 
-            src="images/diagrams/crato/crato_kafka.png" 
+          <img
+            src="images/diagrams/crato/crato_kafka.png"
             alt="Architecture with Kafka highlighted"
           />
-          <p>
-          </p>
+          <p></p>
         </div>
 
         <p>
