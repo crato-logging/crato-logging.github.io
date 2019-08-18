@@ -471,7 +471,7 @@
           are generated and processed in the first place.
         </p>
 
-        <h2>3 Syslog</h2>
+        <h2 id="syslog">3 Syslog</h2>
 
         <img src="images/diagrams/syslog_local.png" alt="Syslog local" />
 
@@ -631,8 +631,8 @@
         <h4 id="cratoconfig"><code>crato-config</code></h4>
 
         <div class="img-wrapper">
-          <img 
-            src="images/crato_config_file.png" 
+          <img
+            src="images/crato_config_file.png"
             alt="crato client config file"
           />
         </div>
@@ -654,10 +654,9 @@
           before.
         </p>
 
-
         <div class="img-wrapper">
-          <img 
-            src="images/diagrams/gifs/crato_usage.gif" 
+          <img
+            src="images/diagrams/gifs/crato_usage.gif"
             alt="client cli usage"
           />
         </div>
@@ -698,7 +697,6 @@
           settings or throws an error with instructions for debugging.
         </p>
 
-
         <h4 id="522dockerdeployment">5.2.2 Docker Deployment</h4>
 
         <img src="" alt="deployment via Docker" />
@@ -721,7 +719,7 @@
         </p>
 
         <div class="img-wrapper">
-          <img 
+          <img
             src="images/diagrams/client_system.png"
             alt="inner client diagram"
           />
@@ -732,10 +730,10 @@
         </div>
 
         <p>
-          At the user’s discretion, Crato can collect any text-based log 
-          messages your servers, applications, databases, etc generate. 
-          Captured log messages are consolidated into a single stream along 
-          with system logs. Together, these messages are persisted to disk in the
+          At the user’s discretion, Crato can collect any text-based log
+          messages your servers, applications, databases, etc generate. Captured
+          log messages are consolidated into a single stream along with system
+          logs. Together, these messages are persisted to disk in the
           <code>syslog</code> file on each client machine and also routed for
           processing and forwarding.
         </p>
@@ -794,9 +792,10 @@
         </p>
 
         <div class="img-wrapper">
-          <img 
+          <img
             src="images/diagrams/crato/crato_central_server.png"
-            alt="Logs from across system read from single place." />
+            alt="Logs from across system read from single place."
+          />
           <p>
             Central point for insight into entire system: all messages available
             to familiar unix tools.
