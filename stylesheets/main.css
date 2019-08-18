@@ -180,7 +180,7 @@ img {
   right: 35px;
 }
 
-#mashr-deploy {
+#crato-deploy {
   background-color: #282828;
   border: 10px solid #282828;
   border-radius: 10px;
@@ -462,6 +462,11 @@ h3 {
   border: none;
 }
 
+#tail,
+#grep {
+  width: 60%;
+}
+
 /* ---------------------------------
 
               commands
@@ -487,7 +492,7 @@ h3 {
   color: #98971a;
 }
 
-#list-command .mashr-resource {
+#list-command .crato-resource {
   color: #b8bb26;
 }
 
@@ -787,7 +792,7 @@ small {
 
   /* Logos */
 
-  #mashr-logo {
+  #crato-logo {
     width: 40px;
     top: 18px;
     right: 21px;
@@ -994,7 +999,7 @@ small {
 }
 
 @media (max-width: 400px) {
-  #mashr-logo {
+  #crato-logo {
     width: 33px;
     right: 15px;
   }
