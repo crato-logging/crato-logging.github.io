@@ -934,12 +934,23 @@
         <p>
           But even here in the OSS options, there is a range of complexity,
           which is largely attributable to the database and full-text search
-          choices of the OSS stacks. Crato sits among the OSS logging solutions,
-          but it reduces complexity even more by eliminating the need to set up
-          and maintain a full-text search engine. Thus, Crato is designed to
-          provide the core features of centralized logging while reducing
-          complexity and time commitments.
+          choices of the OSS stacks. Crato reduces complexity even more by 
+          eliminating the need to set up and maintain a full-text search engine. 
+          Thus, Crato is designed to provide the core features of centralized 
+          logging while reducing complexity and time commitments.
         </p>
+
+        <h4>Design Goals</h4>
+
+        <ul>
+          <li>Open Source</li>
+          <li>Provide core centralized logging functions</li>
+          <li>Easy to use: knowledge and skills for configuration, deployment 
+              and use are likely to be found in the development team</li>
+          <li>Lightweight: modify as little as possible on client machines;
+              do not require changes to user's application code</li>
+          <li>Allow data ownership and control over storage</li>
+        </ul>
 
         <h3 id="51cratoarchitectureoverview">
           5.1 Crato Architecture Overview
@@ -1366,7 +1377,7 @@
         <p>
           As a result of this pull model, Crato is built with two consumer groups, 
           one for batching and one for streaming. The batching consumers save 
-          logs to a json file until it reaches a specified capacity, and then 
+          logs to a json file until it reaches a configurable size, and then 
           send the file to Amazon S3 Glacier. The streaming consumers filter 
           incoming log messages and serve them to their appropriate measurements 
           in InfluxDB.
@@ -1388,6 +1399,7 @@
         </h4>
 
         <p>
+        Crato 
           Archives: raw log files saved for as long as needed delayed access is
           acceptable
         </p>
