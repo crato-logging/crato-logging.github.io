@@ -959,7 +959,9 @@
           />
         </div>
 
-        <h3 id="52commands">5.2 Commands</h3>
+        <h3 id="52commands">
+          5.2 Commands
+        </h3>
 
         <p>
           Crato client is designed to have a light footprint on each client
@@ -1011,17 +1013,17 @@
           />
         </div>
 
-        <h4 id="cratoc"><code>crato -c</code></h4>
+        <h4 id="cratoc">
+          <code>crato -c</code>
+        </h4>
 
         <p>
           Apply the current configuration and start Crato client with
-
           <code>crato -c</code> or <code>crato --configure</code>. Running this
           command checks that permissions, <code>rsyslog</code> version and base
           configuration is appropriate for Crato client. It then dynamically
           generates a <code>/etc/rsyslog.d/49-crato.conf</code> file to hold
           Crato configuration, and checks the validity of the resulting
-
           <code>rsyslog</code> configuration. It then either throws an error
           with instructions for debugging or (re)starts logging with the new
           settings.
@@ -1041,7 +1043,9 @@
           makes no changes.
         </p>
 
-        <h4 id="cratod"><code>crato -d</code></h4>
+        <h4 id="cratod">
+          <code>crato -d</code>
+        </h4>
 
         <p>
           <code>crato -d</code> or <code>crato --delete</code> removes current
@@ -1050,13 +1054,23 @@
           settings or throws an error with instructions for debugging.
         </p>
 
-        <h4 id="522dockerdeployment">5.2.2 Docker Deployment</h4>
+        <h4 id="522dockerdeployment">
+          5.2.2 Docker Deployment
+        </h4>
 
-        <img src="" alt="deployment via Docker" />
+        <div class="img-wrapper">
+          <img 
+            src="" 
+            alt="deployment via Docker" 
+          />
+          <p></p>
+        </div>
 
         <h2 id="crato-implementation">6 Crato Implementation</h2>
 
-        <h3 id="61collectionaggregation-1">6.1 Collection &amp; Aggregation</h3>
+        <h3 id="61collectionaggregation-1">
+          6.1 Collection &amp; Aggregation
+        </h3>
 
         <div class="img-wrapper">
           <img
@@ -1088,12 +1102,13 @@
           messages your servers, applications, databases, etc generate. Captured
           log messages are consolidated into a single stream along with system
           logs. Together, these messages are persisted to disk in the
-
           <code>syslog</code> file on each client machine and also routed for
           processing and forwarding.
         </p>
 
-        <h3 id="62shippingingestion">6.2 Shipping &amp; Ingestion</h3>
+        <h3 id="62shippingingestion">
+          6.2 Shipping &amp; Ingestion
+        </h3>
 
         <div class="img-wrapper">
           <img
@@ -1107,7 +1122,9 @@
           </p>
         </div>
 
-        <h4 id="621shipping">6.2.1 Shipping</h4>
+        <h4 id="621shipping">
+          6.2.1 Shipping
+        </h4>
 
         <p>
           So far, the logs are grouped into a single stream, which is being
@@ -1135,7 +1152,9 @@
           gains and absence of guarantees.
         </p>
 
-        <h4 id="622ingestion">6.2.2 Ingestion</h4>
+        <h4 id="622ingestion">
+          6.2.2 Ingestion
+        </h4>
 
         <p>
           As it receives new log events from the dispersed clients, the central
@@ -1144,7 +1163,6 @@
           captured messages from the clients along with those from the
           collection server itself. The full text is available for CLI query
           using familiar text processing tools like <code>grep</code>,
-
           <code>tail</code>, <code>sort</code>, and <code>awk</code>.
         </p>
 
@@ -1166,7 +1184,9 @@
           database.
         </p>
 
-        <h3 id="63messagestreaming">6.3 Message Streaming</h3>
+        <h3 id="63messagestreaming">
+          6.3 Message Streaming
+        </h3>
 
         <h4 id="631weneedtostorelogsbuthow">
           6.3.1 We Need to Store Logs...but How?
@@ -1285,7 +1305,6 @@
           side by introducing additional configuration requirements and
           dependencies. If we want to use the <code>syslog</code> protocol on
           each client (see the justification above), then an
-
           <code>rsyslog</code> central server poses fewer problems for client’s
           installation. Also, removing the central server would eliminate one of
           Crato's UI advantages, because without a central collection point it
@@ -1295,7 +1314,9 @@
           against that goal.
         </p>
 
-        <h4 id="633producingtokafka">6.3.3 Producing to Kafka</h4>
+        <h4 id="633producingtokafka">
+          6.3.3 Producing to Kafka
+        </h4>
 
         <div class="img-wrapper">
           <img
@@ -1311,7 +1332,9 @@
 
         <p>DA memory queue to mitigate server / broker partition</p>
 
-        <h4 id="634consumingfromkafka">6.3.4 Consuming from Kafka</h4>
+        <h4 id="634consumingfromkafka">
+          6.3.4 Consuming from Kafka
+        </h4>
 
         <div class="img-wrapper">
           <img
@@ -1333,7 +1356,9 @@
           to their appropriate measurements
         </p>
 
-        <h3 id="storage">Storage</h3>
+        <h3 id="64storage">
+          6.4 Storage
+        </h3>
 
         <div class="img-wrapper">
           <img
@@ -1342,7 +1367,9 @@
           />
         </div>
 
-        <h4 id="dualstorageneeds">Dual Storage Needs</h4>
+        <h4 id="641dualstorageneeds">
+          6.4.1 Dual Storage Needs
+        </h4>
 
         <p>
           Archives: raw log files saved for as long as needed delayed access is
@@ -1354,7 +1381,9 @@
           entities over time
         </p>
 
-        <h4 id="archivesamazons3glacier">Archives: Amazon S3 Glacier</h4>
+        <h4 id="642archivesamazons3glacier">
+          6.4.2 Archives: Amazon S3 Glacier
+        </h4>
 
         <p>
           Offsite storage 99.99...%. Durability Automatic lifecycle management
@@ -1383,12 +1412,9 @@
           in the AWS console.
         </p>
 
-        <p>
-          TRANSITION: To understand our choice for immediate access db, we need
-          to look first at the precise needs addressed by this component
-        </p>
-
-        <h4 id="queryablestorageneeds">Queryable Storage Needs</h4>
+        <h4 id="643queryablestorageneeds">
+          6.4.2 Queryable Storage Needs
+        </h4>
 
         <p>
           Track applications &amp; services as they change across time Full text
@@ -1402,11 +1428,12 @@
           ideal (thus that a default and often difficult to manage component of
           Graylog can be avoided) E.g. patterns in server responses: server 1
           has handled 2000 requests on average each hour; last hour it responded
-          to 0 TRANSITION: these needs reveal that here, Crato is working with
-          logs as time series data
+          to 0
         </p>
 
-        <h4 id="timeseriesdatabases">Time-Series Databases</h4>
+        <h4 id="643timeseriesdatabases">
+          6.4.3 Time-Series Databases
+        </h4>
 
         <p>
           Time Series Data: sequences of data points from individual sources
@@ -1415,7 +1442,6 @@
 
         <ul>
           <li>Time is one axis when TS data is plotted on a graph</li>
-
           <li>Relationships between entities (tables) not important</li>
         </ul>
 
@@ -1426,11 +1452,8 @@
 
         <ul>
           <li>
-            Retention policy / aggregation of fine-grained data as it ages
-          </li>
-
+            Retention policy / aggregation of fine-grained data as it ages </li>
           <li>Query &amp; summarization tools</li>
-
           <li>Integration with metrics visualization tools</li>
         </ul>
 
@@ -1442,11 +1465,12 @@
           allows, for example, live monitoring of a server response rate TSDB
           tend to be optimized for fast indexing by time; While trad db slow
           down due to indexing time as the data set grows, TSDB tend to keep a
-          consistently high ingestion rate TRANSITION: once we narrow it down to
-          a time series database, we went with influx ...
+          consistently high ingestion rate 
         </p>
 
-        <h4 id="queryablestorageinfluxdb">Queryable Storage: InfluxDB</h4>
+        <h4 id="644queryablestorageinfluxdb">
+          6.4.4 Queryable Storage: InfluxDB
+        </h4>
 
         <p>
           Schema-free: measurements created automatically for each log source
@@ -1465,18 +1489,20 @@
 
         <h2 id="challenges">7 Challenges</h2>
 
-        <h3 id="71collectlogs">7.1 Collect Logs</h3>
+        <h3 id="71collectlogs">
+          7.1 Collect Logs
+        </h3>
 
         <p>Common collection options not chosen by Crito:</p>
 
-        <p>
-          SCALING CRATO: Crato scales horizontally with the growth of the
-          application; simply configure each new server for Crato collection.
-        </p>
 
-        <h3 id="72producingtokafka">7.2 Producing to Kafka</h3>
+        <h3 id="72producingtokafka">
+          7.2 Producing to Kafka
+        </h3>
 
-        <h3 id="73docker">7.3 Docker</h3>
+        <h3 id="73docker">
+          7.3 Docker
+        </h3>
 
         <p>
           crashed broker causes problems through out pipeline. Must identfy and
