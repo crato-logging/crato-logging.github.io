@@ -1491,7 +1491,36 @@
           7.1 Collect Logs
         </h3>
 
-        <p>Common collection options not chosen by Crito:</p>
+        <p>
+          How to efficiently and reliably collect logs without imposing on the developers' 
+          application code?
+        </p>
+
+        <p>Common collection options not chosen by Crato:</p>
+        <ul>
+          <li>Install active collection agent on users' servers
+            <ul>
+              <li>Pros: Crato would have control</li>
+              <li>Cons: invasive; violates goal of being lighweight; risks of 
+                  adding code into an untested environment</li>
+            </ul>
+          </li>
+          <li>Integrate with an application logging library
+            <ul>
+              <li>Pros: many libraries already familiar to developers</li>
+              <li>Cons: narrows the scope of users to those using a particular
+                  library or framework; likely to not incorportate web server
+                  logs or system logs</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>
+          Crato's approach: Adapt <code>rsyslogd</code>, an already in place 
+          system-level logging daemon to collect from applications as well. Create
+          customized configurations that supplement, not override, existing 
+          <code>rsyslog</code> configurations.
+        </p>
 
         <h3 id="72producingtokafka">
           7.2 Producing to Kafka
