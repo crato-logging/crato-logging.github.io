@@ -176,16 +176,16 @@
         <p>
           Logs are an essential tool that developers use on a daily basis and in
           the simplest case, we can think of logs as distinct events that get
-          written to files. This log data is one of the key elements in
-          determining application health, as well as in analysis and debugging,
-          and for deriving useful metrics. But most often, especially on a
-          single node system, when there is an issue, developers can reach for
-          the appropriate log file and look for errors or warnings to understand
-          what went wrong. In addition to the error logs that help developers
-          investigate issues, event logs across your application's services can
-          also give insights on how the application is being used and are
-          essential for performing historical analysis to find trends, patterns
-          and user behaviours.
+          written to files<sup><a href="#footnote-1">1</a></sup
+          >. This log data is one of the key elements in determining application
+          health, as well as in analysis and debugging, and for deriving useful
+          metrics. But most often, especially on a single node system, when
+          there is an issue, developers can reach for the appropriate log file
+          and look for errors or warnings to understand what went wrong. In
+          addition to the error logs that help developers investigate issues,
+          event logs across your application's services can also give insights
+          on how the application is being used and are essential for performing
+          historical analysis to find trends, patterns and user behaviours.
         </p>
 
         <p>
@@ -209,8 +209,9 @@
           example, MySQL generates its own log file and the
 
           <code>httpd</code> sub directory contains the apache web server
-          access<em>log and error</em>log. There are also system processes that
-          can be found in files like <code>kern.log</code> or
+          <code>access_log</code> and <code>error_log</code>. There are also
+          system processes that can be found in files like
+          <code>kern.log</code> or
 
           <code>auth.log</code> that contain information logged by the kernel
           and system authorization information respectively.
@@ -239,8 +240,8 @@
           />
 
           <p>
-            We can search through a file to look for logs generated in the last
-            10 minutes.
+            ex. We can search through a file to look for logs generated in the
+            last 10 minutes.
           </p>
         </div>
 
@@ -272,11 +273,13 @@
           the volume of their log data - the many components, devices and
           microservices that produce log data are often distributed on multiple
           servers and even with a relatively small number of users, this can
-          quickly become a bid data problem. For this reason there has been a
+          quickly become a big data problem. For this reason there has been a
           greater need to unify log data, both by location as well as format.
           This shift means that while developers still need to access and read
           logs, this strategy becomes quickly unmanageable and so the need for
           machines to read log data instead of humans has risen drastically.
+        </p>
+        <p>
           However, in order for a machine to parse and aggregate log data to
           then be consumed by humans, a text file many not be the best format.
           So if log files are useful for humans to read, what does a log that is
@@ -300,11 +303,12 @@
           data structure. We start on the left and each subsequent entry is then
           added to the right. The entries on the left are then by definition
           older than entries on the right giving this data structure a natural
-          notion of time, even without an explicit timestamp. Since reads also
-          proceed from left to write, in the context of building an application,
-          if each entry in a log represents some event, we can know the order in
-          which the events occurred, thus building up a sort of historical
-          context for our applications.
+          notion of time, even without an explicit timestamp<sup
+            ><a href="#footnote-2">2</a></sup
+          >. Since reads also proceed from left to write, in the context of
+          building an application, if each entry in a log represents some event,
+          we can know the order in which the events occurred, thus building up a
+          sort of historical context for our applications.
         </p>
 
         <h3>2.4 Logs as Streams</h3>
@@ -317,7 +321,8 @@
           as event streams and that your application shouldn’t concern itself
           with the storage of this information. Instead, these logs should be
           treated as a continuous stream that is captured and stored by a
-          separate service.(footnote)
+          separate service<sup><a href="#footnote-3">3</a></sup
+          >.
         </p>
 
         <p>
@@ -328,12 +333,11 @@
           it's a convenient method of storing data; individual log messages can
           be viewed as time ordered streams of events that
 
-          <strong>can</strong> be written to files but that can also be
-          processed in other ways. To borrow another quote from Jay Kreps, "Log
-          is another word for stream and logs are at the heart of stream
-          processing". Streams of data can be directed or split into multiple
-          streams and sent to different locations for further processing for
-          example.
+          <em>can</em> be written to files but that can also be processed in
+          other ways. To borrow another quote from Jay Kreps, "Log is another
+          word for stream and logs are at the heart of stream processing".
+          Streams of data can be directed or split into multiple streams and
+          sent to different locations for further processing for example.
         </p>
 
         <p>
@@ -382,7 +386,7 @@
           between streams and tables.
         </p>
 
-        <h3>2.6 Stream - Table Duality</h3>
+        <h3>2.6 Stream-Table Duality</h3>
 
         <p>
           Stream-table duality is another way of saying that there are distinct
@@ -422,13 +426,12 @@
           we isolate a table and look at it at any point in time, it's possible
           to answer questions about the current state - for example, what
 
-          <strong>is</strong> the current balance of a customer with username
-
-          <em>big_ed</em>. However, looking only at a database record at one
-          point in time and then another is not going to paint a full picture -
-          there are many ways you could have gotten from one state to another
-          and it is the log that can describe that journey. We have to look at
-          the database's change log which is what captures those changes.
+          <em>is</em> the current balance of a customer with username big_ed.
+          However, looking only at a database record at one point in time and
+          then another is not going to paint a full picture - there are many
+          ways you could have gotten from one state to another and it is the log
+          that can describe that journey. We have to look at the database's
+          change log which is what captures those changes.
         </p>
 
         <p>
@@ -450,10 +453,13 @@
           have distinct events and they're appended to the end of the log. What
           is captured in the blue boxes are the changes between the table's
           states. This stream of changes can supplement the core business logic
-          that lives in tables and helps answer not only what changed or in this
-          example, what is the current balance of one of our users but also
+          that lives in tables and helps answer not only <em>what</em> changed
+          or in this example, what is the current balance of one of our users
+          but also
 
-          <strong>why</strong> and <strong>how</strong> something changed.
+          <em>why</em> and <em>how</em> something changed<sup
+            ><a href="#footnote-4">4</a></sup
+          >.
         </p>
 
         <div class="img-wrapper">
@@ -504,11 +510,13 @@
           of applications are also required to keep logs long term for audit
           purposes. However, besides these uses, careully curated logs related
           to your application can provide valuable historical context that
-          unlocks other benefits: - We can see precisely see how our
-          applications are being used - Data can be used to find trends,
-          patterns and behaviours - With historical event data we can rebuild
-          tables
+          unlocks other benefits:
         </p>
+        <ul>
+          <li>We can see precisely see how our applications are being used</li>
+          <li>Data can be used to find trends, patterns and behaviours</li>
+          <li>With historical event data we can rebuild tables</li>
+        </ul>
 
         <p>
           For a small but growing application, there are many options to get
@@ -516,15 +524,17 @@
           computing and storage it should be relatively easy for a small but
           growing company to get started, however for many companies this is not
           a primary concern as they try to focus on the development of their
-          application. If some time down the road they want to perform a
-          historical analysis to gain a competitive edge, it is too late. As
-          we'll see in the next section, by default, log data is deleted off
-          local machines and even if it wasn't, the log data from each component
-          in your system is dispersed and not usable for any meaningful
-          analysis. In the next section, we will discuss the various options
-          that a small but growing application has and how they can centralize
-          and store their log data and for that we'll need to exlore how logs
-          are generated and processed in the first place.
+          application. Many companies start out without a logging system and
+          implement one later but they’ve lost all that log data up to that
+          point. If some time down the road they want to perform a historical
+          analysis to gain a competitive edge, it is too late. As we'll see, by
+          default, log data is deleted off local machines and even if it wasn't,
+          the log data from each component in your system is dispersed and not
+          usable for any meaningful analysis. In the next section, we will
+          discuss the various options that a small but growing application has
+          and how they can centralize and store their log data and for that
+          we'll need to exlore how logs are generated and processed in the first
+          place.
         </p>
 
         <h2 id="syslog">3 Syslog</h2>
@@ -1491,10 +1501,31 @@
 
           <ol>
             <li id="footnote-1">
-              <a href="" target="_blank"></a>
+              <a href="https://en.wikipedia.org/wiki/Log_file" target="_blank"
+                >https://en.wikipedia.org/wiki/Log_file</a
+              >
+            </li>
+            <li id="footnote-2">
+              <a
+                href="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying"
+                target="_blank"
+                >https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+              </a>
+            </li>
+            <li id="footnote-3">
+              <a href="https://12factor.net/" target="_blank"
+                >https://12factor.net/
+              </a>
+            </li>
+
+            <li id="footnote-4">
+              <a
+                href="https://docs.confluent.io/current/streams/concepts.html"
+                target="_blank"
+                >https://docs.confluent.io/current/streams/concepts.html
+              </a>
             </li>
           </ol>
-
           <!--
 
           <h5>9.2 Resources</h5>

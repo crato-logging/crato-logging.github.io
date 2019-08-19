@@ -137,7 +137,7 @@ sup a {
 }
 
 sup a:hover {
-  color: #ef431b;
+  color: #ed6a40;
 }
 
 /* ---------------------------------
@@ -442,6 +442,7 @@ h3 {
   font-size: 1.1rem;
   line-height: 1.6rem;
   list-style: disc;
+
   margin-left: 2rem;
 }
 
