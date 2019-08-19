@@ -1453,7 +1453,8 @@
           Emphasizing metrics-based queries, Crato should be able to track entities 
           (e.g. servers, applications, processes) through thier logs as they change 
           across time.  Seen in this light, logs can be understood as containing 
-          time series data.
+          time series data, and as ideal candidates for time series databases.
+          Consider the following comparisons.
         </p>
 
         <p>
@@ -1467,7 +1468,7 @@
         </ul>
 
         <p>
-          Time Series Databases: databases built for collecting, storing,
+        <b>Time Series Databases</b>: databases built for collecting, storing,
           retrieving &amp; processing TS data
         </p>
 
@@ -1484,9 +1485,10 @@
           they often lack the tooling to make working with time series easy .
           For example, running a continuous query over a short retention period 
           measurement allows live monitoring of a server's response rate. Also, 
-          time series databases tend to be optimized for fast indexing by time; 
-          while trad db slow down due to indexing as the data set grows, TSDBs 
-          tend to keep a consistently high ingestion rate.
+          time series databases tend to be optimized for fast indexing by time. 
+          While other database types tend to slow down due to indexing as the 
+          data set grows, time series databases tend to keep a consistently high 
+          ingestion rate.
         </p>
 
         <h4 id="644queryablestorageinfluxdb">
