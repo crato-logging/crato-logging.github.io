@@ -1358,7 +1358,7 @@
           one for batching and one for streaming. The batching consumer saves 
           logs to a json file until it reaches a specified capacity, and then 
           sends the file to Amazon S3 Glacier. The streaming consumer filters 
-          incoming log messges and serves them to their appropriate measurements 
+          incoming log messages and serves them to their appropriate measurements 
           in InfluxDB.
         </p>
 
@@ -1404,13 +1404,6 @@
         <p>
           Another PRO of using S3: we can use another AWS service Athena to
           query our data using SQL language
-        </p>
-
-        <p>
-          “Amazon Athena is an interactive query service that makes it easy to
-          analyze data in Amazon S3 using standard SQL. Athena is serverless, so
-          there is no infrastructure to manage, and you pay only for the queries
-          that you run.”
         </p>
 
         <p>
