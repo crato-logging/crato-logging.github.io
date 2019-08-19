@@ -1415,12 +1415,14 @@
           <ul>
             <li>log <i>files</i> saved for as long as desired</li>
             <li>delayed access to logs is acceptable</li>
+            <li>stored offsite as a backup</li>
           </ul>
 
         <h5>Metrics-based query:</h5>
           <ul>
             <li>log <i>messages</i> saved for limited time</li>
             <li>immediate access to query is required</li>
+            <li>location is not essential</li>
           </ul>
 
         <h4 id="642archivesamazons3glacier">
@@ -1428,23 +1430,19 @@
         </h4>
 
         <p>
-          Offsite storage 99.99...%. Durability Automatic lifecycle management
-          Queryable from AWS console Inexpensive (from $0.004 / GB)
+          Crato uses Amazon S3 Glacier for archival log storage. Users enter their
+          AWS credentials and a destination S3 bucket name when deploying 
+          Crato core, and Crato handles the rest. AWS settings and configuration
+          are handled directly through Amazon.
         </p>
 
         <p>
-          Durability: expected survival percentage of an object in S3 over a
-          year
-        </p>
-
-        <p>
-          Another PRO of using S3: we can use another AWS service Athena to
-          query our data using SQL language
-        </p>
-
-        <p>
-          This gives us search and analytics capabilities over our data directly
-          in the AWS console.
+          Using S3 for log file archiving gives Crato's users offsite storage with 
+          99.99..% durability and automatic lifecycle management (configured via 
+          AWS console) at a competitive price. Furthermore, because Crato archives 
+          in JSON format, the files themselves are queryable from AWS console. 
+          As a result users may have an easier time determining which files
+          they wish to extract.
         </p>
 
         <h4 id="643queryablestorageneeds">
