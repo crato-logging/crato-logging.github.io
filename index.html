@@ -1399,15 +1399,29 @@
         </h4>
 
         <p>
-        Crato 
-          Archives: raw log files saved for as long as needed delayed access is
-          acceptable
+          In order to provide the full advantages associated with centralized 
+          logging, a platform would need to store logs and to make them
+          available for queries. This could be accomplished with a single data
+          store, but Crato distinguishes between two very different needs here.
+          First, (as discussed above) there is value in archiving logs, i.e. setting 
+          them aside in files for long-term preservation. Second, storing 
+          individual log messages for metrics based queries provides unique insight
+          into a system's performance. Crato's storage is designed with the idea 
+          that these different needs should be addressed separately. As a result, 
+          Crato uses two forms of storage.
         </p>
 
-        <p>
-          Metrics-based Query: immediate access to recent log messages track
-          entities over time
-        </p>
+        <h5>Archives:</h5>
+          <ul>
+            <li>log <i>files</i> saved for as long as desired</li>
+            <li>delayed access to logs is acceptable</li>
+          </ul>
+
+        <h5>Metrics-based query:</h5>
+          <ul>
+            <li>log <i>messages</i> saved for limited time</li>
+            <li>immediate access to query is required</li>
+          </ul>
 
         <h4 id="642archivesamazons3glacier">
           6.4.2 Archives: Amazon S3 Glacier
