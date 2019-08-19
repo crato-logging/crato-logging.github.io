@@ -1323,11 +1323,16 @@
         </div>
 
         <p>
-          Crato's central collection server sends logs to Kafka via rsyslog's
-          Omkafka module.
+          With Kafka in place, Crato's central collection server sends plain text
+          and JSON formatted log messages to Kafka brokers via <code>rsyslog</code>'s 
+          <code>omkafka</code> module. Early tests of Crato with a single Kafka broker 
+          revealed that the broker would not always be available to receive messages. 
+          To prevent the potential loss of logs, Crato is now built with a three
+          broker Kafka. Additionally, it employs on its central server a 
+          disk-assisted memory queue to mitigate partitions between server and 
+          broker and to provide an emergency store of unsent messages if 
+          <code>rsyslogd</code> shuts down.
         </p>
-
-        <p>DA memory queue to mitigate server / broker partition</p>
 
         <h4 id="634consumingfromkafka">
           6.3.4 Consuming from Kafka
