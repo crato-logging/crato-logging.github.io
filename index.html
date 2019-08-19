@@ -946,10 +946,10 @@
         </h3>
 
         <p>
-          Crato consists of two main components: the client and the central
-          server. The client is installed and run on each machine from which
-          logs are to be collected. The central server is deployed via Docker
-          onto a separate server or VPS.
+          Crato consists of two main components: the <i>Crato Client</i> and 
+          <i>Crato Core</i>.  The client is installed and run on each 
+          machine from which logs are to be collected. The core infrastructure 
+          is deployed via Docker onto a separate server or VPS.
         </p>
 
         <div class="img-wrapper">
@@ -963,20 +963,23 @@
           5.2 Commands
         </h3>
 
-        <p>
-          Crato client is designed to have a light footprint on each client
-          system. Downloading the client adds only two files to each system: the
+        <h4 id="521cratoclient">
+          5.2.1 Crato Client
+        </h4>
 
+        <p>
+          Crato Client is designed to have a light footprint on each client
+          system. Downloading the client adds only two files to each system: the
           <code>crato</code> bash script and <code>crato-config</code>, a text
           file to record user preferences. Running Crato client interferes with
           the native logging of the system as little as possible. Crato adds
           only a single configuration file that supplements, not overrides,
-          default settings
+          default settings.
         </p>
 
         <p>
           To download Crato client, <code>curl</code> or <code>wget</code> the
-          script.
+          script from {url}.
         </p>
 
         <h4 id="cratoconfig"><code>crato-config</code></h4>
@@ -1000,10 +1003,8 @@
         <p>
           For users needing more granular control over settings, the full range
           of configuraton options are available by directly editing the default
-
-          <code>*.conf</code> files. Additionally, because Crato does not
-          override applications' logging processes, these can be configured as
-          before.
+          <code>*.conf</code> files. Because Crato does not override 
+          applications' logging processes, these can be configured as before.
         </p>
 
         <div class="img-wrapper">
@@ -1036,7 +1037,6 @@
         <p>
           <code>crato -s</code> or <code>crato --suspend</code> suspends Crato's
           logging on the client and returns the machine to default logging.
-
           <code>crato -r</code> or <code>crato --resume</code> restarts Crato
           logging on the client with the suspended settings resumed. If Crato
           client was not suspended at the time of execution, then the command
@@ -1054,8 +1054,17 @@
           settings or throws an error with instructions for debugging.
         </p>
 
-        <h4 id="522dockerdeployment">
-          5.2.2 Docker Deployment
+        <h4 id="cratoh">
+          <code>crato -h</code>
+        </h4>
+
+        <p>
+          <code>crato -h</code>, <code>crato --help</code>, or even <code>crato</code>
+          without flags provides help by displaying a usage screen.
+        </p>
+
+        <h4 id="522cratocore">
+          5.2.2 Crato Core
         </h4>
 
         <div class="img-wrapper">
@@ -1328,10 +1337,11 @@
           <code>omkafka</code> module. Early tests of Crato with a single Kafka broker 
           revealed that the broker would not always be available to receive messages. 
           To reduce the potential for log loss, Crato is now built with a three
-          broker Kafka. Additionally, it employs on its central server a 
-          disk-assisted memory queue to mitigate partitions between server and 
-          broker and to provide an emergency store of unsent messages if 
-          <code>rsyslogd</code> shuts down.
+          broker Kafka cluster, thus preserving service even if two brokers fail. 
+          Additionally, it employs on its central server a disk-assisted memory 
+          queue to mitigate partitions between server and Kafka cluster, and to provide 
+          an emergency store of unsent messages if <code>rsyslogd</code> shuts 
+          down, or in the event that all Kafka brokers are down.
         </p>
 
         <h4 id="634consumingfromkafka">
@@ -1346,19 +1356,19 @@
         </div>
 
         <p>
-          Although the logs are buffered, and Kafka provides exactly once 
-          delivery guarantees for Crato's multiple consumers, the actual consumption 
-          is not automatic. Kafka will hold the messages for their specified 
-          time-to-live (pending disk space), but the consumers must make the 
-          requests and manage flow to suit their endpoint's needs. 
+          Although the logs are buffered, and Kafka provides delivery guarantees 
+          for Crato's multiple consumers, the actual consumption is not automatic. 
+          That is, Kafka will hold the messages for their specified time-to-live 
+          (pending available disk space), but the consumers must make the requests 
+          and manage flow to suit their endpoint's needs. 
         </p>
 
         <p>
-          As a result of this pull model, Crato is built with two consumers, 
-          one for batching and one for streaming. The batching consumer saves 
+          As a result of this pull model, Crato is built with two consumer groups, 
+          one for batching and one for streaming. The batching consumers save 
           logs to a json file until it reaches a specified capacity, and then 
-          sends the file to Amazon S3 Glacier. The streaming consumer filters 
-          incoming log messages and serves them to their appropriate measurements 
+          send the file to Amazon S3 Glacier. The streaming consumers filter 
+          incoming log messages and serve them to their appropriate measurements 
           in InfluxDB.
         </p>
 
