@@ -1327,7 +1327,7 @@
           and JSON formatted log messages to Kafka brokers via <code>rsyslog</code>'s 
           <code>omkafka</code> module. Early tests of Crato with a single Kafka broker 
           revealed that the broker would not always be available to receive messages. 
-          To prevent the potential loss of logs, Crato is now built with a three
+          To reduce the potential for log loss, Crato is now built with a three
           broker Kafka. Additionally, it employs on its central server a 
           disk-assisted memory queue to mitigate partitions between server and 
           broker and to provide an emergency store of unsent messages if 
@@ -1345,17 +1345,21 @@
           />
         </div>
 
-        <p>Kafka provides exactly once delivery for multiple consumers</p>
-
-        <p>Consumers must still manages flow to suit endpoint needs</p>
         <p>
-          Batching: archiving consumer saves log to a json files &amp; sends to
-          S3
+          Although the logs are buffered, and Kafka provides exactly once 
+          delivery guarantees for Crato's multiple consumers, the actual consumption 
+          is not automatic. Kafka will hold the messages for their specified 
+          time-to-live (pending disk space), but the consumers must make the 
+          requests and manage flow to suit their endpoint's needs. 
         </p>
 
         <p>
-          Streaming: the influxDB consumer filters and sends incoming messages
-          to their appropriate measurements
+          As a result of this pull model, Crato is built with two consumers, 
+          one for batching and one for streaming. The batching consumer saves 
+          logs to a json file until it reaches a specified capacity, and then 
+          sends the file to Amazon S3 Glacier. The streaming consumer filters 
+          incoming log messges and serves them to their appropriate measurements 
+          in InfluxDB.
         </p>
 
         <h3 id="64storage">
