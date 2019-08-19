@@ -1418,7 +1418,7 @@
             <li>stored offsite as a backup</li>
           </ul>
 
-        <h5>Metrics-based query:</h5>
+        <h5>Queryable storage:</h5>
           <ul>
             <li>log <i>messages</i> saved for limited time</li>
             <li>immediate access to query is required</li>
@@ -1446,30 +1446,18 @@
         </p>
 
         <h4 id="643queryablestorageneeds">
-          6.4.2 Queryable Storage Needs
+          6.4.3 Queryable Storage Needs
         </h4>
 
         <p>
-          Track applications &amp; services as they change across time Full text
-          search of log messages is not necessary Examples Patterns in server
-          responses Follow count of logs with ‘err’ severity level by unit of
-          time
+          Emphasizing metrics-based queries, Crato should be able to track entities 
+          (e.g. servers, applications, processes) through thier logs as they change 
+          across time.  Seen in this light, logs can be understood as containing 
+          time series data.
         </p>
 
         <p>
-          No need for full text search means tools like ElasticSearch are not
-          ideal (thus that a default and often difficult to manage component of
-          Graylog can be avoided) E.g. patterns in server responses: server 1
-          has handled 2000 requests on average each hour; last hour it responded
-          to 0
-        </p>
-
-        <h4 id="643timeseriesdatabases">
-          6.4.3 Time-Series Databases
-        </h4>
-
-        <p>
-          Time Series Data: sequences of data points from individual sources
+          <b>Time Series Data</b>: sequences of data points from individual sources
           over time
         </p>
 
@@ -1492,14 +1480,13 @@
         </ul>
 
         <p>
-          Crato’s needs for queryable storage show that it deals with TS data;
-          although other forms of DB can be used TS data, they lack the tooling
-          to make working with TS data easy --other DB types require more coding
-          overhead-- Continuous query over a short retention period measurement
-          allows, for example, live monitoring of a server response rate TSDB
-          tend to be optimized for fast indexing by time; While trad db slow
-          down due to indexing time as the data set grows, TSDB tend to keep a
-          consistently high ingestion rate
+          Although other forms of database can be used for time series data, 
+          they often lack the tooling to make working with time series easy .
+          For example, running a continuous query over a short retention period 
+          measurement allows live monitoring of a server's response rate. Also, 
+          time series databases tend to be optimized for fast indexing by time; 
+          while trad db slow down due to indexing as the data set grows, TSDBs 
+          tend to keep a consistently high ingestion rate.
         </p>
 
         <h4 id="644queryablestorageinfluxdb">
@@ -1512,13 +1499,14 @@
         </p>
 
         <p>
-          Since most TSDB have similar optimizations for TSD, and they tend to
+          Crato deploys an instance of InfluxDB for queryable storage. Since most 
+          time series databases have similar optimizations, and they tend to
           be immersed in an ecosystem that allows easy integration with
-          visualization tools, our decision came down to the schema-free design
-          of influx. Although Timescale appears to ingest more quickly at high
-          volumes, Crato’s consumer has Kafka in front of it, so ingestion speed
-          can be managed, &amp; Crato’s volume is not designed for those rates
-          anyway (? 10K+ ? per second)
+          visualization tools, the decisive factor in using Influx is the fact that
+          it is schema-free. As a result, when a Crato consumer sends logs to InfluxDB 
+          it automatically creates a new measurement (table) for each new log source. 
+          That means that Crato's users can benefit immediately, and will also be
+          able to add new clients without having to declare new schema.
         </p>
 
         <h2 id="challenges">7 Challenges</h2>
