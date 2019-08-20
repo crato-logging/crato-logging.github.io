@@ -221,6 +221,7 @@
         <div class="img-wrapper">
           <img
             src="images/diagrams/gifs/grep.gif"
+            class="softened"
             id="grep"
             alt="Logs as files"
           />
@@ -333,6 +334,7 @@
         <div class="img-wrapper">
           <img
             src="images/diagrams/gifs/tail.gif"
+            class="softened"
             id="tail"
             alt="Logs as streams"
           />
@@ -898,9 +900,9 @@
         <p>
           But even here in the OSS options, there is a range of complexity,
           which is largely attributable to the database and full-text search
-          choices of the OSS stacks. Crato reduces complexity even more by 
-          eliminating the need to set up and maintain a full-text search engine. 
-          Thus, Crato is designed to provide the core features of centralized 
+          choices of the OSS stacks. Crato reduces complexity even more by
+          eliminating the need to set up and maintain a full-text search engine.
+          Thus, Crato is designed to provide the core features of centralized
           logging while reducing complexity and time commitments.
         </p>
 
@@ -909,10 +911,14 @@
         <ul>
           <li>Open Source</li>
           <li>Provide core centralized logging functions</li>
-          <li>Easy to use: knowledge and skills for configuration, deployment 
-              and use are likely to be found in the development team</li>
-          <li>Lightweight: modify as little as possible on client machines;
-              do not require changes to user's application code</li>
+          <li>
+            Easy to use: knowledge and skills for configuration, deployment and
+            use are likely to be found in the development team
+          </li>
+          <li>
+            Lightweight: modify as little as possible on client machines; do not
+            require changes to user's application code
+          </li>
           <li>Allow data ownership and control over storage</li>
         </ul>
 
@@ -921,10 +927,10 @@
         </h3>
 
         <p>
-          Crato consists of two main components: the <i>Crato Client</i> and 
-          <i>Crato Core</i>.  The client is installed and run on each 
-          machine from which logs are to be collected. The core infrastructure 
-          is deployed via Docker onto a separate server or VPS.
+          Crato consists of two main components: the <i>Crato Client</i> and
+          <i>Crato Core</i>. The client is installed and run on each machine
+          from which logs are to be collected. The core infrastructure is
+          deployed via Docker onto a separate server or VPS.
         </p>
 
         <div class="img-wrapper">
@@ -962,6 +968,7 @@
         <div class="img-wrapper">
           <img
             src="images/crato_config_file.png"
+            class="softened"
             alt="crato client config file"
           />
         </div>
@@ -978,13 +985,14 @@
         <p>
           For users needing more granular control over settings, the full range
           of configuraton options are available by directly editing the default
-          <code>*.conf</code> files. Because Crato does not override 
+          <code>*.conf</code> files. Because Crato does not override
           applications' logging processes, these can be configured as before.
         </p>
 
         <div class="img-wrapper">
           <img
             src="images/diagrams/gifs/crato_usage.gif"
+            class="softened"
             alt="client cli usage"
           />
         </div>
@@ -1034,7 +1042,8 @@
         </h4>
 
         <p>
-          <code>crato -h</code>, <code>crato --help</code>, or even <code>crato</code>
+          <code>crato -h</code>, <code>crato --help</code>, or even
+          <code>crato</code>
           without flags provides help by displaying a usage screen.
         </p>
 
@@ -1307,15 +1316,16 @@
         </div>
 
         <p>
-          With Kafka in place, Crato's central collection server sends plain text
-          and JSON formatted log messages to Kafka brokers via <code>rsyslog</code>'s 
-          <code>omkafka</code> module. Early tests of Crato with a single Kafka broker 
-          revealed that the broker would not always be available to receive messages. 
-          To reduce the potential for log loss, Crato is now built with a three
-          broker Kafka cluster, thus preserving service even if two brokers fail. 
-          Additionally, it employs on its central server a disk-assisted memory 
-          queue to mitigate partitions between server and Kafka cluster, and to provide 
-          an emergency store of unsent messages if <code>rsyslogd</code> shuts 
+          With Kafka in place, Crato's central collection server sends plain
+          text and JSON formatted log messages to Kafka brokers via
+          <code>rsyslog</code>'s <code>omkafka</code> module. Early tests of
+          Crato with a single Kafka broker revealed that the broker would not
+          always be available to receive messages. To reduce the potential for
+          log loss, Crato is now built with a three broker Kafka cluster, thus
+          preserving service even if two brokers fail. Additionally, it employs
+          on its central server a disk-assisted memory queue to mitigate
+          partitions between server and Kafka cluster, and to provide an
+          emergency store of unsent messages if <code>rsyslogd</code> shuts
           down, or in the event that all Kafka brokers are down.
         </p>
 
@@ -1331,20 +1341,20 @@
         </div>
 
         <p>
-          Although the logs are buffered, and Kafka provides delivery guarantees 
-          for Crato's multiple consumers, the actual consumption is not automatic. 
-          That is, Kafka will hold the messages for their specified time-to-live 
-          (pending available disk space), but the consumers must make the requests 
-          and manage flow to suit their endpoint's needs. 
+          Although the logs are buffered, and Kafka provides delivery guarantees
+          for Crato's multiple consumers, the actual consumption is not
+          automatic. That is, Kafka will hold the messages for their specified
+          time-to-live (pending available disk space), but the consumers must
+          make the requests and manage flow to suit their endpoint's needs.
         </p>
 
         <p>
-          As a result of this pull model, Crato is built with two consumer groups, 
-          one for batching and one for streaming. The batching consumers save 
-          logs to a json file until it reaches a configurable size, and then 
-          send the file to Amazon S3 Glacier. The streaming consumers filter 
-          incoming log messages and serve them to their appropriate measurements 
-          in InfluxDB.
+          As a result of this pull model, Crato is built with two consumer
+          groups, one for batching and one for streaming. The batching consumers
+          save logs to a json file until it reaches a configurable size, and
+          then send the file to Amazon S3 Glacier. The streaming consumers
+          filter incoming log messages and serve them to their appropriate
+          measurements in InfluxDB.
         </p>
 
         <h3 id="64storage">
@@ -1363,50 +1373,50 @@
         </h4>
 
         <p>
-          In order to provide the full advantages associated with centralized 
+          In order to provide the full advantages associated with centralized
           logging, a platform would need to store logs and to make them
           available for queries. This could be accomplished with a single data
           store, but Crato distinguishes between two very different needs here.
-          First, (as discussed above) there is value in archiving logs, i.e. setting 
-          them aside in files for long-term preservation. Second, storing 
-          individual log messages for metrics based queries provides unique insight
-          into a system's performance. Crato's storage is designed with the idea 
-          that these different needs should be addressed separately. As a result, 
-          Crato uses two forms of storage.
+          First, (as discussed above) there is value in archiving logs, i.e.
+          setting them aside in files for long-term preservation. Second,
+          storing individual log messages for metrics based queries provides
+          unique insight into a system's performance. Crato's storage is
+          designed with the idea that these different needs should be addressed
+          separately. As a result, Crato uses two forms of storage.
         </p>
 
         <h5>Archives:</h5>
-          <ul>
-            <li>log <i>files</i> saved for as long as desired</li>
-            <li>delayed access to logs is acceptable</li>
-            <li>stored offsite as a backup</li>
-          </ul>
+        <ul>
+          <li>log <i>files</i> saved for as long as desired</li>
+          <li>delayed access to logs is acceptable</li>
+          <li>stored offsite as a backup</li>
+        </ul>
 
         <h5>Queryable storage:</h5>
-          <ul>
-            <li>log <i>messages</i> saved for limited time</li>
-            <li>immediate access to query is required</li>
-            <li>location is not essential</li>
-          </ul>
+        <ul>
+          <li>log <i>messages</i> saved for limited time</li>
+          <li>immediate access to query is required</li>
+          <li>location is not essential</li>
+        </ul>
 
         <h4 id="642archivesamazons3glacier">
           6.4.2 Archives: Amazon S3 Glacier
         </h4>
 
         <p>
-          Crato uses Amazon S3 Glacier for archival log storage. Users enter their
-          AWS credentials and a destination S3 bucket name when deploying 
+          Crato uses Amazon S3 Glacier for archival log storage. Users enter
+          their AWS credentials and a destination S3 bucket name when deploying
           Crato core, and Crato handles the rest. AWS settings and configuration
           are handled directly through Amazon.
         </p>
 
         <p>
-          Using S3 for log file archiving gives Crato's users offsite storage with 
-          99.99..% durability and automatic lifecycle management (configured via 
-          AWS console) at a competitive price. Furthermore, because Crato archives 
-          in JSON format, the files themselves are queryable from AWS console. 
-          As a result users may have an easier time determining which files
-          they wish to extract.
+          Using S3 for log file archiving gives Crato's users offsite storage
+          with 99.99..% durability and automatic lifecycle management
+          (configured via AWS console) at a competitive price. Furthermore,
+          because Crato archives in JSON format, the files themselves are
+          queryable from AWS console. As a result users may have an easier time
+          determining which files they wish to extract.
         </p>
 
         <h4 id="643queryablestorageneeds">
@@ -1414,16 +1424,16 @@
         </h4>
 
         <p>
-          Emphasizing metrics-based queries, Crato should be able to track entities 
-          (e.g. servers, applications, processes) through thier logs as they change 
-          across time.  Seen in this light, logs can be understood as containing 
-          time series data, and as ideal candidates for time series databases.
-          Consider the following comparisons.
+          Emphasizing metrics-based queries, Crato should be able to track
+          entities (e.g. servers, applications, processes) through thier logs as
+          they change across time. Seen in this light, logs can be understood as
+          containing time series data, and as ideal candidates for time series
+          databases. Consider the following comparisons.
         </p>
 
         <p>
-          <b>Time Series Data</b>: sequences of data points from individual sources
-          over time
+          <b>Time Series Data</b>: sequences of data points from individual
+          sources over time
         </p>
 
         <ul>
@@ -1432,7 +1442,7 @@
         </ul>
 
         <p>
-        <b>Time Series Databases</b>: databases built for collecting, storing,
+          <b>Time Series Databases</b>: databases built for collecting, storing,
           retrieving &amp; processing TS data
         </p>
 
@@ -1445,13 +1455,13 @@
         </ul>
 
         <p>
-          Although other forms of database can be used for time series data, 
+          Although other forms of database can be used for time series data,
           they often lack the tooling to make working with time series easy .
-          For example, running a continuous query over a short retention period 
-          measurement allows live monitoring of a server's response rate. Also, 
-          time series databases tend to be optimized for fast indexing by time. 
-          While other database types tend to slow down due to indexing as the 
-          data set grows, time series databases tend to keep a consistently high 
+          For example, running a continuous query over a short retention period
+          measurement allows live monitoring of a server's response rate. Also,
+          time series databases tend to be optimized for fast indexing by time.
+          While other database types tend to slow down due to indexing as the
+          data set grows, time series databases tend to keep a consistently high
           ingestion rate.
         </p>
 
@@ -1460,14 +1470,15 @@
         </h4>
 
         <p>
-          Crato deploys an instance of InfluxDB for queryable storage. Since most 
-          time series databases have similar optimizations, and they tend to
-          be immersed in an ecosystem that allows easy integration with
-          visualization tools, the decisive factor in using Influx is the fact that
-          it is schema-free. As a result, when a Crato consumer sends logs to InfluxDB 
-          it automatically creates a new measurement (table) for each new log source. 
-          That means that Crato's users can benefit immediately, and will also be
-          able to add new clients without having to declare new schema.
+          Crato deploys an instance of InfluxDB for queryable storage. Since
+          most time series databases have similar optimizations, and they tend
+          to be immersed in an ecosystem that allows easy integration with
+          visualization tools, the decisive factor in using Influx is the fact
+          that it is schema-free. As a result, when a Crato consumer sends logs
+          to InfluxDB it automatically creates a new measurement (table) for
+          each new log source. That means that Crato's users can benefit
+          immediately, and will also be able to add new clients without having
+          to declare new schema.
         </p>
 
         <h2 id="challenges">7 Challenges</h2>
@@ -1477,34 +1488,40 @@
         </h3>
 
         <p>
-          How to efficiently and reliably collect logs without imposing on the developers' 
-          application code?
+          How to efficiently and reliably collect logs without imposing on the
+          developers' application code?
         </p>
 
         <p>Common collection options not chosen by Crato:</p>
         <ul>
-          <li>Install active collection agent on users' servers
+          <li>
+            Install active collection agent on users' servers
             <ul>
               <li>Pros: Crato would have control</li>
-              <li>Cons: invasive; violates goal of being lighweight; risks of 
-                  adding code into an untested environment</li>
+              <li>
+                Cons: invasive; violates goal of being lighweight; risks of
+                adding code into an untested environment
+              </li>
             </ul>
           </li>
-          <li>Integrate with an application logging library
+          <li>
+            Integrate with an application logging library
             <ul>
               <li>Pros: many libraries already familiar to developers</li>
-              <li>Cons: narrows the scope of users to those using a particular
-                  library or framework; likely to not incorportate web server
-                  logs or system logs</li>
+              <li>
+                Cons: narrows the scope of users to those using a particular
+                library or framework; likely to not incorportate web server logs
+                or system logs
+              </li>
             </ul>
           </li>
         </ul>
 
         <p>
-          Crato's approach: Adapt <code>rsyslogd</code>, an already in place 
-          system-level logging daemon to collect from applications as well. Create
-          customized configurations that supplement, not override, existing 
-          <code>rsyslog</code> configurations.
+          Crato's approach: Adapt <code>rsyslogd</code>, an already in place
+          system-level logging daemon to collect from applications as well.
+          Create customized configurations that supplement, not override,
+          existing <code>rsyslog</code> configurations.
         </p>
 
         <h3 id="72producingtokafka">
