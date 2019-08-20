@@ -417,6 +417,12 @@ h3 {
   width: 100%;
 }
 
+.softened {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+
+  border-radius: 5px;
+}
+
 #case-study .img-wrapper p {
   font-size: 80%;
   text-align: center;
