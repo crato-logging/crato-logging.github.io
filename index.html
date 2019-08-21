@@ -1060,7 +1060,7 @@
 
         <h3 id="52cratoclient">
           5.2 Crato Client
-        </h4>
+        </h3>
 
         <p>
           Crato Client is designed to have a light footprint on each client
@@ -1156,7 +1156,7 @@
 
         <h3 id="53cratocore">
           5.3 Crato Core
-        </h4>
+        </h3>
 
         <div class="img-wrapper">
           <img
@@ -1174,6 +1174,14 @@
           The Crato CLI is designed for developer convenience. It abstracts away
           from Docker CLI, installs services in-order, and provides common CLI
           log management functionality such as live-tailing and shell access.
+        </p>
+
+        <p>
+          As an example of the convenience provided by the CLI, let's look at 
+          the <code>crato install-kafka</code> command. Apache Kafka is often 
+          considered hard to configure, but this one command starts Zookeeper, 
+          creates a pre-configured three broker cluster, and also creates a textlogs
+          and a jsonlogs topic.
         </p>
 
         <div class="img-wrapper">
