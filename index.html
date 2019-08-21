@@ -1781,6 +1781,9 @@
           7.4 Docker
         </h3>
 
+        <p>After validating our idea using independent servers, we had to consider how to package everything together in a feasible manner for any developer. We needed easy networking so that our services could easily communicate with each other, but remain secure too. We also needed a way to implement ordering of our services, so that services (E.g. Kafka) would only talk to another when a dependent service (E.g. Zookeeper) was ready. Furthermore, we needed a system that would orchestrate and run all necessary commands to create each service including our application. Lastly we needed a powerful interface to manage these services. For these reasons we decided to use Docker, which packaged all of the aforementioned services in containers, simplified networking and provided a robust interface to manage service interaction.
+        </p>
+
         <div class="img-wrapper">
           <img src="images/diagrams/docker-diagram.png" alt="Docker" />
 
@@ -1811,22 +1814,22 @@
         </p>
 
         <p>
-          Lastly, we are also able to enforce somewhat of a service start-up
-          order through Docker. Docker allows us also to protect from data loss
+          Next, we are also able to enforce somewhat of a service start-up
+          order through Docker. Lastly, Docker allows us also to protect from data loss
           for each service through the use of volumes.
         </p>
 
         <h2 id="future-plans">8 Future Plans</h2>
 
-        <p>Additional visualization integration</p>
-
-        <p>Security</p>
-
         <ul>
-          <li>option for LAN -client-server communication with TLS</li>
+          <li>Additional visualization/monitoring integration</li>
+          <li>Security
+            <ul>
+              <li>option for LAN -client-server communication with TLS</li>
+            </ul>
+          </li>
+          <li>Compression option for large messages</li>
         </ul>
-
-        <p>Compression option for large messages</p>
 
         <section id="footnotes">
           <h2 id="references">9 References</h2>
@@ -1868,7 +1871,7 @@
             </li>
             <li>
               <a href="https://kafka.apache.org/documentation.html#kafka_mq">
-                Kafka as a Messaging System
+                https://kafka.apache.org/documentation.html#kafka_mq"
               </a>
             </li>
           </ol>
