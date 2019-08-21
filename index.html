@@ -710,17 +710,10 @@
 
         <p>
           Full-service Logging as a Service (LaaS) products provide their
-          customers with the full range of options, consisting of the following
-          five log management functions:
+          customers with the full range of options, including most if not all 
+          lof the following log management functions: Log Collection, Ingestion &amp; Storage, 
+          Search &amp; Analysis, Monitoring &amp; Alerting, Visualization &amp; Reporting.
         </p>
-
-        <ol>
-          <li>Log Collection</li>
-          <li>Ingestion &amp; Storage</li>
-          <li>Search &amp; Analysis</li>
-          <li>Monitoring &amp; Alerting</li>
-          <li>Visualization &amp; Reporting</li>
-        </ol>
 
         <p>
           LaaS solutions are generally cloud-based. They&#39;re designed to be
@@ -1184,6 +1177,31 @@
           and a jsonlogs topic.
         </p>
 
+        <p>
+        The <code>install-kafka</code> command is one instance of the Crato CLI abstracting 
+          away multi-step commands. Kafka is often regarded as difficult to install 
+          and configure. In fact, even with a service like Docker handling most 
+          of the configuration there is still some manual work needed. Compared 
+          to the Crato CLI, the equivalent commands via Docker are still numerous 
+          and not easy to recall. There are 5 steps:
+        </p>
+
+        <ol>
+          <li><code>docker-compose up -d zookeeper</code></li>
+          <li><code>docker-compose up -d kafka</code></li>
+          <li><code>docker-compose exec kafka kafka-topics --create --zookeeper zookeeper:8092 --replication-factor 3 --partitions 6 --topic textlogs</code></li>
+          <li><code>docker-compose exec kafka kafka-topics --create --zookeeper zookeeper:8092 --replication-factor 3 --partitions 6 --topic jsonlogs</code></li>
+          <li><code>docker-compose down</code></li>
+        </ol>
+
+        <p>
+          The Crato CLI manages multi step workflows like these for the most common 
+          use cases so that developers can focus on what’s important. The Crato 
+          CLI as shown above simplifies this process into 1 step: <code>crato install-kafka</code>. 
+          Every Crato CLI command is used to simplify lengthy commands or multi-step 
+          commands. 
+        </p>
+
         <div class="img-wrapper">
           <img
             src="images/diagrams/crato_core_commands.png"
@@ -1510,14 +1528,19 @@
         <p>
           In order to provide the full advantages associated with centralized
           logging, a platform would need to store logs and to make them
-          available for queries. This could be accomplished with a single data
-          store, but Crato distinguishes between two very different needs here.
+          available for queries. Of course, this could be accomplished with a single data
+          store, but Crato takes a different approach, because there are actually 
+          two very different needs here.
+        </p>
+
+        <p>
           First, (as discussed above) there is value in archiving logs, i.e.
           setting them aside in files for long-term preservation. Second,
           storing individual log messages for metrics based queries provides
           unique insight into a system's performance. Crato's storage is
           designed with the idea that these different needs should be addressed
-          separately. As a result, Crato uses two forms of storage.
+          separately. As a result, Crato uses two forms of storage with distinct 
+          sets of criteria.
         </p>
 
         <h5>Archives:</h5>
@@ -1541,8 +1564,8 @@
         <p>
           Crato uses Amazon S3 Glacier for archival log storage. Users enter
           their AWS credentials and a destination S3 bucket name when deploying
-          Crato core, and Crato handles the rest. AWS settings and configuration
-          are handled directly through Amazon.
+          Crato core, and Crato takes care of the rest. Establishing and configuring
+          an AWS account are handled directly through Amazon.
         </p>
 
         <p>
@@ -1562,8 +1585,9 @@
           Emphasizing metrics-based queries, Crato should be able to track
           entities (e.g. servers, applications, processes) through thier logs as
           they change across time. Seen in this light, logs can be understood as
-          containing time series data, and as ideal candidates for time series
-          databases. Consider the following comparisons.
+          containing time series data, and therefore as ideal candidates for time series
+          databases. Consider the following distinguishing characteristics of time
+          series data and databases.
         </p>
 
         <p>
@@ -1603,14 +1627,14 @@
         <p>
           Although other forms of database can be used for time series data,
           they often lack the tooling to make working with time series easy .
-          Consider the chart above comparing time series and relational
-          databases. Time series databases tend to be optimized for fast
-          indexing by time. While other database types tend to slow down due to
-          indexing as the data set grows, time series databases tend to keep a
-          consistently high ingestion rate. Also, time series databases make
-          running a continuous query simple. When performed over a short
-          retention period measurement, a continuous query allows live
-          monitoring of, for example, a server's response rate.
+          The chart above compares time series and relational databases. Time 
+          series databases tend to be optimized for fast indexing by time. 
+          While other database types tend to slow down due to indexing as the 
+          data set grows, time series databases tend to keep a consistently high 
+          ingestion rate. Also, time series databases make running a continuous 
+          query simple. When performed over a short retention period measurement, 
+          a continuous query allows live monitoring of, for example, a server's 
+          response rate.
         </p>
 
         <h4 id="644queryablestorageinfluxdb">
@@ -1858,7 +1882,7 @@
 
           <ul class="social-icons">
             <li>
-              <a href="mailto:jkurthoconnor@gmail.com" target="_blank">
+              <a href="mailto:kurth@kurthoconnor.com" target="_blank">
                 <img src="images/icons/email_icon.png" alt="email" />
               </a>
             </li>
