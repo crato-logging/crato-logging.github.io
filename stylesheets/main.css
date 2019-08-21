@@ -475,6 +475,7 @@ h3 {
 .buttons {
   width: 250px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .cratoButton {

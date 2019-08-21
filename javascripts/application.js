@@ -25,6 +25,30 @@ $(function() {
   });
 });
 
+$(function() {
+  const $nextButton2 = $("#nextSystemBtn");
+  const $resetButton2 = $("#resetSystemBtn");
+  const image = document.getElementById("log-collection");
+
+  $nextButton2.on("click", function(e) {
+    e.preventDefault();
+
+    if (image.src.match("log_collection.png")) {
+      image.src = "images/diagrams/log_collection/log_collection_rsyslog.png";
+    } else if (image.src.match("log_collection_rsyslog")) {
+      image.src = "images/diagrams/log_collection/log_collection_syslogng.png";
+    } else if (image.src.match("log_collection_syslogng")) {
+      $nextButton.prop("disabled", true);
+    }
+  });
+
+  $resetButton2.on("click", function(e) {
+    e.preventDefault();
+    $nextButton2.prop("disabled", false);
+    image.src = "images/diagrams/log_collection/log_collection.png";
+  });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const cratoLogo = document.querySelector("#crato-logo");
   const nav = document.querySelector("nav");
