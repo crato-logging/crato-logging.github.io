@@ -663,19 +663,33 @@
         <h2 id="current-solutions">4 Current Solutions</h2>
 
         <p>
-          For a small and growing application that wants to manage their own
-          logs what solutions exist?
+          What solutions exist for a small and growing application that wants to 
+          manage its own logs?
         </p>
 
-        <h3>4.1 The Three Options Overview</h3>
+        <h3>4.1 Three Main Options</h3>
+
+        <div class="img-wrapper">
+          <img
+            src="images/three_options.png"
+            class="softened"
+            alt="options for centralized logging"
+          />
+
+          <p>
+            Three main types of log management solutions
+          </p>
+        </div>
 
         <p>
-          Log management solutions come in three category. Logging as a Service
-          (LaaS) are paid, propietary solutions generally on the cloud. Doing it
-          Yourself (DIY) means building a custom, self-hosted solutions built
-          out of a mix of tools. Open-source software (OSS) solutions are a
-          category covering open-source tools and inhabited by the two main
-          open-source log management optins in the Elastic Stack and Graylog.
+          To quickly survey the available options, let's distinguish between 
+          three main categories of log management solutions. <em>Logging 
+          as a Service</em> (LaaS) consists of paid, propietary, typically 
+          cloud-based systems.  The <em>Do it Yourself</em> (DIY) path 
+          involves designing and building a custom, self-hosted solution from a 
+          variety of components. Finally, the <em>Open-Source Software</em> (OSS) 
+          solutions are open-source, pre-designed centralized logging systems that
+          you deploy on your own machines.
         </p>
 
         <h3>
@@ -683,26 +697,42 @@
         </h3>
 
         <p>
-          There are many paid Logging as a Service (LaaS) products that cover
-          the full stack of management. These products comprise of 5 key
-          functions:
+          Full-service Logging as a Service (LaaS) products provide their customers 
+          with the full range of options, consisting of the following five log 
+          management functions:
         </p>
+
         <ol>
           <li>Log Collection</li>
           <li>Ingestion &amp; Storage</li>
           <li>Search &amp; Analysis</li>
-          <li>Monitoring &amp; Alerts</li>
-          <li>Visualization &amp; Report</li>
+          <li>Monitoring &amp; Alerting</li>
+          <li>Visualization &amp; Reporting</li>
         </ol>
 
+        <div class="img-wrapper">
+          <img
+            src="images/diagrams/components/components.png"
+            class="softened"
+            alt="key components in log management"
+          />
+
+          <p>
+            Key components in a log management system
+          </p>
+        </div>
+
         <p>
-          LaaS solutions are generally cloud-based. They&#39;re easy-to-use,
-          provide technical support, and a rich feature set. The most involved
-          part is configuring your machine(s) to forward your logs and they
-          handle the rest.
+          LaaS solutions are generally cloud-based. They&#39;re designed to be 
+          easy-to-use, and they provide a rich feature-set along with technical 
+          support. The most difficult part in working with a LaaS is configuring 
+          your machine(s) to forward logs into the service. The LaaS handles the 
+          rest. The convenience of a LaaS is hard to deny, and products in this
+          category provide ideal solutions for many needs.
         </p>
+
         <p>
-          The drawbacks however are fairly apparent. Cost can rise quickly and
+          The drawbacks however are also apparent. Cost can rise quickly and
           depend on many factors. These factors commonly including the volume of
           data being ingested, the number of users, and a monthly service
           fee(s). As a LaaS, a primary goal is to avoid churn and maintain
@@ -712,9 +742,12 @@
           in weeks or months and/or running propietary code that can&#39;t be
           inspected by a customer.
         </p>
+
         <p>
-          These drawbacks lead developers to consider whether building their own
-          might be better over the long run.
+          Evaluating these tradeoffs, some developers opt to look elsewhere for 
+          log management, perhaps in search of greater data control, unique features, 
+          and / or reduced costs.  If a LaaS is not your preferred solution, another
+          option would be to build your own.
         </p>
 
         <h3 id="diy">4.3 DIY</h3>
