@@ -303,7 +303,7 @@
         <h3>2.4 Logs as Streams</h3>
 
         <p>
-          The "Twelve-factor App" is a set of best practices for building robust
+          The "Twelve-Factor App" is a set of best practices for building robust
           and maintainable web applications. One of the guidelines directly
           address logging, suggesting that we should treat logs not as files but
           as event streams, and that a web application shouldn’t concern itself
@@ -363,7 +363,7 @@
 
         <p>
           We most often think of our application's database, where we keep the
-          busines logic of our application, as the source of truth. If some data
+          business logic of our application, as the source of truth. If some data
           on the UI doesn't look right, we consult the database to determine
           whether it's correct. But even a database can't tell you how the data
           got to that state. In some situations, knowing the historical context
@@ -485,7 +485,7 @@
           development. Developers use logs every day for analysis and debugging,
           infrastructure monitoring and for deriving useful metrics. Some types
           of applications are also required to keep logs long term for audit
-          purposes. However, besides these uses, careully curated logs related
+          purposes. However, besides these uses, carefully curated logs related
           to your application can provide valuable historical context that
           unlocks other benefits:
         </p>
@@ -512,7 +512,7 @@
         </p>
 
         <p>
-          In the next section, we'll discuss how to get started with syslog, the
+          In the next section, we'll discuss how to get started with Syslog, the
           standard log recording format on UNIX, and the various architectural
           deployment options that small application owners have for centralizing
           and storing their log data.
@@ -526,7 +526,7 @@
           Previously, we talked about how log files are automatically generated
           by a logging system on the operating system. Syslog is the most widely
           used logging system. In fact, syslog is a UNIX standard that defines a
-          message format and allows for stanardization of how logs are generated
+          message format and allows for standardization of how logs are generated
           and processed.
         </p>
 
@@ -644,7 +644,7 @@
           have to rely on connecting to every machine individually, you can
           directly see the logs from the same filesystem. This also makes for a
           far more reliable way to access logs because even if one of these
-          clients becomes inaccesible, all logs up to the point of the client's
+          clients becomes inaccessible, all logs up to the point of the client's
           failure are already in the central server.
         </p>
 
@@ -695,7 +695,7 @@
         <p>
           To quickly survey the available options, let's distinguish between
           three main categories of log management solutions.
-          <em>Logging as a Service</em> (LaaS) consists of paid, propietary,
+          <em>Logging as a Service</em> (LaaS) consists of paid, proprietary,
           typically cloud-based systems. The <em>Do it Yourself</em> (DIY) path
           involves designing and building a custom, self-hosted solution from a
           variety of components. Finally, the
@@ -710,8 +710,8 @@
 
         <p>
           Full-service Logging as a Service (LaaS) products provide their
-          customers with the full range of options, including most if not all 
-          lof the following log management functions: Log Collection, Ingestion &amp; Storage, 
+          customers with the full range of options, including most if not all
+          of the following log management functions: Log Collection, Ingestion &amp; Storage,
           Search &amp; Analysis, Monitoring &amp; Alerting, Visualization &amp; Reporting.
         </p>
 
@@ -731,7 +731,7 @@
           costs can fluctuate based on a number of factors, including the volume
           of data being ingested, the number of users, and storage or retention
           plans. Nor is it simply an issue of costs. Whether cloud-based or
-          on-premise, propietary solutions are marked by a lack of ownership:
+          on-premise, proprietary solutions are marked by a lack of ownership:
           users cede control of their data to a third party, and they are unable
           to inspect, modify, or audit proprietary code.
         </p>
@@ -755,7 +755,7 @@
 
         <ol>
           <li>Log Collection</li>
-          <li>Processing &amp; Aggregration</li>
+          <li>Processing &amp; Aggregation</li>
           <li>Ingestion &amp; Storage</li>
           <li>Monitoring &amp; Visualization</li>
         </ol>
@@ -854,7 +854,7 @@
         <p>
           Once logs are collected, the goal is to transport them to a storage
           service from which they can be searched and analyzed. If the write
-          rate of the chosen datastore is compatible with potentially bursty
+          rate of the chosen data store is compatible with potentially bursty
           influx of logs into the system, then the logs could be sent directly
           to storage. However, not all applications will be able to rely on this
           throughput parity. Applications that need to scale, or that expect
@@ -887,7 +887,7 @@
           visualization tool for more user friendly analysis and reporting. Some
           of these tools also provide alerting and system configuration
           capabilities. The visual representation of data allows users to
-          transform and aggregrate in more effective ways. There are many open
+          transform and aggregate in more effective ways. There are many open
           source options at this space as well with Kibana and Grafana as the
           leaders.
         </p>
@@ -945,7 +945,7 @@
           designed to work well together. Altogether, they have products that
           cover each of the four key phases of centralized log management. In
           fact, 'ELK' refers to a frequently-used combination of their tools.
-          ELK is comprised of the text-search storage system Elasticsearch, the
+          ELK is comprised of the text-search storage system ElasticSearch, the
           log collection and storage service Logstash, and the
           visualization/monitoring tool Kibana.
         </p>
@@ -963,13 +963,13 @@
 
         <p>
           Graylog is a company and open-source centralized log management
-          server. It is built on top of Elasticsearch and MongoDB and offers a
+          server. It is built on top of ElasticSearch and MongoDB and offers a
           web interface connected to the server. In addition to their OSS
           self-hosted option, Graylog provides a LaaS as well.
         </p>
 
         <p>
-          The Elastic Stack and Graylog are very popular open-souce self-hosted
+          The Elastic Stack and Graylog are very popular open-source self-hosted
           solutions. Each offers the expected ease of use, along with the
           potential for data ownership and security assurances that come from
           self-hosting. There is a rich ecosystem of plugins for each tool, thus
@@ -999,7 +999,7 @@
           grant users the most control, and can be designed and built to include
           precisely the features wanted. But there are tradeoffs here as well.
           The high level of control and customizability comes with increased
-          complexity and additional design and maintenance committments.
+          complexity and additional design and maintenance commitments.
           Finally, the pre-designed OSS options aim to split the difference
           between LaaS and DIY. OSS options return data control to the users
           (typically lacking in LaaS) while reducing complexity and design and
@@ -1086,13 +1086,13 @@
 
         <p>
           For users needing more granular control over settings, the full range
-          of configuraton options are available by directly editing the default
+          of configuration options are available by directly editing the default
           <code>*.conf</code> files. Because Crato does not override
           applications' logging processes, these can be configured as before.
         </p>
 
         <p>
-          The Crato client command interface is also designed to be simple and 
+          The Crato client command interface is also designed to be simple and
           easy to use.
         </p>
 
@@ -1170,19 +1170,19 @@
         </p>
 
         <p>
-          As an example of the convenience provided by the CLI, let's look at 
-          the <code>crato install-kafka</code> command. Apache Kafka is often 
-          considered hard to configure, but this one command starts Zookeeper, 
+          As an example of the convenience provided by the CLI, let's look at
+          the <code>crato install-kafka</code> command. Apache Kafka is often
+          considered hard to configure, but this one command starts Zookeeper,
           creates a pre-configured three broker cluster, and also creates a textlogs
           and a jsonlogs topic.
         </p>
 
         <p>
-        The <code>install-kafka</code> command is one instance of the Crato CLI abstracting 
-          away multi-step commands. Kafka is often regarded as difficult to install 
-          and configure. In fact, even with a service like Docker handling most 
-          of the configuration there is still some manual work needed. Compared 
-          to the Crato CLI, the equivalent commands via Docker are still numerous 
+        The <code>install-kafka</code> command is one instance of the Crato CLI abstracting
+          away multi-step commands. Kafka is often regarded as difficult to install
+          and configure. In fact, even with a service like Docker handling most
+          of the configuration there is still some manual work needed. Compared
+          to the Crato CLI, the equivalent commands via Docker are still numerous
           and not easy to recall. There are 5 steps:
         </p>
 
@@ -1195,11 +1195,11 @@
         </ol>
 
         <p>
-          The Crato CLI manages multi step workflows like these for the most common 
-          use cases so that developers can focus on what’s important. The Crato 
-          CLI as shown above simplifies this process into 1 step: <code>crato install-kafka</code>. 
-          Every Crato CLI command is used to simplify lengthy commands or multi-step 
-          commands. 
+          The Crato CLI manages multi step workflows like these for the most common
+          use cases so that developers can focus on what’s important. The Crato
+          CLI as shown above simplifies this process into 1 step: <code>crato install-kafka</code>.
+          Every Crato CLI command is used to simplify lengthy commands or multi-step
+          commands.
         </p>
 
         <div class="img-wrapper">
@@ -1317,7 +1317,7 @@
 
           <p>
             Central point for insight into entire system: all messages available
-            to familiar unix tools.
+            to familiar Unix tools.
           </p>
         </div>
 
@@ -1529,7 +1529,7 @@
           In order to provide the full advantages associated with centralized
           logging, a platform would need to store logs and to make them
           available for queries. Of course, this could be accomplished with a single data
-          store, but Crato takes a different approach, because there are actually 
+          store, but Crato takes a different approach, because there are actually
           two very different needs here.
         </p>
 
@@ -1539,7 +1539,7 @@
           storing individual log messages for metrics based queries provides
           unique insight into a system's performance. Crato's storage is
           designed with the idea that these different needs should be addressed
-          separately. As a result, Crato uses two forms of storage with distinct 
+          separately. As a result, Crato uses two forms of storage with distinct
           sets of criteria.
         </p>
 
@@ -1583,7 +1583,7 @@
 
         <p>
           Emphasizing metrics-based queries, Crato should be able to track
-          entities (e.g. servers, applications, processes) through thier logs as
+          entities (e.g. servers, applications, processes) through their logs as
           they change across time. Seen in this light, logs can be understood as
           containing time series data, and therefore as ideal candidates for time series
           databases. Consider the following distinguishing characteristics of time
@@ -1627,13 +1627,13 @@
         <p>
           Although other forms of database can be used for time series data,
           they often lack the tooling to make working with time series easy .
-          The chart above compares time series and relational databases. Time 
-          series databases tend to be optimized for fast indexing by time. 
-          While other database types tend to slow down due to indexing as the 
-          data set grows, time series databases tend to keep a consistently high 
-          ingestion rate. Also, time series databases make running a continuous 
-          query simple. When performed over a short retention period measurement, 
-          a continuous query allows live monitoring of, for example, a server's 
+          The chart above compares time series and relational databases. Time
+          series databases tend to be optimized for fast indexing by time.
+          While other database types tend to slow down due to indexing as the
+          data set grows, time series databases tend to keep a consistently high
+          ingestion rate. Also, time series databases make running a continuous
+          query simple. When performed over a short retention period measurement,
+          a continuous query allows live monitoring of, for example, a server's
           response rate.
         </p>
 
@@ -1671,7 +1671,7 @@
             <ul>
               <li>Pros: Crato would have control</li>
               <li>
-                Cons: invasive; violates goal of being lighweight; risks of
+                Cons: invasive; violates goal of being lightweight; risks of
                 adding code into an untested environment
               </li>
             </ul>
@@ -1682,7 +1682,7 @@
               <li>Pros: many libraries already familiar to developers</li>
               <li>
                 Cons: narrows the scope of users to those using a particular
-                library or framework; likely to not incorportate web server logs
+                library or framework; likely to not incorporate web server logs
                 or system logs
               </li>
             </ul>
@@ -1704,9 +1704,9 @@
           Producing to Kafka is simplified with Rsyslog&#39;s built-in Omkafka
           module. Still writing the configuration scripts to forward logs
           required learning Rsyslog&#39;s domain specific language,
-          Ranierscript, named after Rsyslog founder Rainer Gerhards. While
+          Rainerscript, named after Rsyslog founder Rainer Gerhards. While
           documented well, we decided to provide these ourselves and make it so
-          that it they would be automatically configured when the Rsyslog
+          that the Rsyslog system would be automatically configured when the Rsyslog
           centralized server was started up. Our configuration uses
           disk-assisted queuing to ensure that messages are saved on failed
           delivery and reattempted when a network connection with a Kafka broker
@@ -1716,9 +1716,9 @@
         <p>
           However, after solving this problem we realized that Rsyslog would
           eventually reach a storage limit and fail itself if the single Kafka
-          node we began with ever failed. To ensure fault-tolerance and
-          reliability, which was the main impetus to implement additional
-          redundancy by having 3 Kafka nodes total running at startup allowing
+          node we began with ever failed. Ensuring fault-tolerance and
+          reliability was the main impetus to implement additional
+          redundancy by having 3 Kafka nodes total running at startup, allowing
           for up to 2 Kafka nodes to be offline.
         </p>
 
@@ -1736,7 +1736,7 @@
         </div>
 
         <p>
-          With Docker, by containering each of our services, we are able to
+          With Docker, by containerizing each of our services, we are able to
           isolate issues and do additional developer work via shell when these
           live containers are running. Docker also has available to it many
           images that are officially supported by the official organizations
@@ -1751,7 +1751,7 @@
         <p>
           Docker also creates a single network for all of services automatically
           that allows containers to communicate with each other easily, but
-          doesn&#39;t expose ports to outside this network without us explicitly
+          doesn't expose ports to outside this network without us explicitly
           deciding to do so.
         </p>
 
@@ -1851,19 +1851,19 @@
 
           <ul class="social-icons">
             <li>
-              <a href="mailto:faazil.shaikh@gmail.com" target="_blank">
+              <a href="mailto:hi@fs0.me" target="_blank">
                 <img src="images/icons/email_icon.png" alt="email" />
               </a>
             </li>
 
             <li>
-              <a href="https://" target="_blank">
+              <a href="https://fs0.me" target="_blank">
                 <img src="images/icons/website_icon.png" alt="website" />
               </a>
             </li>
 
             <li>
-              <a href="https://" target="_blank">
+              <a href="http://bit.ly/2NpWXS6" target="_blank">
                 <img src="images/icons/linked_in_icon.png" alt="linkedin" />
               </a>
             </li>
