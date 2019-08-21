@@ -1020,10 +1020,8 @@
           choices of the OSS stacks. Crato reduces complexity even more by
           eliminating the need to set up and maintain a full-text search engine.
           Thus,
-          <em
-            >Crato is designed to provide the core features of centralized
-            logging while reducing complexity and time commitments</em
-          >.
+          <em >Crato is designed to provide the core features of centralized
+            logging while reducing complexity and time commitments</em>.
         </p>
 
         <h4>Design Goals</h4>
@@ -1078,11 +1076,6 @@
           default settings.
         </p>
 
-        <p>
-          To download Crato client, <code>curl</code> or <code>wget</code> the
-          script from {url}.
-        </p>
-
         <h4 id="cratoconfig"><code>crato-config</code></h4>
 
         <div class="img-wrapper">
@@ -1109,17 +1102,26 @@
           applications' logging processes, these can be configured as before.
         </p>
 
+        <p>
+          The Crato client command interface is also designed to be simple and 
+          easy to use.
+        </p>
+
+        <div class="img-wrapper">
+          <img
+            src="images/diagrams/crato_client_commands.png"
+            alt="Crato Client Commands"
+          />
+        </div>
+
         <div class="img-wrapper">
           <img
             src="images/diagrams/gifs/crato_usage.gif"
             class="softened"
             alt="client cli usage"
           />
+          <p>Crato client's commands in use</p>
         </div>
-
-        <h4 id="cratoc">
-          <code>crato -c</code>
-        </h4>
 
         <p>
           Apply the current configuration and start Crato client with
@@ -1133,10 +1135,6 @@
           settings.
         </p>
 
-        <h4 id="cratosandcrator">
-          <code>crato -s</code> and <code>crato -r</code>
-        </h4>
-
         <p>
           <code>crato -s</code> or <code>crato --suspend</code> suspends Crato's
           logging on the client and returns the machine to default logging.
@@ -1146,10 +1144,6 @@
           makes no changes.
         </p>
 
-        <h4 id="cratod">
-          <code>crato -d</code>
-        </h4>
-
         <p>
           <code>crato -d</code> or <code>crato --delete</code> removes current
           or suspended Crato client configurations, confirms that resulting
@@ -1157,22 +1151,12 @@
           settings or throws an error with instructions for debugging.
         </p>
 
-        <h4 id="cratoh">
-          <code>crato -h</code>
-        </h4>
-
         <p>
           <code>crato -h</code>, <code>crato --help</code>, or even
           <code>crato</code>
           without flags provides help by displaying a usage screen.
         </p>
 
-        <div class="img-wrapper">
-          <img
-            src="images/diagrams/crato_client_commands.png"
-            alt="Crato Client Commands"
-          />
-        </div>
 
         <h4 id="522cratocore">
           5.2.2 Crato Core
