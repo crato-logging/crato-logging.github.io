@@ -1523,15 +1523,28 @@
           <li>Integration with metrics visualization tools</li>
         </ul>
 
+        <div class="img-wrapper">
+          <img
+            src="images/diagrams/tsdb_table.png"
+            class="softened"
+            alt="Time Series Database"
+          />
+
+          <p>
+            Comparison of time series and relational databases
+          </p>
+
         <p>
           Although other forms of database can be used for time series data,
-          they often lack the tooling to make working with time series easy .
-          For example, running a continuous query over a short retention period
-          measurement allows live monitoring of a server's response rate. Also,
-          time series databases tend to be optimized for fast indexing by time.
+          they often lack the tooling to make working with time series easy . 
+          Consider the chart above comparing time series and relational databases. 
+          Time series databases tend to be optimized for fast indexing by time.
           While other database types tend to slow down due to indexing as the
           data set grows, time series databases tend to keep a consistently high
-          ingestion rate.
+          ingestion rate.  Also, time series databases make running a continuous query 
+          simple. When performed over a short retention period measurement, a
+          continuous query allows live monitoring of, for example, a server's 
+          response rate.
         </p>
 
         <h4 id="644queryablestorageinfluxdb">
