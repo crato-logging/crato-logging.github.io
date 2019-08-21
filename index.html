@@ -905,71 +905,68 @@
 
         <h3 id="oss">4.4 OSS</h3>
         <p>
-          Open source log management tools are available that allow a developer
-          to maintain high data control, ease-of-use closer to LaaS tools, but
-          require self-management and hosting. The two main solutions here are
-          the Elastic stack and Graylog.
+          The final category of log management solutions consists of open source 
+          pre-designed systems. These tools allow a developer to maintain higher
+          levels of data control with an ease-of-use closer to LaaS tools. However,
+          they typically require self-management and hosting. The two main solutions here are
+          the Elastic Stack and Graylog.
         </p>
 
         <h4 id="elastic-stack">4.4.1 Elastic Stack</h4>
+
+        <div class="img-wrapper">
+          <img src="images/diagrams/elastic_stack_diagram.png" 
+           class="softened"
+           alt="Elastic Stack"
+         />
+
+          <p>Elastic Stack Architecture</p>
+        </div>
+
         <p>
-          Elastic is a company that develops a collection of open-source log
-          management products designed to work well together. Altogether, they
-          have products that cover each of the 4 key phases of centralized log
-          management. A very common combination of their tools: The text-search
-          storage system Elasticsearch, log collection and storage service
-          Logstash and visualization/monitoring tool Kibana is known as the ELK
-          stack.
+          Elastic develops a collection of open-source log management products 
+          designed to work well together. Altogether, they have products that 
+          cover each of the four key phases of centralized log management. In fact, 
+          'ELK' refers to a frequently-used combination of their tools.  ELK is comprised 
+          of the text-search storage system Elasticsearch, the log collection and 
+          storage service Logstash, and the visualization/monitoring tool Kibana.
         </p>
+
         <h4 id="graylog">4.4.2 Graylog</h4>
+
+        <div class="img-wrapper">
+          <img
+            src="images/diagrams/graylog_diagram.png"
+            class="softened"
+            alt="Graylog architecture"
+          />
+
+          <p> Graylog architecture</p>
+        </div>
+
         <p>
           Graylog is a company and open-source centralized log management
           server. It is built on top of Elasticsearch and MongoDB and offers a
-          web interface connected to the server.
+          web interface connected to the server. In addition to their OSS self-hosted 
+          option, Graylog provides a LaaS as well.
         </p>
 
         <p>
           The Elastic Stack and Graylog are very popular open-souce self-hosted
-          solutions and offer expected usability, high data ownership and
-          security. A rich ecosystem of plugins exists for each tool offering
-          extended flexibility. However, complexity from these systems comes
-          from configuration, deploying scaling up and orchestration related to
-          these challenges.
-        </p>
-
-        <h3 id="summary-current-log-management-options">
-          4.5 Summary: Log Management Options
-        </h3>
-        <p>
-          LaaS tools are easy to use, but offer low data ownership and
-          potentially high monetary costs.
-        </p>
-        <p>
-          DIY offers high data ownership, but some costs in developer time and
-          higher complexity in building a custom system.
-        </p>
-        <p>
-          OSS tools are free and offer high data ownership, but scaling and
-          maintenance are still somewhat complex.
+          solutions. Each offers the expected ease of use, along with the potential
+          for data ownership and security assurances that come from self-hosting. 
+          There is a rich ecosystem of plugins for each tool, thus offering extended 
+          flexibility. However, these systems are more complex than LaaS. 
+          You'll need to configure, deploy, maintain, and potentially scale these
+          systems yourself.
         </p>
 
         <h2 id="crato-design">5 Crato Design</h2>
 
         <p>
-          The above discussion of current log management options reveals the
-          niche that Crato addresses. While LaaS options provide the quickest
-          and most simple path, their advantages come with costs. Not only must
-          users pay for LaaS services, but their applications' data is yielded
-          to a third party. DIY options grant users the most control, and can be
-          designed and built to include precisely the features wanted. But there
-          are tradeoffs here as well. The high level of control and
-          customizability comes with increased complexity and additional design
-          and maintenance committments. Finally, the pre-designed OSS options
-          aim to split the difference between LaaS and DIY. OSS options return
-          data control to the users (typically lacking in LaaS) while reducing
-          complexity and design and maintenance commitments (both of which tend
-          to be high in DIY projects).
-        </p>
+          We can now finally situate Crato. To do so, we will first quickly 
+          summarize the landscape of options and their tradeoffs.
+        </p> 
 
         <div class="img-wrapper">
           <img
@@ -979,12 +976,26 @@
         </div>
 
         <p>
+          While LaaS options provide the quickest and most simple path, 
+          their advantages come with costs. Not only must users pay for LaaS services, 
+          but their applications' data is yielded to a third party. DIY options 
+          grant users the most control, and can be designed and built to include 
+          precisely the features wanted. But there are tradeoffs here as well. 
+          The high level of control and customizability comes with increased complexity 
+          and additional design and maintenance committments. Finally, the pre-designed 
+          OSS options aim to split the difference between LaaS and DIY. OSS options return
+          data control to the users (typically lacking in LaaS) while reducing
+          complexity and design and maintenance commitments (both of which tend
+          to be high in DIY projects).
+        </p>
+
+        <p>
           But even here in the OSS options, there is a range of complexity,
           which is largely attributable to the database and full-text search
           choices of the OSS stacks. Crato reduces complexity even more by
           eliminating the need to set up and maintain a full-text search engine.
-          Thus, Crato is designed to provide the core features of centralized
-          logging while reducing complexity and time commitments.
+          Thus, <em>Crato is designed to provide the core features of centralized
+            logging while reducing complexity and time commitments</em>.
         </p>
 
         <h4>Design Goals</h4>
@@ -1134,7 +1145,8 @@
 
         <div class="img-wrapper">
           <img src="images/diagrams/gifs/crato_docker_deploy.gif" 
-          alt="deployment via Docker" />
+           class="softened"
+           alt="deployment via Docker" />
 
           <p>Crato infrastructure installs and deploys with just two commands</p>
         </div>
