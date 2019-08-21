@@ -363,13 +363,13 @@
 
         <p>
           We most often think of our application's database, where we keep the
-          business logic of our application, as the source of truth. If some data
-          on the UI doesn't look right, we consult the database to determine
-          whether it's correct. But even a database can't tell you how the data
-          got to that state. In some situations, knowing the historical context
-          for how we got to a particular state can be even more important. As
-          espoused by Martin Kleppman, Jay Kreps, and others, this idea is known
-          as the "Stream-Table Duality".
+          business logic of our application, as the source of truth. If some
+          data on the UI doesn't look right, we consult the database to
+          determine whether it's correct. But even a database can't tell you how
+          the data got to that state. In some situations, knowing the historical
+          context for how we got to a particular state can be even more
+          important. As espoused by Martin Kleppman, Jay Kreps, and others, this
+          idea is known as the "Stream-Table Duality".
         </p>
 
         <h3>2.6 Stream-Table Duality</h3>
@@ -526,8 +526,8 @@
           Previously, we talked about how log files are automatically generated
           by a logging system on the operating system. Syslog is the most widely
           used logging system. In fact, syslog is a UNIX standard that defines a
-          message format and allows for standardization of how logs are generated
-          and processed.
+          message format and allows for standardization of how logs are
+          generated and processed.
         </p>
 
         <p>
@@ -710,9 +710,10 @@
 
         <p>
           Full-service Logging as a Service (LaaS) products provide their
-          customers with the full range of options, including most if not all
-          of the following log management functions: Log Collection, Ingestion &amp; Storage,
-          Search &amp; Analysis, Monitoring &amp; Alerting, Visualization &amp; Reporting.
+          customers with the full range of options, including most if not all of
+          the following log management functions: Log Collection, Ingestion
+          &amp; Storage, Search &amp; Analysis, Monitoring &amp; Alerting,
+          Visualization &amp; Reporting.
         </p>
 
         <p>
@@ -999,12 +1000,11 @@
           grant users the most control, and can be designed and built to include
           precisely the features wanted. But there are tradeoffs here as well.
           The high level of control and customizability comes with increased
-          complexity and additional design and maintenance commitments.
-          Finally, the pre-designed OSS options aim to split the difference
-          between LaaS and DIY. OSS options return data control to the users
-          (typically lacking in LaaS) while reducing complexity and design and
-          maintenance commitments (both of which tend to be high in DIY
-          projects).
+          complexity and additional design and maintenance commitments. Finally,
+          the pre-designed OSS options aim to split the difference between LaaS
+          and DIY. OSS options return data control to the users (typically
+          lacking in LaaS) while reducing complexity and design and maintenance
+          commitments (both of which tend to be high in DIY projects).
         </p>
 
         <p>
@@ -1013,8 +1013,10 @@
           choices of the OSS stacks. Crato reduces complexity even more by
           eliminating the need to set up and maintain a full-text search engine.
           Thus,
-          <em >Crato is designed to provide the core features of centralized
-            logging while reducing complexity and time commitments</em>.
+          <em
+            >Crato is designed to provide the core features of centralized
+            logging while reducing complexity and time commitments</em
+          >.
         </p>
 
         <h4>Design Goals</h4>
@@ -1146,7 +1148,6 @@
           without flags provides help by displaying a usage screen.
         </p>
 
-
         <h3 id="53cratocore">
           5.3 Crato Core
         </h3>
@@ -1173,33 +1174,45 @@
           As an example of the convenience provided by the CLI, let's look at
           the <code>crato install-kafka</code> command. Apache Kafka is often
           considered hard to configure, but this one command starts Zookeeper,
-          creates a pre-configured three broker cluster, and also creates a textlogs
-          and a jsonlogs topic.
+          creates a pre-configured three broker cluster, and also creates a
+          textlogs and a jsonlogs topic.
         </p>
 
         <p>
-        The <code>install-kafka</code> command is one instance of the Crato CLI abstracting
-          away multi-step commands. Kafka is often regarded as difficult to install
-          and configure. In fact, even with a service like Docker handling most
-          of the configuration there is still some manual work needed. Compared
-          to the Crato CLI, the equivalent commands via Docker are still numerous
-          and not easy to recall. There are 5 steps:
+          The <code>install-kafka</code> command is one instance of the Crato
+          CLI abstracting away multi-step commands. Kafka is often regarded as
+          difficult to install and configure. In fact, even with a service like
+          Docker handling most of the configuration there is still some manual
+          work needed. Compared to the Crato CLI, the equivalent commands via
+          Docker are still numerous and not easy to recall. There are 5 steps:
         </p>
 
         <ol>
           <li><code>docker-compose up -d zookeeper</code></li>
           <li><code>docker-compose up -d kafka</code></li>
-          <li><code>docker-compose exec kafka kafka-topics --create --zookeeper zookeeper:8092 --replication-factor 3 --partitions 6 --topic textlogs</code></li>
-          <li><code>docker-compose exec kafka kafka-topics --create --zookeeper zookeeper:8092 --replication-factor 3 --partitions 6 --topic jsonlogs</code></li>
+          <li>
+            <code
+              >docker-compose exec kafka kafka-topics --create --zookeeper
+              zookeeper:8092 --replication-factor 3 --partitions 6 --topic
+              textlogs</code
+            >
+          </li>
+          <li>
+            <code
+              >docker-compose exec kafka kafka-topics --create --zookeeper
+              zookeeper:8092 --replication-factor 3 --partitions 6 --topic
+              jsonlogs</code
+            >
+          </li>
           <li><code>docker-compose down</code></li>
         </ol>
 
         <p>
-          The Crato CLI manages multi step workflows like these for the most common
-          use cases so that developers can focus on what’s important. The Crato
-          CLI as shown above simplifies this process into 1 step: <code>crato install-kafka</code>.
-          Every Crato CLI command is used to simplify lengthy commands or multi-step
-          commands.
+          The Crato CLI manages multi step workflows like these for the most
+          common use cases so that developers can focus on what’s important. The
+          Crato CLI as shown above simplifies this process into 1 step:
+          <code>crato install-kafka</code>. Every Crato CLI command is used to
+          simplify lengthy commands or multi-step commands.
         </p>
 
         <div class="img-wrapper">
@@ -1528,9 +1541,9 @@
         <p>
           In order to provide the full advantages associated with centralized
           logging, a platform would need to store logs and to make them
-          available for queries. Of course, this could be accomplished with a single data
-          store, but Crato takes a different approach, because there are actually
-          two very different needs here.
+          available for queries. Of course, this could be accomplished with a
+          single data store, but Crato takes a different approach, because there
+          are actually two very different needs here.
         </p>
 
         <p>
@@ -1564,8 +1577,8 @@
         <p>
           Crato uses Amazon S3 Glacier for archival log storage. Users enter
           their AWS credentials and a destination S3 bucket name when deploying
-          Crato core, and Crato takes care of the rest. Establishing and configuring
-          an AWS account are handled directly through Amazon.
+          Crato core, and Crato takes care of the rest. Establishing and
+          configuring an AWS account are handled directly through Amazon.
         </p>
 
         <p>
@@ -1585,9 +1598,9 @@
           Emphasizing metrics-based queries, Crato should be able to track
           entities (e.g. servers, applications, processes) through their logs as
           they change across time. Seen in this light, logs can be understood as
-          containing time series data, and therefore as ideal candidates for time series
-          databases. Consider the following distinguishing characteristics of time
-          series data and databases.
+          containing time series data, and therefore as ideal candidates for
+          time series databases. Consider the following distinguishing
+          characteristics of time series data and databases.
         </p>
 
         <p>
@@ -1628,13 +1641,13 @@
           Although other forms of database can be used for time series data,
           they often lack the tooling to make working with time series easy .
           The chart above compares time series and relational databases. Time
-          series databases tend to be optimized for fast indexing by time.
-          While other database types tend to slow down due to indexing as the
-          data set grows, time series databases tend to keep a consistently high
+          series databases tend to be optimized for fast indexing by time. While
+          other database types tend to slow down due to indexing as the data set
+          grows, time series databases tend to keep a consistently high
           ingestion rate. Also, time series databases make running a continuous
-          query simple. When performed over a short retention period measurement,
-          a continuous query allows live monitoring of, for example, a server's
-          response rate.
+          query simple. When performed over a short retention period
+          measurement, a continuous query allows live monitoring of, for
+          example, a server's response rate.
         </p>
 
         <h4 id="644queryablestorageinfluxdb">
@@ -1706,8 +1719,8 @@
           required learning Rsyslog&#39;s domain specific language,
           Rainerscript, named after Rsyslog founder Rainer Gerhards. While
           documented well, we decided to provide these ourselves and make it so
-          that the Rsyslog system would be automatically configured when the Rsyslog
-          centralized server was started up. Our configuration uses
+          that the Rsyslog system would be automatically configured when the
+          Rsyslog centralized server was started up. Our configuration uses
           disk-assisted queuing to ensure that messages are saved on failed
           delivery and reattempted when a network connection with a Kafka broker
           is re-established.
@@ -1717,13 +1730,45 @@
           However, after solving this problem we realized that Rsyslog would
           eventually reach a storage limit and fail itself if the single Kafka
           node we began with ever failed. Ensuring fault-tolerance and
-          reliability was the main impetus to implement additional
-          redundancy by having 3 Kafka nodes total running at startup, allowing
-          for up to 2 Kafka nodes to be offline.
+          reliability was the main impetus to implement additional redundancy by
+          having 3 Kafka nodes total running at startup, allowing for up to 2
+          Kafka nodes to be offline.
         </p>
 
+        <h3 id="73measurements">
+          7.3 InfluxDB Measurements
+        </h3>
+        <p>
+          In InfluxDB, measurements are conceptually similar to SQL tables with
+          each measurement storing related data over time. The difficulty with
+          log data is determining how to group it in a manageable and easy to
+          reason about way. One way to group logs is by using
+          <code>host</code> as a means to separate logs from each machine into
+          separate measurements. However, there are usually many log sources
+          that are being forwarded from the same host and logs from each source
+          would end up in the same measurement. This is a good option for most
+          cases but if you're looking for a finer level of granularity by which
+          to separate your logs, you're stuck.
+        </p>
+
+        <p>
+          Ultimately we chose to group our logs by the
+          <code>syslog-tag</code> since this way the users of Crato have the
+          most flexibility. The option of streaming logs from the same host to
+          one measurement is still available if log sources are given a uniform
+          <code>syslog-tag</code> in the Crato configuration file. The
+          additional benefit here is that if you want to group logs that share a
+          similar <em>function</em> together as opposed to just the source you
+          can do that as well.
+        </p>
+
+        <p>
+          For example, various security level messages that are generated by
+          different parts of the system can be grouped together under the same
+          <code>syslog-tag</code> and sent to the same measurement in InfluxDB.
+        </p>
         <h3 id="73docker">
-          7.3 Docker
+          7.4 Docker
         </h3>
 
         <div class="img-wrapper">
@@ -1919,13 +1964,16 @@
             </li>
 
             <li>
-              <a href="https://" target="_blank">
+              <a href="https://alex-solo.github.io" target="_blank">
                 <img src="images/icons/website_icon.png" alt="website" />
               </a>
             </li>
 
             <li>
-              <a href="https://www.linkedin.com/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/alex-soloviev-61155a185/"
+                target="_blank"
+              >
                 <img src="images/icons/linked_in_icon.png" alt="linkedin" />
               </a>
             </li>
