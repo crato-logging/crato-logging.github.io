@@ -153,26 +153,29 @@
         </p>
 
         <p>
-          Applications and system services record their events to local log files,
-          but by default these log messages remain on local systems and are eventually 
-          either archived away never to be seen or permanently deleted. Without 
-          intervening then, developers and administrators lose valuable insight 
-          into the history, performance and security of their systems and applications.
+          Applications and system services record their events to local log
+          files, but by default these log messages remain on local systems and
+          are eventually either archived away never to be seen or permanently
+          deleted. Without intervening then, developers and administrators lose
+          valuable insight into the history, performance and security of their
+          systems and applications.
         </p>
 
         <p>
-          Crato allows developers to quickly and easily deploy a centralized 
-          logging infrastructure to address this problem. Using Crato, each 
+          Crato allows developers to quickly and easily deploy a centralized
+          logging infrastructure to address this problem. Using Crato, each
           machine sends its logs to a central collection server, where
           developers can gain insight into their entire system by analyzing the
-          consolidated logs across the entire deployed fleet of systems and applications. 
-          Besides log data consolidation and analysis (via InfluxDB), Crato also 
-          provides smart compression and archiving (via Amazon S3 and S3 Glacier). 
-          Crato makes configuring, deploying, and maintaining all these pieces easy and fast.
+          consolidated logs across the entire deployed fleet of systems and
+          applications. Besides log data consolidation and analysis (via
+          InfluxDB), Crato also provides smart compression and archiving (via
+          Amazon S3 and S3 Glacier). Crato makes configuring, deploying, and
+          maintaining all these pieces easy and fast.
         </p>
 
         <p>
-          Before we get into Crato, let's take a step back and discuss what logs are. 
+          Before we get into Crato, let's take a step back and discuss what logs
+          are.
         </p>
 
         <h2 id="logging">2 Logging</h2>
@@ -180,29 +183,30 @@
         <h3>2.1 What is a Log?</h3>
 
         <p>
-          Developers rely on logs of all sorts on a daily basis. In
-          the simplest case, we can think of logs as distinct events that get
-          written to files<sup><a href="#footnote-1">1</a></sup>. Log data is 
-          often the primary way to determine application health, debug a 
-          problem, or derive aggregate metrics. It's the first place any 
-          developer looks to try to piece together what happened in an event of 
-          an error or exception. Logs are critical and every piece of software, 
-          from infrastructure to operating system services, are continuously 
+          Developers rely on logs of all sorts on a daily basis. In the simplest
+          case, we can think of logs as distinct events that get written to
+          files<sup><a href="#footnote-1">1</a></sup
+          >. Log data is often the primary way to determine application health,
+          debug a problem, or derive aggregate metrics. It's the first place any
+          developer looks to try to piece together what happened in an event of
+          an error or exception. Logs are critical and every piece of software,
+          from infrastructure to operating system services, are continuously
           logging events as soon as the system is up.
         </p>
 
         <h3>2.2 Logs as Files</h3>
 
         <p>
-          In most UNIX systems, these events are written to log files. For the 
-          most common applications and services, these files can be found in the 
-          <code>var/log</code> directory. Within that directory, some services 
-          will create sub-directories to organize their logs. For example, MySQL 
-          generates its own log file and the <code>httpd</code> sub directory 
-          contains log files for the Apache web server <code>access_log</code> 
-          and <code>error_log</code>. There are also system process logs that 
-          can be found in files like <code>kern.log</code> or <code>auth.log</code> 
-          that contain information logged by the kernel and system authorization 
+          In most UNIX systems, these events are written to log files. For the
+          most common applications and services, these files can be found in the
+          <code>var/log</code> directory. Within that directory, some services
+          will create sub-directories to organize their logs. For example, MySQL
+          generates its own log file and the <code>httpd</code> sub directory
+          contains log files for the Apache web server
+          <code>access_log</code> and <code>error_log</code>. There are also
+          system process logs that can be found in files like
+          <code>kern.log</code> or <code>auth.log</code>
+          that contain information logged by the kernel and system authorization
           information, respectively.
         </p>
 
@@ -215,7 +219,7 @@
           files on our local file system, it's natural to think of logs simply
           as files. If logs are just files, then we use commands like
           <code>grep</code> to match against some string or regular expression
-          in the log file. 
+          in the log file.
         </p>
 
         <div class="img-wrapper">
@@ -227,15 +231,15 @@
           />
 
           <p>
-            We can use <code>grep</code> to search a file for logs generated in the last 
-            10 minutes.
+            We can use <code>grep</code> to search a file for logs generated in
+            the last 10 minutes.
           </p>
         </div>
 
         <p>
-          But in order to better understand the structure of application logs, 
-          let's consider another description of what a log is. We know that a log 
-          is a file but that's not the full story.
+          But in order to better understand the structure of application logs,
+          let's consider another description of what a log is. We know that a
+          log is a file but that's not the full story.
         </p>
 
         <h3>2.3 Logs as Append-Only Data Structures</h3>
@@ -251,33 +255,33 @@
 
         <p>
           In the simplest case, we have an application that runs on a single
-          server, and our life is relatively easy. When the application is 
+          server, and our life is relatively easy. When the application is
           contained on one server, so is its log data - when something goes
-          wrong we know where to look and it's fairly straightforward to paint 
-          the entire picture of the application state. However, as applications 
-          continue to grow in complexity so does the volume of their log data - 
-          the many components, devices and microservices that produce log data 
-          are often distributed on multiple servers and even with a relatively 
-          small number of users, this can quickly become a big problem of 
-          incomplete information. For this reason there has been a greater need 
-          to unify log data, both by location as well as format.  On top of data 
-          consolidation, there's also been a growing need to synthesize the 
-          proliferation of logs for business insights. This also implies a growing 
-          need for machines to process log data.
+          wrong we know where to look and it's fairly straightforward to paint
+          the entire picture of the application state. However, as applications
+          continue to grow in complexity so does the volume of their log data -
+          the many components, devices and microservices that produce log data
+          are often distributed on multiple servers and even with a relatively
+          small number of users, this can quickly become a big problem of
+          incomplete information. For this reason there has been a greater need
+          to unify log data, both by location as well as format. On top of data
+          consolidation, there's also been a growing need to synthesize the
+          proliferation of logs for business insights. This also implies a
+          growing need for machines to process log data.
         </p>
 
         <p>
-          In order for a machine to parse and aggregate log data to
-          then be consumed by humans, a text file may no longer be sufficient.
-          But how do we store log data, if not in a file?
+          In order for a machine to parse and aggregate log data to then be
+          consumed by humans, a text file may no longer be sufficient. But how
+          do we store log data, if not in a file?
         </p>
 
         <p>
           The key is to recognize that logs as files are just one form of a more
-          general concept of a log as a data structure. That is, if we regard a log as
-           a time-ordered, append only sequence of records, we can see log files 
-           as just one example. In this light, a log and its basic properties can
-           be represented by the following diagram.
+          general concept of a log as a data structure. That is, if we regard a
+          log as a time-ordered, append only sequence of records, we can see log
+          files as just one example. In this light, a log and its basic
+          properties can be represented by the following diagram.
         </p>
 
         <div class="img-wrapper">
@@ -288,38 +292,40 @@
           Each entry in a log is added sequentially making this an append-only
           data structure. We start on the left and each subsequent entry is then
           added to the right. The entries on the left are then by definition
-          older than entries on the right, giving this data structure a built-in 
-          ordering<sup ><a href="#footnote-2">2</a></sup >. Since reads also 
-          proceed from left to write, in the context of building an application, 
-          if each entry in a log represents some event, we can know the order 
-          in which the events occurred. In this way, logs provide a historical 
-          context for our applications.
+          older than entries on the right, giving this data structure a built-in
+          ordering<sup><a href="#footnote-2">2</a></sup
+          >. Since reads also proceed from left to write, in the context of
+          building an application, if each entry in a log represents some event,
+          we can know the order in which the events occurred. In this way, logs
+          provide a historical context for our applications.
         </p>
 
         <h3>2.4 Logs as Streams</h3>
 
         <p>
-          The "Twelve-factor App" is a set of best practices for building robust 
-          and maintainable web applications. One of the guidelines directly address 
-          logging, suggesting that we should treat logs not as files but
+          The "Twelve-factor App" is a set of best practices for building robust
+          and maintainable web applications. One of the guidelines directly
+          address logging, suggesting that we should treat logs not as files but
           as event streams, and that a web application shouldn’t concern itself
           with the storage of this information. Instead, these logs should be
           treated as a continuous stream that is captured and stored by a
-          separate service<sup><a href="#footnote-3">3</a></sup >.
+          separate service<sup><a href="#footnote-3">3</a></sup
+          >.
         </p>
 
         <p>
-          Of course it's natural to think of logs as files since it's a common 
-          way to interact with logs and because log file generation is typically 
-          an automatic process that happens behind the scenes. But log messages 
-          get written to files mainly because it's a convenient method of storing 
-          data. As we have seen, outside of the context of a file, individual log 
-          messages can be viewed as time ordered streams of events that <em>can</em> 
-          be written to files but that can also be processed in other ways. To 
-          borrow another quote from Jay Kreps, "Log is another word for stream 
-          and logs are at the heart of stream processing".  Streams of data can 
-          be directed or split into multiple streams and sent to different locations 
-          for further processing.
+          Of course it's natural to think of logs as files since it's a common
+          way to interact with logs and because log file generation is typically
+          an automatic process that happens behind the scenes. But log messages
+          get written to files mainly because it's a convenient method of
+          storing data. As we have seen, outside of the context of a file,
+          individual log messages can be viewed as time ordered streams of
+          events that <em>can</em>
+          be written to files but that can also be processed in other ways. To
+          borrow another quote from Jay Kreps, "Log is another word for stream
+          and logs are at the heart of stream processing". Streams of data can
+          be directed or split into multiple streams and sent to different
+          locations for further processing.
         </p>
 
         <p>
@@ -327,8 +333,8 @@
           to see a live stream of logs that are coming from an application or
           any other process we'd like to monitor. So while messages are being
           written to files, from this view it's easier to think of logs as a
-          collection of events that we can view in real time as they occur 
-          - something that's ongoing, with no beginning or an end.
+          collection of events that we can view in real time as they occur -
+          something that's ongoing, with no beginning or an end.
         </p>
 
         <div class="img-wrapper">
@@ -348,21 +354,21 @@
         <h3>2.5 Logs Capture Change</h3>
 
         <p>
-          To review, a log at its core is an append- only sequence of records 
-          that has a natural notion of "time" because newer records are appended 
-          to the end of the log. Taken together, these properties mean that a 
-          log effectively captures changes over time, thereby <i>creating a full 
-            history of the application</i>.
+          To review, a log at its core is an append- only sequence of records
+          that has a natural notion of "time" because newer records are appended
+          to the end of the log. Taken together, these properties mean that a
+          log effectively captures changes over time, thereby
+          <i>creating a full history of the application</i>.
         </p>
 
         <p>
           We most often think of our application's database, where we keep the
-          busines logic of our application, as the source of truth. If some data 
-          on the UI doesn't look right, we consult the database to determine 
-          whether it's correct. But even a database can't tell you how the data 
-          got to that state. In some situations, knowing the historical context 
-          for how we got to a particular state can be even more important.  As 
-          espoused by Martin Kleppman, Jay Kreps, and others, this idea is known 
+          busines logic of our application, as the source of truth. If some data
+          on the UI doesn't look right, we consult the database to determine
+          whether it's correct. But even a database can't tell you how the data
+          got to that state. In some situations, knowing the historical context
+          for how we got to a particular state can be even more important. As
+          espoused by Martin Kleppman, Jay Kreps, and others, this idea is known
           as the "Stream-Table Duality".
         </p>
 
@@ -371,11 +377,11 @@
         <p>
           Stream-Table duality is another way of saying that there are distinct
           but related ways to represent data. The familiar way is of course with
-          a table which represents a snapshot of current state. Let's consider 
-          a simple example below using relational data in tables. There are two users
-          and they are transferring funds between one another. As changes occur
-          over time, the data in a table is updated to reflect a new current
-          state.
+          a table which represents a snapshot of current state. Let's consider a
+          simple example below using relational data in tables. There are two
+          users and they are transferring funds between one another. As changes
+          occur over time, the data in a table is updated to reflect a new
+          current state.
         </p>
 
         <div class="buttons">
@@ -399,15 +405,15 @@
         </div>
 
         <p>
-          From this example, we can see that data in the table is mutable since the
-          old values are replaced by new values. When we isolate a table and 
-          look at it at any point in time, it's possible to answer questions 
-          about the current state - for example, what <em>is</em> the current 
-          balance of a customer with username big_ed.  However, looking only at a 
-          database record at one point in time doesn't paint a full picture - 
-          there are many ways you could have arrived from one state to another 
-          and it is only the log that can describe that journey. The log is the 
-          database's changelog and it's there that we can find the full story of 
+          From this example, we can see that data in the table is mutable since
+          the old values are replaced by new values. When we isolate a table and
+          look at it at any point in time, it's possible to answer questions
+          about the current state - for example, what <em>is</em> the current
+          balance of a customer with username big_ed. However, looking only at a
+          database record at one point in time doesn't paint a full picture -
+          there are many ways you could have arrived from one state to another
+          and it is only the log that can describe that journey. The log is the
+          database's changelog and it's there that we can find the full story of
           how the current data arrived at its current state.
         </p>
 
@@ -420,19 +426,20 @@
           <img src="images/diagrams/gifs/stream.gif" alt="Stream" />
 
           <p>
-            A stream captures the changes between the table's states as distinct 
+            A stream captures the changes between the table's states as distinct
             events.
           </p>
         </div>
 
         <p>
-          From a log-as-stream perspective, the data is immutable since the 
-          values are not updated. Instead, distinct and immutable events are 
-          appended to the end of the log. What is captured in the blue boxes 
-          are the changes between the table's states. This stream of changes can 
-          supplement the core business logic that lives in tables and helps 
-          answer not only <em>what</em> changed but also <em>why</em> and 
-          <em>how</em> it changed<sup ><a href="#footnote-4">4</a></sup >.
+          From a log-as-stream perspective, the data is immutable since the
+          values are not updated. Instead, distinct and immutable events are
+          appended to the end of the log. What is captured in the blue boxes are
+          the changes between the table's states. This stream of changes can
+          supplement the core business logic that lives in tables and helps
+          answer not only <em>what</em> changed but also <em>why</em> and
+          <em>how</em> it changed<sup><a href="#footnote-4">4</a></sup
+          >.
         </p>
 
         <div class="img-wrapper">
@@ -447,11 +454,12 @@
         </div>
 
         <p>
-          And a log is useful in another way besides providing historical context 
-          for existing data. Because a log captures the changes themselves, it is 
-          possible to rebuild the current state of any database from the database 
-          logs alone. In fact, it is possible to rebuild the "current state" of 
-          any point in time of the database from logs.
+          And a log is useful in another way besides providing historical
+          context for existing data. Because a log captures the changes
+          themselves, it is possible to rebuild the current state of any
+          database from the database logs alone. In fact, it is possible to
+          rebuild the "current state" of any point in time of the database from
+          logs.
         </p>
 
         <div class="img-wrapper">
@@ -464,10 +472,10 @@
         </div>
 
         <p>
-          In this way, it's possible to think of a log as the real source of 
-          truth since we can recreate a snapshot of the database at any point 
-          in time from logs. That is, we can aggregate streams to arrive at
-          tables, but we cannot understand the historical context from only tables.
+          In this way, it's possible to think of a log as the real source of
+          truth since we can recreate a snapshot of the database at any point in
+          time from logs. That is, we can aggregate streams to arrive at tables,
+          but we cannot understand the historical context from only tables.
         </p>
 
         <h3>2.7 Why Does Logging Matter for Small Applications?</h3>
@@ -485,27 +493,29 @@
         <ul>
           <li>We can see precisely see how our applications are being used</li>
           <li>Data can be used to find trends, patterns, and behaviors</li>
-          <li>With historical event logs we can rebuild a snapshot of our 
-            application state at any point in time</li>
+          <li>
+            With historical event logs we can rebuild a snapshot of our
+            application state at any point in time
+          </li>
         </ul>
 
         <p>
           For a small but growing application, there are many options to get
-          started with logging. Despite the myriad of options, many companies 
-          opt to deprioritize logging from the outset. Yet, the power of logs 
-          can only be realized later; by the time an application owner decides 
-          she wants to look at historical data, it's too late to get started as 
-          previous data is already lost. By default, many systems delete log data; 
-          in some cases, it's archived into various machines and unusable for 
-          meaningful analysis. Most small application owners do not think about a 
-          logging strategy until significant data is lost. 
+          started with logging. Despite the myriad of options, many companies
+          opt to deprioritize logging from the outset. Yet, the power of logs
+          can only be realized later; by the time an application owner decides
+          she wants to look at historical data, it's too late to get started as
+          previous data is already lost. By default, many systems delete log
+          data; in some cases, it's archived into various machines and unusable
+          for meaningful analysis. Most small application owners do not think
+          about a logging strategy until significant data is lost.
         </p>
 
         <p>
-          In the next section, we'll discuss how to get started with 
-          syslog, the standard log recording format on UNIX, and 
-          the various architectural deployment options that small application 
-          owners have for centralizing and storing their log data.
+          In the next section, we'll discuss how to get started with syslog, the
+          standard log recording format on UNIX, and the various architectural
+          deployment options that small application owners have for centralizing
+          and storing their log data.
         </p>
 
         <h2 id="syslog">3 Syslog</h2>
@@ -513,11 +523,11 @@
         <h3>3.1 Single Host Architecture</h3>
 
         <p>
-          Previously, we talked about how log files are automatically generated 
-          by a logging system on the operating system.  Syslog is the most widely 
-          used logging system. In fact, syslog is a UNIX standard that defines 
-          a message format and allows for stanardization of how logs are 
-          generated and processed. 
+          Previously, we talked about how log files are automatically generated
+          by a logging system on the operating system. Syslog is the most widely
+          used logging system. In fact, syslog is a UNIX standard that defines a
+          message format and allows for stanardization of how logs are generated
+          and processed.
         </p>
 
         <p>
@@ -546,8 +556,8 @@
           There is a separate process called "log rotation" that is responsible
           for compressing, archiving and eventually removing old log files. Log
           rotation occurs daily, weekly or when a file reaches a certain size -
-          this depends on the configuration<sup ><a href="#footnote-5">5</a></sup >. 
-          For example, you can choose to keep 3 days worth of logs, in which
+          this depends on the configuration<sup><a href="#footnote-5">5</a></sup
+          >. For example, you can choose to keep 3 days worth of logs, in which
           case the log rotation process will rename the log file to make room
           for the next file, eventually leaving the most recent three files:
           <code>example.log.1</code>, <code>example.log.2</code> and
@@ -568,12 +578,12 @@
         </div>
 
         <p>
-          This process occurs behind the scenes in a localized system. But 
-          applications are rarely deployed on a single node. There
-          are typically many moving parts and various components across
-          different servers. Each of these components is generating its own log
-          data in real time, so the question is how do you as a developer sift
-          through this data and correlate events from each component?
+          This process occurs behind the scenes in a localized system. But
+          applications are rarely deployed on a single node. There are typically
+          many moving parts and various components across different servers.
+          Each of these components is generating its own log data in real time,
+          so the question is how do you as a developer sift through this data
+          and correlate events from each component?
         </p>
 
         <p>
@@ -581,8 +591,8 @@
           see what went wrong. In this case you would have to individually
           connect to every single one of the servers one at a time, locate logs
           on each machine and try to find the information that you are looking
-          for, and then try to correlate different events across different machines, 
-          perhaps by their timestamp, to understand what went wrong.
+          for, and then try to correlate different events across different
+          machines, perhaps by their timestamp, to understand what went wrong.
         </p>
 
         <div class="img-wrapper">
@@ -596,20 +606,21 @@
         <p>
           This is not what we want. Having all these different logs hosted in
           different locations makes the correlation and analysis difficult and
-          on top of that, through the process of log rotation, it might be 
-          possible that the log file you're looking for has been rotated out and 
-          deleted forever. Ideally we would bring together all these logs into 
-          one central place, where we can analyze the logs in aggregate and 
-          come up with a uniform back-up strategy for them. 
+          on top of that, through the process of log rotation, it might be
+          possible that the log file you're looking for has been rotated out and
+          deleted forever. Ideally we would bring together all these logs into
+          one central place, where we can analyze the logs in aggregate and come
+          up with a uniform back-up strategy for them.
         </p>
 
         <h3>3.2 Forwarding Messages to a Central Server</h3>
 
         <p>
-          Syslog can also help with forwarding log events across machines. It 
-          does this by having facilities for both sending and receiving log events: 
-          a syslog daemon for each log-sending machine and a syslog daemon on the 
-          log-receiving machine where all log data is to be centralized.
+          Syslog can also help with forwarding log events across machines. It
+          does this by having facilities for both sending and receiving log
+          events: a syslog daemon for each log-sending machine and a syslog
+          daemon on the log-receiving machine where all log data is to be
+          centralized.
         </p>
 
         <div class="img-wrapper">
@@ -622,10 +633,10 @@
 
         <p>
           This time, the syslog daemon on each of your components captures log
-          messages but instead of simply writing them to a file, it forwards messages
-          to a remote machine where another syslog daemon accepts them. Here, 
-          it's possible to view our logs as a consolidated whole. Already this 
-          is a big improvement from the disjointed scenario we had above.
+          messages but instead of simply writing them to a file, it forwards
+          messages to a remote machine where another syslog daemon accepts them.
+          Here, it's possible to view our logs as a consolidated whole. Already
+          this is a big improvement from the disjointed scenario we had above.
         </p>
 
         <p>
@@ -646,24 +657,25 @@
         </div>
 
         <p>
-          Now we have a much more desirable and more manageable situation and 
-          this is the basis for a centralized logging architecture. Once all logs 
-          that are relevant to your application are consolidated in one place, 
-          their value in aggregate starts to become more apparent.
+          Now we have a much more desirable and more manageable situation and
+          this is the basis for a centralized logging architecture. Once all
+          logs that are relevant to your application are consolidated in one
+          place, their value in aggregate starts to become more apparent.
         </p>
 
         <p>
-          Whether you want to use simple command line utilities like <code>grep</code>, 
-          ship your logs somewhere else, or visualize them using the many monitoring 
-          and visualization tools that exist, it can only be possible once the 
-          logs are centralized. In the next section, we'll enumerate over some 
-          solutions to help developers set up a centralized logging architecture.
+          Whether you want to use simple command line utilities like
+          <code>grep</code>, ship your logs somewhere else, or visualize them
+          using the many monitoring and visualization tools that exist, it can
+          only be possible once the logs are centralized. In the next section,
+          we'll enumerate over some solutions to help developers set up a
+          centralized logging architecture.
         </p>
 
         <h2 id="current-solutions">4 Current Solutions</h2>
 
         <p>
-          What solutions exist for a small and growing application that wants to 
+          What solutions exist for a small and growing application that wants to
           manage its own logs?
         </p>
 
@@ -672,7 +684,6 @@
         <div class="img-wrapper">
           <img
             src="images/three_options.png"
-            class="softened"
             alt="options for centralized logging"
           />
 
@@ -682,14 +693,15 @@
         </div>
 
         <p>
-          To quickly survey the available options, let's distinguish between 
-          three main categories of log management solutions. <em>Logging 
-          as a Service</em> (LaaS) consists of paid, propietary, typically 
-          cloud-based systems.  The <em>Do it Yourself</em> (DIY) path 
-          involves designing and building a custom, self-hosted solution from a 
-          variety of components. Finally, the <em>Open-Source Software</em> (OSS) 
-          solutions are open-source, pre-designed centralized logging systems that
-          you deploy on your own machines.
+          To quickly survey the available options, let's distinguish between
+          three main categories of log management solutions.
+          <em>Logging as a Service</em> (LaaS) consists of paid, propietary,
+          typically cloud-based systems. The <em>Do it Yourself</em> (DIY) path
+          involves designing and building a custom, self-hosted solution from a
+          variety of components. Finally, the
+          <em>Open-Source Software</em> (OSS) solutions are open-source,
+          pre-designed centralized logging systems that you deploy on your own
+          machines.
         </p>
 
         <h3>
@@ -697,9 +709,9 @@
         </h3>
 
         <p>
-          Full-service Logging as a Service (LaaS) products provide their customers 
-          with the full range of options, consisting of the following five log 
-          management functions:
+          Full-service Logging as a Service (LaaS) products provide their
+          customers with the full range of options, consisting of the following
+          five log management functions:
         </p>
 
         <ol>
@@ -711,30 +723,31 @@
         </ol>
 
         <p>
-          LaaS solutions are generally cloud-based. They&#39;re designed to be 
-          easy-to-use, and they provide a rich feature-set along with technical 
-          support. The most difficult part in working with a LaaS may be configuring 
-          your machine(s) to forward logs into the service, and a LaaS will typically
-          provide tools and instructions for that as well. The LaaS handles the 
-          rest. The convenience of a LaaS is hard to deny, and products in this
-          category provide ideal solutions for many application's needs.
+          LaaS solutions are generally cloud-based. They&#39;re designed to be
+          easy-to-use, and they provide a rich feature-set along with technical
+          support. The most difficult part in working with a LaaS may be
+          configuring your machine(s) to forward logs into the service, and a
+          LaaS will typically provide tools and instructions for that as well.
+          The LaaS handles the rest. The convenience of a LaaS is hard to deny,
+          and products in this category provide ideal solutions for many
+          application's needs.
         </p>
 
         <p>
-          The drawbacks however are also apparent. The services aren't free, and 
-          costs can fluctuate based on a number of factors, including the volume of
-          data being ingested, the number of users, and storage or retention plans. 
-          Nor is it simply an issue of costs. Whether cloud-based or on-premise, 
-          propietary solutions are marked by a lack of ownership: users cede control
-          of their data to a third party, and they are unable to inspect, modify, or 
-          audit proprietary code.
+          The drawbacks however are also apparent. The services aren't free, and
+          costs can fluctuate based on a number of factors, including the volume
+          of data being ingested, the number of users, and storage or retention
+          plans. Nor is it simply an issue of costs. Whether cloud-based or
+          on-premise, propietary solutions are marked by a lack of ownership:
+          users cede control of their data to a third party, and they are unable
+          to inspect, modify, or audit proprietary code.
         </p>
 
         <p>
-          Evaluating these tradeoffs, some developers opt to look elsewhere for 
-          log management, perhaps in search of greater data control, unique features, 
-          and / or reduced costs.  If a LaaS is not your preferred solution, another
-          option would be to build your own.
+          Evaluating these tradeoffs, some developers opt to look elsewhere for
+          log management, perhaps in search of greater data control, unique
+          features, and / or reduced costs. If a LaaS is not your preferred
+          solution, another option would be to build your own.
         </p>
 
         <h3 id="diy">4.3 DIY</h3>
@@ -742,8 +755,9 @@
         <p>
           If you decide to Do It Yourself (DIY), the most common approach is to
           design and build a system out of pre-existing components. You would
-          select these components based on your application's needs and the components'
-          interoperability. The basic categories of components are below.
+          select these components based on your application's needs and the
+          components' interoperability. The basic categories of components are
+          below.
         </p>
 
         <ol>
@@ -756,7 +770,6 @@
         <div class="img-wrapper">
           <img
             src="images/diagrams/components/components.png"
-            class="softened"
             alt="key components in log management"
           />
 
@@ -767,15 +780,14 @@
 
         <h4 id="collection">4.3.1 Collection</h4>
         <p>
-          Log collection occurs on each machine with an agent listening for 
-          messages generated by applications and system processes. When logs are 
+          Log collection occurs on each machine with an agent listening for
+          messages generated by applications and system processes. When logs are
           generated in response to new events, the agent collects them.
         </p>
 
         <div class="img-wrapper">
           <img
             src="images/diagrams/components/zoomed_in/log_collection.png"
-            class="softened"
             alt="log collection"
           />
 
@@ -790,10 +802,10 @@
 
         <p>
           Syslog, and its more recent implementations rsyslog and syslog-ng, are
-          commonly found on UNIX systems, and are even available on Windows. 
+          commonly found on UNIX systems, and are even available on Windows.
           Because of this ubiquity, DIY systems are often able to directly work
-          with one or another of these syslog implementations for log collection. 
-          But there are other options as well.
+          with one or another of these syslog implementations for log
+          collection. But there are other options as well.
         </p>
 
         <h4 id="processing-aggregration">4.3.2 Processing &amp; Aggregation</h4>
@@ -801,32 +813,31 @@
         <div class="img-wrapper">
           <img
             src="images/diagrams/components/collection_aggregation.png"
-            class="softened"
             alt="log collection and aggregation"
           />
 
           <p>
-          Once collected from each client, logs are aggregated in a central location
+            Once collected from each client, logs are aggregated in a central
+            location
           </p>
         </div>
 
         <p>
-          After collecting logs from each client, the next step is to aggregate 
-          these logs on a single machine. To accomplish this, a logging system 
-          must 'ship' or forward the logs to a centralized server. Here, the 
-          logs may be parsed and transformed into formats like JSON, enriched 
-          with context and stored.  There is a healthy amount of options from 
-          which to choose here, and choices will depend largely on application need.
+          After collecting logs from each client, the next step is to aggregate
+          these logs on a single machine. To accomplish this, a logging system
+          must 'ship' or forward the logs to a centralized server. Here, the
+          logs may be parsed and transformed into formats like JSON, enriched
+          with context and stored. There is a healthy amount of options from
+          which to choose here, and choices will depend largely on application
+          need.
         </p>
 
-
         <h4 id="ingestion-storage">4.3.3 Ingestion &amp; Storage</h4>
-        <p>
+        <p></p>
 
         <div class="img-wrapper">
           <img
             src="images/diagrams/components/zoomed_in/ingestion_storage2.png"
-            class="softened"
             alt="log ingestion"
           />
 
@@ -837,22 +848,23 @@
 
         <p>
           Once logs are collected, the goal is to transport them to a storage
-          service from which they can be searched and analyzed. If the write rate 
-          of the chosen datastore is compatible with potentially bursty influx 
-          of logs into the system, then the logs could be sent directly to storage. 
-          However, not all applications will be able to rely on this throughput parity.
-          Applications that need to scale, or that expect wide fluctuations in data 
-          flow, would likely do better by decoupling log aggregation and storage. 
-          This can be handled in a number of ways, and a common option would be
-          to use a messaging system. Doing so would provide a more robust, 
-          fault-tolerant system, along with the ability to handle higher throughput. 
-          But it also introduces additional complexity.
+          service from which they can be searched and analyzed. If the write
+          rate of the chosen datastore is compatible with potentially bursty
+          influx of logs into the system, then the logs could be sent directly
+          to storage. However, not all applications will be able to rely on this
+          throughput parity. Applications that need to scale, or that expect
+          wide fluctuations in data flow, would likely do better by decoupling
+          log aggregation and storage. This can be handled in a number of ways,
+          and a common option would be to use a messaging system. Doing so would
+          provide a more robust, fault-tolerant system, along with the ability
+          to handle higher throughput. But it also introduces additional
+          complexity.
         </p>
 
         <p>
-          Here, as with the other components, there are a number of options to 
-          choose from. The design and implementation choices will depend on a 
-          number of factors. Relevant considerations include the following: 
+          Here, as with the other components, there are a number of options to
+          choose from. The design and implementation choices will depend on a
+          number of factors. Relevant considerations include the following:
         </p>
 
         <ul>
@@ -878,58 +890,59 @@
         <div class="img-wrapper">
           <img
             src="images/diagrams/components/visualization.png"
-            class="softened"
             alt="system visualization"
           />
 
           <p>
-          Visualization tools provide convenient insight into a system's performance
+            Visualization tools provide convenient insight into a system's
+            performance
           </p>
         </div>
 
         <p>
-          Ultimately, if you decide to DIY a central log management system, at each 
-          layer you will have several options available. In many cases that is ideal,
-          since it is highly likely that with careful research you will be able 
-          to design and build a system that satisfies all your application's 
-          technical requirements. But there are certainly time costs that come 
-          with research, design, building and maintenance. 
-        </p> 
+          Ultimately, if you decide to DIY a central log management system, at
+          each layer you will have several options available. In many cases that
+          is ideal, since it is highly likely that with careful research you
+          will be able to design and build a system that satisfies all your
+          application's technical requirements. But there are certainly time
+          costs that come with research, design, building and maintenance.
+        </p>
 
         <p>
-          Overall, doing it yourself (DIY) and building a custom system allows 
-          for greater control and flexibility at the cost of complexity. Custom 
-          systems can address very precise needs, and they can provide high control 
-          of data and security.
+          Overall, doing it yourself (DIY) and building a custom system allows
+          for greater control and flexibility at the cost of complexity. Custom
+          systems can address very precise needs, and they can provide high
+          control of data and security.
         </p>
 
         <h3 id="oss">4.4 OSS</h3>
         <p>
-          The final category of log management solutions consists of open source 
+          The final category of log management solutions consists of open source
           pre-designed systems. These tools allow a developer to maintain higher
-          levels of data control with an ease-of-use closer to LaaS tools. However,
-          they typically require self-management and hosting. The two main solutions here are
-          the Elastic Stack and Graylog.
+          levels of data control with an ease-of-use closer to LaaS tools.
+          However, they typically require self-management and hosting. The two
+          main solutions here are the Elastic Stack and Graylog.
         </p>
 
         <h4 id="elastic-stack">4.4.1 Elastic Stack</h4>
 
         <div class="img-wrapper">
-          <img src="images/diagrams/elastic_stack_diagram.png" 
-           class="softened"
-           alt="Elastic Stack"
-         />
+          <img
+            src="images/diagrams/elastic_stack_diagram.png"
+            alt="Elastic Stack"
+          />
 
           <p>Elastic Stack Architecture</p>
         </div>
 
         <p>
-          Elastic develops a collection of open-source log management products 
-          designed to work well together. Altogether, they have products that 
-          cover each of the four key phases of centralized log management. In fact, 
-          'ELK' refers to a frequently-used combination of their tools.  ELK is comprised 
-          of the text-search storage system Elasticsearch, the log collection and 
-          storage service Logstash, and the visualization/monitoring tool Kibana.
+          Elastic develops a collection of open-source log management products
+          designed to work well together. Altogether, they have products that
+          cover each of the four key phases of centralized log management. In
+          fact, 'ELK' refers to a frequently-used combination of their tools.
+          ELK is comprised of the text-search storage system Elasticsearch, the
+          log collection and storage service Logstash, and the
+          visualization/monitoring tool Kibana.
         </p>
 
         <h4 id="graylog">4.4.2 Graylog</h4>
@@ -937,36 +950,35 @@
         <div class="img-wrapper">
           <img
             src="images/diagrams/graylog_diagram.png"
-            class="softened"
             alt="Graylog architecture"
           />
 
-          <p> Graylog architecture</p>
+          <p>Graylog architecture</p>
         </div>
 
         <p>
           Graylog is a company and open-source centralized log management
           server. It is built on top of Elasticsearch and MongoDB and offers a
-          web interface connected to the server. In addition to their OSS self-hosted 
-          option, Graylog provides a LaaS as well.
+          web interface connected to the server. In addition to their OSS
+          self-hosted option, Graylog provides a LaaS as well.
         </p>
 
         <p>
           The Elastic Stack and Graylog are very popular open-souce self-hosted
-          solutions. Each offers the expected ease of use, along with the potential
-          for data ownership and security assurances that come from self-hosting. 
-          There is a rich ecosystem of plugins for each tool, thus offering extended 
-          flexibility. However, these systems are more complex than LaaS. 
-          You'll need to configure, deploy, maintain, and potentially scale these
-          systems yourself.
+          solutions. Each offers the expected ease of use, along with the
+          potential for data ownership and security assurances that come from
+          self-hosting. There is a rich ecosystem of plugins for each tool, thus
+          offering extended flexibility. However, these systems are more complex
+          than LaaS. You'll need to configure, deploy, maintain, and potentially
+          scale these systems yourself.
         </p>
 
         <h2 id="crato-design">5 Crato Design</h2>
 
         <p>
-          We can now finally situate Crato. To do so, we will first quickly 
+          We can now finally situate Crato. To do so, we will first quickly
           summarize the landscape of options and their tradeoffs.
-        </p> 
+        </p>
 
         <div class="img-wrapper">
           <img
@@ -976,17 +988,18 @@
         </div>
 
         <p>
-          While LaaS options provide the quickest and most simple path, 
-          their advantages come with costs. Not only must users pay for LaaS services, 
-          but their applications' data is yielded to a third party. DIY options 
-          grant users the most control, and can be designed and built to include 
-          precisely the features wanted. But there are tradeoffs here as well. 
-          The high level of control and customizability comes with increased complexity 
-          and additional design and maintenance committments. Finally, the pre-designed 
-          OSS options aim to split the difference between LaaS and DIY. OSS options return
-          data control to the users (typically lacking in LaaS) while reducing
-          complexity and design and maintenance commitments (both of which tend
-          to be high in DIY projects).
+          While LaaS options provide the quickest and most simple path, their
+          advantages come with costs. Not only must users pay for LaaS services,
+          but their applications' data is yielded to a third party. DIY options
+          grant users the most control, and can be designed and built to include
+          precisely the features wanted. But there are tradeoffs here as well.
+          The high level of control and customizability comes with increased
+          complexity and additional design and maintenance committments.
+          Finally, the pre-designed OSS options aim to split the difference
+          between LaaS and DIY. OSS options return data control to the users
+          (typically lacking in LaaS) while reducing complexity and design and
+          maintenance commitments (both of which tend to be high in DIY
+          projects).
         </p>
 
         <p>
@@ -994,8 +1007,11 @@
           which is largely attributable to the database and full-text search
           choices of the OSS stacks. Crato reduces complexity even more by
           eliminating the need to set up and maintain a full-text search engine.
-          Thus, <em>Crato is designed to provide the core features of centralized
-            logging while reducing complexity and time commitments</em>.
+          Thus,
+          <em
+            >Crato is designed to provide the core features of centralized
+            logging while reducing complexity and time commitments</em
+          >.
         </p>
 
         <h4>Design Goals</h4>
@@ -1139,16 +1155,34 @@
           without flags provides help by displaying a usage screen.
         </p>
 
+        <div class="img-wrapper">
+          <img
+            src="images/diagrams/crato_client_commands.png"
+            alt="Crato Client Commands"
+          />
+        </div>
+
         <h4 id="522cratocore">
           5.2.2 Crato Core
         </h4>
 
         <div class="img-wrapper">
-          <img src="images/diagrams/gifs/crato_docker_deploy.gif" 
-           class="softened"
-           alt="deployment via Docker" />
+          <img
+            src="images/diagrams/gifs/crato_docker_deploy.gif"
+            class="softened"
+            alt="deployment via Docker"
+          />
 
-          <p>Crato infrastructure installs and deploys with just two commands</p>
+          <p>
+            Crato infrastructure installs and deploys with just two commands
+          </p>
+        </div>
+
+        <div class="img-wrapper">
+          <img
+            src="images/diagrams/crato_core_commands.png"
+            alt="Crato Core Commands"
+          />
         </div>
 
         <h2 id="crato-implementation">6 Crato Implementation</h2>
@@ -1563,15 +1597,15 @@
 
         <p>
           Although other forms of database can be used for time series data,
-          they often lack the tooling to make working with time series easy . 
-          Consider the chart above comparing time series and relational databases. 
-          Time series databases tend to be optimized for fast indexing by time.
-          While other database types tend to slow down due to indexing as the
-          data set grows, time series databases tend to keep a consistently high
-          ingestion rate.  Also, time series databases make running a continuous query 
-          simple. When performed over a short retention period measurement, a
-          continuous query allows live monitoring of, for example, a server's 
-          response rate.
+          they often lack the tooling to make working with time series easy .
+          Consider the chart above comparing time series and relational
+          databases. Time series databases tend to be optimized for fast
+          indexing by time. While other database types tend to slow down due to
+          indexing as the data set grows, time series databases tend to keep a
+          consistently high ingestion rate. Also, time series databases make
+          running a continuous query simple. When performed over a short
+          retention period measurement, a continuous query allows live
+          monitoring of, for example, a server's response rate.
         </p>
 
         <h4 id="644queryablestorageinfluxdb">
