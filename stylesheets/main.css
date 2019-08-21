@@ -447,15 +447,20 @@ h3 {
 #case-study li {
   font-size: 1.1rem;
   line-height: 1.6rem;
-  margin-left: 2rem;
-}
-
-#case-study ul li {
   list-style: disc;
+  margin-left: 2rem;
 }
 
 #case-study li code {
   font-size: 0.8rem;
+}
+
+#case-study ol li code {
+  font-size: 1rem;
+}
+
+#case-study ol li {
+  list-style: decimal;
 }
 
 #case-study .lower-alpha-list li {
