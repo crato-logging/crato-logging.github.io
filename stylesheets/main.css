@@ -385,6 +385,10 @@ header h1 img {
   margin-bottom: 20px;
 }
 
+#case-study ul ul {
+  margin-bottom: 0px;
+}
+
 #case-study h2 {
   color: #ed6a40;
   font-family: "Teko", "Open Sans", sans-serif;
