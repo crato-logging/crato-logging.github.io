@@ -1664,59 +1664,57 @@
 
         <h2 id="challenges">7 Challenges</h2>
 
-        <h3 id="71collectlogs">
-          7.1 Collect Logs
+        <h3 id="71collectinglogs">
+          7.1 Collecting Logs
         </h3>
 
         <p>
-          How to efficiently and reliably collect logs without imposing on the
-          developers' application code?
+          An problem that arose early in Crato's design was how to efficiently 
+          and reliably collect logs from client systems without imposing on the
+          developers' application code. The very nature of centralized logging
+          framework requires extraction of logs from machines and environments
+          over which the framework has little or no control. As a result, every 
+          byte of code deployed on a client system is a potential liability. 
+          Ideally, Crato would be able to collect logs from clients without
+          altering any code or impacting the original environment in any way.
+          But this is just an ideal. Instead, we chose to work with the least
+          invasive techniques we could find that still allowed reliable log 
+          collection.  We evaluated and excluded two popular options before 
+          deciding to use rsyslog.
         </p>
 
-        <p>Common collection options not chosen by Crato:</p>
-        <ul>
-          <li>
-            Install active collection agent on users' servers
-            <ul>
-              <li>Pros:
-                <ul>
-                  <li>Crato would have control</li>
-                </ul>
-              </li>
-              <li>
-                Cons:
-                  <ul>
-                    <li>invasive</li>
-                    <li>violates goal of being lightweight</li>
-                    <li>risks of adding code into an untested environment</li>
-                  </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            Integrate with an application logging library
-            <ul>
-              <li>Pros:
-                <ul>
-                  <li>many libraries already familiar to developers</li>
-                </ul>
-              </li>
-              <li>
-                Cons:
-                <ul>
-                  <li>narrows the scope of users to those using a particular library or framework</li>
-                  <li>likely to not incorporate web server logs or system logs</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <p>
+          The first option was to install an active collection agent on user's 
+          servers. This approach would give Crato as much control as possible 
+          over the conditions of log collection, so it was tempting
+          to follow this approach. Nonetheless, it carries with it considerable
+          risks of deploying code into an untested situation, and of interfering
+          with the original applications. We considered this approach too invasive,
+          and it certainly violated Crato's goal of being lightweight.
+        </p>
 
         <p>
-          Crato's approach: Adapt <code>rsyslogd</code>, an already in place
-          system-level logging daemon to collect from applications as well.
-          Create customized configurations that supplement, not override,
-          existing <code>rsyslog</code> configurations.
+          The other main option we considered was to integrate with an application 
+          logging library. The idea would be to use an existing library to send
+          logs into Crato's core infrastructure. The first obvious advantage to this
+          option is that many application logging libraries are already familiar
+          tools to developers. If Crato were to integrate with a familiar library,
+          it would not itself need to intervene directly in any way on a user's machine. 
+          Furthermore, users could continue to use familiar tools. Unfortunately
+          this approach would substantially narrow the scope of users to those
+          already working with the library, or at least those already coding in
+          a given language or with a certain framework. Also, this approach would
+          limit the logs collected to only those intercepted by the library in
+          question.
+        </p>
+
+        <p>
+          So, with the first option to heavy-handed and risky, and the second too
+          limiting, we opted to adapt <code>rsyslogd</code>, an already in place
+          system-level logging daemon to collect from applications as well as
+          from its default system processes. By doing so, Crato is able to create 
+          customized configurations that supplement, not override, the functioning 
+          of existing <code>rsyslog</code> configurations. 
         </p>
 
         <h3 id="72producingtokafka">
@@ -1808,7 +1806,27 @@
           7.4 Docker
         </h3>
 
-        <p>After validating our idea using independent servers, we had to consider how to package everything together in a feasible manner for any developer. We needed easy networking so that our services could easily communicate with each other, but remain secure too. We also needed a way to implement ordering of our services, so that services (E.g. Kafka) would only talk to another when a dependent service (E.g. Zookeeper) was ready. Furthermore, we needed a system that would orchestrate and run all necessary commands to create each service including our application. Lastly we needed a powerful interface to manage these services. For these reasons we decided to use Docker, which packaged all of the aforementioned services in containers, simplified networking and provided a robust interface to manage service interaction.
+        <p>
+          After testing Crato using independent, hand-configured servers, we had 
+          to consider how to package everything together in a feasible manner for 
+          any developer. A framework designed to make logging easy can hardly ask
+          users to hand code configurations or even to copy a set of provided files
+          from a repository. Nor can they be expected to deal with any of the following
+          concerns.
+        </p>
+
+        <p>
+          In order to deploy Crato, we needed reliable networking so that our services 
+          could easily communicate with each other and remain secure.  We also needed 
+          a way to implement ordering of services, so that services (E.g. Kafka) would 
+          only attempt to communicate with one another when dependent services (E.g. Zookeeper) 
+          were ready. Furthermore, we needed a system that would orchestrate and run 
+          all necessary commands to create each service including our application. 
+          Finally, we needed a powerful interface to manage these services. In order
+          to meet all these needs, and to hide the complexity from Crato users, 
+          we decided to use Docker. Using Docker, we were able to package all of the 
+          aforementioned services in containers, simplify networking, and provide 
+          a robust but clean interface to manage service interaction.
         </p>
 
         <div class="img-wrapper">
@@ -1821,29 +1839,17 @@
         </div>
 
         <p>
-          With Docker, by containerizing each of our services, we are able to
-          isolate issues and do additional developer work via shell when these
-          live containers are running. Docker also has available to it many
-          images that are officially supported by the official organizations
-          which develop the technologies we use. We were able to find official
-          images for Apache Kafka, Apache Zookeeper and InfluxDB ensuring our
-          services will always be up-to-date. We built a custom image of our
-          Rsyslog to run commands to install necessary modules and also copy
-          over key configuration files which may needed to be edited by a
-          developer in the future.
-        </p>
-
-        <p>
-          Docker also creates a single network for all of services automatically
-          that allows containers to communicate with each other easily, but
-          doesn't expose ports to outside this network without us explicitly
-          deciding to do so.
-        </p>
-
-        <p>
-          Next, we are also able to enforce somewhat of a service start-up
-          order through Docker. Lastly, Docker allows us also to protect from data loss
-          for each service through the use of volumes.
+          Using Docker brought many advantages.  With Docker containerizing each 
+          of our services, we were able to isolate issues and expose an interface 
+          for additional development work and querying via shell.  By using 
+          officially supported Docker images for Apache Kafka, Apache Zookeeper 
+          and InfluxDB we were able to ensure Crato's services will always be 
+          up-to-date. The project required us to built a custom image of
+          Rsyslog to install necessary modules and to copy key configuration 
+          files. Docker's tooling made this easier, and it also created a single 
+          network for all services, thus allowing containers to communicate with 
+          each other easily without exposing ports to external traffic. Finally, 
+          Docker allowed us to enforce a start up order.
         </p>
 
         <h2 id="future-plans">8 Future Plans</h2>
