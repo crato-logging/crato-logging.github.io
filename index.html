@@ -1204,7 +1204,7 @@
               jsonlogs</code
             >
           </li>
-          <li><code>docker-compose stop</code></li>
+          <li><code>docker-compose stopf</code></li>
         </ol>
 
         <p>
@@ -1669,23 +1669,23 @@
         </h3>
 
         <p>
-          A problem that arose early in Crato's design was how to efficiently 
+          A problem that arose early in Crato's design was how to efficiently
           and reliably collect logs from client systems without imposing on the
           developers' application code. The very nature of centralized logging
           framework requires extraction of logs from machines and environments
-          over which the framework has little or no control. As a result, every 
-          byte of code deployed on a client system is a potential liability. 
+          over which the framework has little or no control. As a result, every
+          byte of code deployed on a client system is a potential liability.
           Ideally, Crato would be able to collect logs from clients without
           altering any code or impacting the original environment in any way.
           But this is just an ideal. Instead, we chose to work with the least
-          invasive techniques we could find that still allowed reliable log 
-          collection.  We evaluated and excluded two popular options before 
+          invasive techniques we could find that still allowed reliable log
+          collection.  We evaluated and excluded two popular options before
           deciding to use rsyslog.
         </p>
 
         <p>
-          The first option was to install an active collection agent on user's 
-          servers. This approach would give Crato as much control as possible 
+          The first option was to install an active collection agent on user's
+          servers. This approach would give Crato as much control as possible
           over the conditions of log collection, so it was tempting
           to follow this approach. Nonetheless, it carries with it considerable
           risks of deploying code into an untested situation, and of interfering
@@ -1694,12 +1694,12 @@
         </p>
 
         <p>
-          The other main option we considered was to integrate with an application 
+          The other main option we considered was to integrate with an application
           logging library. The idea would be to use an existing library to send
           logs into Crato's core infrastructure. The first obvious advantage to this
           option is that many application logging libraries are already familiar
           tools to developers. If Crato were to integrate with a familiar library,
-          it would not itself need to intervene directly in any way on a user's machine. 
+          it would not itself need to intervene directly in any way on a user's machine.
           Furthermore, users could continue to use familiar tools. Unfortunately
           this approach would substantially narrow the scope of users to those
           already working with the library, or at least those already coding in
@@ -1712,9 +1712,9 @@
           So, with the first option to heavy-handed and risky, and the second too
           limiting, we opted to adapt <code>rsyslogd</code>, an already in place
           system-level logging daemon to collect from applications as well as
-          from its default system processes. By doing so, Crato is able to create 
-          customized configurations that supplement, not override, the functioning 
-          of existing <code>rsyslog</code> configurations. 
+          from its default system processes. By doing so, Crato is able to create
+          customized configurations that supplement, not override, the functioning
+          of existing <code>rsyslog</code> configurations.
         </p>
 
         <h3 id="72producingtokafka">
@@ -1723,9 +1723,9 @@
 
         <p>
           Crato uses the Rsyslog Omkafka module to produce to Kafka. Although this
-          approach simplifies the technical aspects of sending logs to Kafka, 
+          approach simplifies the technical aspects of sending logs to Kafka,
           writing the configuration scripts requires learning Rsyslog's DSL,
-          Rainerscript (named for Rsyslog's founder). While the DSL is 
+          Rainerscript (named for Rsyslog's founder). While the DSL is
           well-documented, we decided this would be too much to ask of Crato's users.
           As a result, we decided to include these ourselves, automatically
           configuring Rsyslog when the central server is started up.
@@ -1736,18 +1736,18 @@
           left Rsyslog too tightly bound to Kafka. With even a momentarily unavailable
           Kafka broker, we began to see error messages propogate through the system.
           While seeing these messages in Kafka demonstrated that the pipeline
-          was resiliant and had continued to work, they also indicated that Crato 
-          needed to decouple rsyslog from Kafka. More specifically, it need to 
-          decouple rsyslog from any particular Kafka broker. We approached the 
-          decoupling from both sides. 
+          was resiliant and had continued to work, they also indicated that Crato
+          needed to decouple rsyslog from Kafka. More specifically, it need to
+          decouple rsyslog from any particular Kafka broker. We approached the
+          decoupling from both sides.
         </p>
 
         <p>
-          On rsyslog's side, to address complete Kafka failures, connection partitions, and 
-          bursts of logs that exceeded forwarding capacity, we added 
-          disk-assisted queuing to the rsyslog output module. This greatly 
-          increases the probability that log messages will eventually get to 
-          Kafka even under adverse conditions. 
+          On rsyslog's side, to address complete Kafka failures, connection partitions, and
+          bursts of logs that exceeded forwarding capacity, we added
+          disk-assisted queuing to the rsyslog output module. This greatly
+          increases the probability that log messages will eventually get to
+          Kafka even under adverse conditions.
         </p>
 
         <p>
@@ -1764,19 +1764,19 @@
         </h3>
         <p>
           Crato is built to handle logs from multiple clients, and on each
-          client, multiple applications and services are likely to be logging. 
-          With so much diverse data coming into the system, finding order in the 
-          chaos and storing the logs in an easy to reason about way is a top priority. 
+          client, multiple applications and services are likely to be logging.
+          With so much diverse data coming into the system, finding order in the
+          chaos and storing the logs in an easy to reason about way is a top priority.
           An initially promising approach is to use the logs' <code>host</code> property
           to route and store logs from each machine in their own measurements.
           (InfluxDB measurements are roughly analogous to SQL tables, with
-          each measurement storing related data over time.) 
+          each measurement storing related data over time.)
         </p>
 
         <p>
-          Indeed, this may be a good option in many or even most cases, but it 
-          is not always ideal to group logs by host. Given that many services may 
-          be logging from each host, it may be that storing kernel logs in the 
+          Indeed, this may be a good option in many or even most cases, but it
+          is not always ideal to group logs by host. Given that many services may
+          be logging from each host, it may be that storing kernel logs in the
           same measurement as Rails logs won't be very enlightening. We certainly
           need to be able to identify logs by their host origins, but defaulting
           to this overlooks the possibility of greater granularity in our filtering
@@ -1787,8 +1787,8 @@
           With these factors in mind, ultimately we chose to group logs by their
           <code>syslog-tag</code> property. With this option users of Crato have the
           most flexibility. Because this property is configurable on each Crato client,
-          users may determine the grouping of logs into measurements in InfluxDB. 
-          So, for instance, users could group together logs that share a similar <em>function</em> 
+          users may determine the grouping of logs into measurements in InfluxDB.
+          So, for instance, users could group together logs that share a similar <em>function</em>
           as opposed to simply bundling them by source, although this remains a
           possibility as well.
         </p>
@@ -1796,9 +1796,9 @@
         <p>
           As written, then, Crato allows users to automatically configure the filtering
           of messages into measurements simply by adding the same <code>syslog-tag</code>
-          to each log source in Crato client, whether on a single machine or on many. 
-          Additionally, Crato filters and stores all messages with 'err' severity or 
-          greater in a single measurement, and groups all authentication messages 
+          to each log source in Crato client, whether on a single machine or on many.
+          Additionally, Crato filters and stores all messages with 'err' severity or
+          greater in a single measurement, and groups all authentication messages
           into another.
         </p>
 
@@ -1807,8 +1807,8 @@
         </h3>
 
         <p>
-          After testing Crato using independent, hand-configured servers, we had 
-          to consider how to package everything together in a feasible manner for 
+          After testing Crato using independent, hand-configured servers, we had
+          to consider how to package everything together in a feasible manner for
           any developer. A framework designed to make logging easy can hardly ask
           users to hand code configurations or even to copy a set of provided files
           from a repository. Nor can they be expected to deal with any of the following
@@ -1816,16 +1816,16 @@
         </p>
 
         <p>
-          In order to deploy Crato, we needed reliable networking so that our services 
-          could easily communicate with each other and remain secure.  We also needed 
-          a way to implement ordering of services, so that services (E.g. Kafka) would 
-          only attempt to communicate with one another when dependent services (E.g. Zookeeper) 
-          were ready. Furthermore, we needed a system that would orchestrate and run 
-          all necessary commands to create each service including our application. 
+          In order to deploy Crato, we needed reliable networking so that our services
+          could easily communicate with each other and remain secure.  We also needed
+          a way to implement ordering of services, so that services (E.g. Kafka) would
+          only attempt to communicate with one another when dependent services (E.g. Zookeeper)
+          were ready. Furthermore, we needed a system that would orchestrate and run
+          all necessary commands to create each service including our application.
           Finally, we needed a powerful interface to manage these services. In order
-          to meet all these needs, and to hide the complexity from Crato users, 
-          we decided to use Docker. Using Docker, we were able to package all of the 
-          aforementioned services in containers, simplify networking, and provide 
+          to meet all these needs, and to hide the complexity from Crato users,
+          we decided to use Docker. Using Docker, we were able to package all of the
+          aforementioned services in containers, simplify networking, and provide
           a robust but clean interface to manage service interaction.
         </p>
 
@@ -1839,16 +1839,16 @@
         </div>
 
         <p>
-          Using Docker brought many advantages.  With Docker containerizing each 
-          of our services, we were able to isolate issues and expose an interface 
-          for additional development work and querying via shell.  By using 
-          officially supported Docker images for Apache Kafka, Apache Zookeeper 
-          and InfluxDB we were able to ensure Crato's services will always be 
-          up-to-date. The project required us to built a custom image of
-          Rsyslog to install necessary modules and to copy key configuration 
-          files. Docker's tooling made this easier, and it also created a single 
-          network for all services, thus allowing containers to communicate with 
-          each other easily without exposing ports to external traffic. Finally, 
+          Using Docker brought many advantages.  With Docker containerizing each
+          of our services, we were able to isolate issues and expose an interface
+          for additional development work and querying via shell.  By using
+          officially supported Docker images for Apache Kafka, Apache Zookeeper
+          and InfluxDB we were able to ensure Crato's services will always be
+          up-to-date. The project required us to build a custom image of
+          Rsyslog to install necessary modules and to copy key configuration
+          files. Docker's tooling made this easier, and it also created a single
+          network for all services, thus allowing containers to communicate with
+          each other easily without exposing ports to external traffic. Finally,
           Docker allowed us to enforce a start up order.
         </p>
 
