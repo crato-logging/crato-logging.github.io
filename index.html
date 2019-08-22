@@ -1724,25 +1724,41 @@
         </h3>
 
         <p>
-          Producing to Kafka is simplified with Rsyslog&#39;s built-in Omkafka
-          module. Still writing the configuration scripts to forward logs
-          required learning Rsyslog&#39;s domain specific language,
-          Rainerscript, named after Rsyslog founder Rainer Gerhards. While
-          documented well, we decided to provide these ourselves and make it so
-          that the Rsyslog system would be automatically configured when the
-          Rsyslog centralized server was started up. Our configuration uses
-          disk-assisted queuing to ensure that messages are saved on failed
-          delivery and reattempted when a network connection with a Kafka broker
-          is re-established.
+          Crato uses the Rsyslog Omkafka module to produce to Kafka. Although this
+          approach simplifies the technical aspects of sending logs to Kafka, 
+          writing the configuration scripts requires learning Rsyslog's DSL,
+          Rainerscript (named for Rsyslog's founder). While the DSL is 
+          well-documented, we decided this would be too much to ask of Crato's users.
+          As a result, we decided to include these ourselves, automatically
+          configuring Rsyslog when the central server is started up.
         </p>
 
         <p>
-          However, after solving this problem we realized that Rsyslog would
-          eventually reach a storage limit and fail itself if the single Kafka
-          node we began with ever failed. Ensuring fault-tolerance and
-          reliability was the main impetus to implement additional redundancy by
-          having 3 Kafka nodes total running at startup, allowing for up to 2
-          Kafka nodes to be offline.
+          In testing we quickly realized that our original configuration of Omkafka
+          left Rsyslog too tightly bound to Kafka. With even a momentarily unavailable
+          Kafka broker, we began to see error messages propogate through the system.
+          While seeing these messages in Kafka demonstrated that the pipeline
+          was resiliant and had continued to work, they also indicated that Crato 
+          needed to decouple rsyslog from Kafka. More specifically, it need to 
+          decouple rsyslog from any particular Kafka broker. We approached the 
+          decoupling from both sides. 
+        </p>
+
+        <p>
+          On rsyslog's side, to address complete Kafka failures, connection partitions, and 
+          bursts of logs that exceeded forwarding capacity, we added 
+          disk-assisted queuing to the rsyslog output module. This greatly 
+          increases the probability that log messages will eventually get to 
+          Kafka even under adverse conditions. 
+        </p>
+
+        <p>
+          On the Kafka side, we added two more brokers. With a total of three
+          nodes, the Kafka cluster would continue to provide service with as
+          many as two failed or otherwise unavailable brokers. Doing so took
+          some of the burden off of the disk-assisted queues, but more importantly
+          it increased the fault-tolerance and reliability of the entire ingestion
+          side of Crato.
         </p>
 
         <h3 id="73measurements">
