@@ -45,13 +45,18 @@ h4 {
 
 .integration:first-of-type {
   background: #8ee4af;
-  border-bottom: 2px solid #dfe0e2;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 .integration:nth-of-type(2) {
-  background: #efc99d;
-  border-top: 2px solid #dfe0e2;
+  background: #e48ec3;
   border-bottom: 2px solid #dfe0e2;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.integration:nth-of-type(2) div.box {
 }
 
 .text-box {
@@ -81,7 +86,12 @@ h4 {
 .integration img {
   max-width: 600px;
   width: 100%;
-  padding-top: 60px;
+  padding-top: 40px;
+}
+
+.integration img#banner-deploy {
+  padding-top: 0;
+  width: 85%;
 }
 
 .button {
