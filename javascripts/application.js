@@ -64,6 +64,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const ourTeamLink = document.querySelector("#our-team-link");
   const caseStudyNavUl = document.querySelector("#case-study nav ul");
   const mobileCaseStudyNavUl = document.querySelector("#case-study-mobile ul");
+  const $toTop = $("#toTop-logo");
+
+  $toTop.on("click", function(e) {
+    e.preventDefault();
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: $("#introduction").offset().top
+      },
+      2000
+    );
+  });
 
   let topNavVisible = false;
   let smallNavVisible = false;
@@ -223,11 +234,21 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (withinCaseStudy) {
       $sideNavLogo.fadeIn(800);
       $caseStudyNav.fadeIn(800);
+      $toTop.fadeIn(800);
 
       handleCaseStudyNavStyles();
     } else {
       $sideNavLogo.stop(true, true).css("display", "none");
       $caseStudyNav.stop(true, true).css("display", "none");
+      $toTop.stop(true, true).css("display", "none");
+    }
+
+    if (getWindowHeight() < 500) {
+      $toTop.stop(true, true).css("display", "none");
+    } else if (withinCaseStudy) {
+      $toTop.fadeIn(800);
+    } else {
+      $toTop.stop(true, true).css("display", "none");
     }
   };
 

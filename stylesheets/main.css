@@ -178,16 +178,22 @@ img {
   cursor: pointer;
   width: 35px;
   position: fixed;
-  bottom: 25px;
+  top: 75px;
   right: 35px;
 }
 
-#medium-logo {
+#toTop-logo {
+  display: none;
   cursor: pointer;
   width: 35px;
   position: fixed;
   bottom: 30px;
   right: 35px;
+  opacity: 0.6;
+}
+
+#toTop-logo:hover {
+  opacity: 1;
 }
 
 #crato-deploy {
@@ -854,6 +860,11 @@ small {
     right: 27px;
   }
 
+  #toTop-logo {
+    width: 28px;
+    right: 27px;
+  }
+
   #medium-logo {
     cursor: pointer;
     width: 28px;
@@ -1053,9 +1064,14 @@ small {
   }
 
   #github-logo {
-    bottom: 60px;
     right: 20px;
     width: 23px;
+  }
+
+  #toTop-logo {
+    bottom: 20px;
+    width: 23px;
+    right: 20px;
   }
 
   #medium-logo {
