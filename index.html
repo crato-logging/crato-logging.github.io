@@ -1315,7 +1315,7 @@
 
         <p>
           Each system running a Crato client forwards the stream of captured log
-          messges via <code>tcp</code> to the offsite core of Crato's
+          messages via <code>tcp</code> to the offsite core of Crato's
           infrastructure. To mitigate message loss resulting from a network
           partition or problems with the central server, each Crato client
           implements a disk-assisted memory queue in front of the forwarding
@@ -1759,8 +1759,8 @@
           In testing we quickly realized that our original configuration of
           Omkafka left Rsyslog too tightly bound to Kafka. With even a
           momentarily unavailable Kafka broker, we began to see error messages
-          propogate through the system. While seeing these messages in Kafka
-          demonstrated that the pipeline was resiliant and had continued to
+          propagate through the system. While seeing these messages in Kafka
+          demonstrated that the pipeline was resilient and had continued to
           work, they also indicated that Crato needed to decouple rsyslog from
           Kafka. More specifically, it need to decouple rsyslog from any
           particular Kafka broker. We approached the decoupling from both sides.
